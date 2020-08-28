@@ -41,7 +41,8 @@ function LineChartComponent() {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="state" />
+          {/* <XAxis dataKey="state" /> */}
+          <XAxis name="Dates" reversed />
           <YAxis dataKey="positive" />
           <Tooltip />
           <Legend />
