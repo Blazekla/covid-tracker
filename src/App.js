@@ -20,7 +20,7 @@ function App() {
         >
           Learn React
         </a>
-        {/* <LineExample /> */}
+        <LineExample />
         <LineChart />
       </header>
     </div>
