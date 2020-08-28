@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import LineExample from "./components/LineChartExample";
+import LineChart from "./components/LineChart";
 import "./App.css";
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
         >
           Learn React
         </a>
-        <LineExample />
+        {/* <LineExample /> */}
+        <LineChart />
       </header>
     </div>
   );
