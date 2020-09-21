@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { DateTime } from "luxon";
 
 function LineChartComponent() {
   const [totalCases, setTotalCases] = useState(null);
@@ -16,7 +17,7 @@ function LineChartComponent() {
   useEffect(() => {
     async function fetchTotals() {
       const data = await axios.get(
-        "https://api.covidtracking.com/v1/states/ca/daily.json"
+        "https://api.covidtracking.com/v1/states/tx/daily.json"
       );
       setTotalCases(data.data);
       console.log("data totals: ", data);
@@ -26,6 +27,11 @@ function LineChartComponent() {
   }, []);
   return (
     <div>
+      {totalCases &&
+        console.log(
+          "date parsed: ",
+          DateTime.fromISO(totalCases[0].date).toISODate()
+        )}
       {totalCases && console.log("rendered return: ", totalCases)}
       {totalCases ? "yay" : "nothing to see here"}
       {totalCases && (
