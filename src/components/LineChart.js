@@ -41,16 +41,26 @@ function LineChartComponent() {
           data={totalCases}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            right: 300,
+            left: 200,
             bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           {/* <XAxis dataKey="state" /> */}
-          <XAxis name="Dates" reversed />
+          <XAxis
+            name="date"
+            reversed
+            allowDataOverflow
+            dataKey="date"
+            domain={[0, 200]}
+            // type="number"
+          />
           <YAxis dataKey="positive" />
-          <Tooltip />
+          <Tooltip
+            itemStyle={{ color: "purple" }}
+            wrapperStyle={{ backgroundColor: "pink", color: "black" }}
+          />
           <Legend />
           <Line
             type="monotone"
