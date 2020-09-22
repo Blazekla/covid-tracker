@@ -13,7 +13,7 @@ import { DateTime } from "luxon";
 
 function LineChartComponent() {
   const [totalCases, setTotalCases] = useState(null);
-
+  const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
     async function fetchTotals() {
       try {
@@ -33,8 +33,8 @@ function LineChartComponent() {
   }, []);
   return (
     <div>
-      {totalCases && console.log("date parsed: ", totalCases[0].date)}
-      {totalCases && console.log("rendered return: ", totalCases)}
+      {/* {totalCases && console.log("date parsed: ", totalCases[0].date)} */}
+      {/* {totalCases && console.log("rendered return: ", totalCases)} */}
       {totalCases ? "Total Positive" : "nothing to see here"}
       {totalCases && (
         <LineChart
@@ -53,24 +53,29 @@ function LineChartComponent() {
             reversed
             // allowDataOverflow
             dataKey="date"
-            domain={["auto", "auto"]}
+            // domain={["auto", "auto"]}
             // domain={[0, 200]}
             // type="category"
-            interval="preserveStart"
-            // interval="preserveStartEnd"
+            // interval="preserveStart"
+            interval="preserveStartEnd"
             // interval="preserveEnd"
-            // interval={50}
+            // interval={2}
             ticks={[
-              "Mar 4",
+              // "Mar 4",
               "Apr 1",
               "May 1",
               "Jun 1",
               "Jul 1",
               "Aug 1",
               "Sep 1",
+              today,
+              // DateTime.local().toFormat("LLL d").valueOf(String),
             ]}
+
             // tickLine={false}
           />
+          {/* {console.log(DateTime.fromISO(Date.toString()))} */}
+          {console.log(today)}
           <YAxis dataKey="positive" />
           <Tooltip
             itemStyle={{ color: "purple" }}
