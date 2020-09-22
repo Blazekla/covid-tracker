@@ -16,14 +16,18 @@ function LineChartComponent() {
 
   useEffect(() => {
     async function fetchTotals() {
-      const data = await axios.get(
-        "https://api.covidtracking.com/v1/states/tx/daily.json"
-      );
-      data.data.forEach((item) => {
-        console.log(DateTime.fromISO(item.date).toISODate());
-        item.date = DateTime.fromISO(item.date).toISODate();
-      });
-      setTotalCases(data.data);
+      try {
+        const data = await axios.get(
+          "https://api.covidtracking.com/v1/states/tx/daily.json"
+        );
+        data.data.forEach((item) => {
+          // item.date = DateTime.fromISO(item.date).toISODate();
+          item.date = DateTime.fromISO(item.date).toFormat("LLL dd");
+        });
+        setTotalCases(data.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     fetchTotals();
@@ -33,7 +37,7 @@ function LineChartComponent() {
       {totalCases &&
         console.log(
           "date parsed: ",
-          DateTime.fromISO(totalCases[0].date).toISODate()
+          DateTime.fromISO(totalCases[0].date).toFormat("LLL dd")
         )}
       {totalCases && console.log("rendered return: ", totalCases)}
       {totalCases ? "Total Positive" : "nothing to see here"}
@@ -49,15 +53,19 @@ function LineChartComponent() {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid
+          // strokeDasharray="3 3"
+          />
           {/* <XAxis dataKey="state" /> */}
           <XAxis
-            name="date"
             reversed
-            allowDataOverflow
+            // allowDataOverflow
             dataKey="date"
-            domain={[0, 200]}
-            // type="number"
+            // domain={[0, 200]}
+            // type="category"
+            // interval="preserveStartEnd"
+            // interval={50}
+            tickLine={false}
           />
           <YAxis dataKey="positive" />
           <Tooltip

@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "./logo.svg";
-import LineExample from "./components/LineChartExample";
 import LineChart from "./components/LineChart";
 import "./App.css";
 
@@ -20,7 +19,6 @@ function App() {
         >
           Learn React
         </a>
-        <LineExample />
         <LineChart />
       </header>
     </div>
