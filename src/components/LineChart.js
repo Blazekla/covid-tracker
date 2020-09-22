@@ -21,7 +21,7 @@ function LineChartComponent() {
           "https://api.covidtracking.com/v1/states/tx/daily.json"
         );
         data.data.forEach((item) => {
-          item.date = DateTime.fromISO(item.date).toFormat("LLL dd");
+          item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
         setTotalCases(data.data);
       } catch (error) {
@@ -52,13 +52,23 @@ function LineChartComponent() {
           <XAxis
             reversed
             // allowDataOverflow
-            // dataKey="date"
+            dataKey="date"
             domain={["auto", "auto"]}
             // domain={[0, 200]}
             // type="category"
+            interval="preserveStart"
             // interval="preserveStartEnd"
             // interval="preserveEnd"
-            interval={50}
+            // interval={50}
+            ticks={[
+              "Mar 4",
+              "Apr 1",
+              "May 1",
+              "Jun 1",
+              "Jul 1",
+              "Aug 1",
+              "Sep 1",
+            ]}
             // tickLine={false}
           />
           <YAxis dataKey="positive" />
