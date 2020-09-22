@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { DateTime } from "luxon";
 
-function LineChartComponent() {
+function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
