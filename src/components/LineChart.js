@@ -19,8 +19,11 @@ function LineChartComponent() {
       const data = await axios.get(
         "https://api.covidtracking.com/v1/states/tx/daily.json"
       );
+      data.data.forEach((item) => {
+        console.log(DateTime.fromISO(item.date).toISODate());
+        item.date = DateTime.fromISO(item.date).toISODate();
+      });
       setTotalCases(data.data);
-      console.log("data totals: ", data);
     }
 
     fetchTotals();
@@ -33,7 +36,7 @@ function LineChartComponent() {
           DateTime.fromISO(totalCases[0].date).toISODate()
         )}
       {totalCases && console.log("rendered return: ", totalCases)}
-      {totalCases ? "yay" : "nothing to see here"}
+      {totalCases ? "Total Positive" : "nothing to see here"}
       {totalCases && (
         <LineChart
           width={1000}
