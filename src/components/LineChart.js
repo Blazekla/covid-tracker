@@ -21,12 +21,11 @@ function LineChartComponent() {
           "https://api.covidtracking.com/v1/states/tx/daily.json"
         );
         data.data.forEach((item) => {
-          // item.date = DateTime.fromISO(item.date).toISODate();
           item.date = DateTime.fromISO(item.date).toFormat("LLL dd");
         });
         setTotalCases(data.data);
       } catch (error) {
-        console.log(error);
+        console.log("error fetching api data: ", error);
       }
     }
 
@@ -34,11 +33,7 @@ function LineChartComponent() {
   }, []);
   return (
     <div>
-      {totalCases &&
-        console.log(
-          "date parsed: ",
-          DateTime.fromISO(totalCases[0].date).toFormat("LLL dd")
-        )}
+      {totalCases && console.log("date parsed: ", totalCases[0].date)}
       {totalCases && console.log("rendered return: ", totalCases)}
       {totalCases ? "Total Positive" : "nothing to see here"}
       {totalCases && (
@@ -48,24 +43,23 @@ function LineChartComponent() {
           data={totalCases}
           margin={{
             top: 5,
-            right: 300,
+            right: 80,
             left: 200,
             bottom: 5,
           }}
         >
-          <CartesianGrid
-          // strokeDasharray="3 3"
-          />
-          {/* <XAxis dataKey="state" /> */}
+          <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             reversed
             // allowDataOverflow
-            dataKey="date"
+            // dataKey="date"
+            domain={["auto", "auto"]}
             // domain={[0, 200]}
             // type="category"
             // interval="preserveStartEnd"
-            // interval={50}
-            tickLine={false}
+            // interval="preserveEnd"
+            interval={50}
+            // tickLine={false}
           />
           <YAxis dataKey="positive" />
           <Tooltip
@@ -76,6 +70,7 @@ function LineChartComponent() {
           <Line
             type="monotone"
             dataKey="positive"
+            name={`Positive Cases in ${totalCases[0].state}`}
             stroke="#88844d"
             activeDot={{ r: 8 }}
           />
