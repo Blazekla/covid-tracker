@@ -1,25 +1,22 @@
 import React from "react";
 import LineChart from "./components/LineChart";
-// import "./App.css";
 import "./assets/css/main.css";
 import Tailwind from "./components/tailwindexample";
+
 function App() {
   return (
-    <div className="App">
-      <p class="text-xs ...">The quick brown fox ...</p>
-      <p class="text-sm ...">The quick brown fox ...</p>
-      <p class="text-base ...">The quick brown fox ...</p>
-      <p class="text-lg ...">The quick brown fox ...</p>
-      <p class="text-xl ...">The quick brown fox ...</p>
-      <p class="text-2xl ...">The quick brown fox ...</p>
-      <p class="text-3xl ...">The quick brown fox ...</p>
-      <p class="text-4xl ">The quick brown fox ...</p>
-      <p class="text-5xl ...">The quick brown fox ...</p>
-      <p class="text-6xl ...">The quick brown fox ...</p>
-      <header className="App-header">
+    <div className="flex flex-col  bg-indigo-900">
+      <header className="flex justify-between items-center bg-gray-600 px-8">
+        <h1 className="text-4xl ">Covid Tracker</h1>
+        <p>By State</p>
+      </header>
+      <main>
         <LineChart />
         <Tailwind />
-      </header>
+      </main>
+      <footer>
+        <p className="text-2xl bg-gray-600">Footer Here</p>
+      </footer>
     </div>
   );
 }
