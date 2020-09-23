@@ -32,19 +32,19 @@ function LineChartComponent(props) {
     fetchTotals();
   }, []);
   return (
-    <div>
+    <div className="flex px-12 ">
       {/* {totalCases && console.log("date parsed: ", totalCases[0].date)} */}
       {/* {totalCases && console.log("rendered return: ", totalCases)} */}
       {totalCases ? "Total Positive" : "nothing to see here"}
       {totalCases && (
         <LineChart
-          width={1000}
+          width={500}
           height={500}
           data={totalCases}
           margin={{
             top: 5,
-            right: 80,
-            left: 200,
+            right: 0,
+            left: 0,
             bottom: 5,
           }}
         >

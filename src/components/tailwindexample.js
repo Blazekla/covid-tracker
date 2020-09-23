@@ -2,7 +2,7 @@ import React from "react";
 
 function tailwindexample() {
   return (
-    <div className="flex justify-center px-4 py-4">
+    <div className="flex justify-center px-4 py-4 bg-primary">
       <div className="bg-green-600 shadow overflow-hidden sm:rounded-lg">
         <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
           <h3 className="text-lg leading-6 font-medium text-gray-900">
