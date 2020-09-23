@@ -36,9 +36,9 @@ function SelectMenu() {
                 >
                   <path
                     d="M7 7l3-3 3 3m0 6l-3 3-3-3"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </span>
