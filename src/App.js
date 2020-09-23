@@ -1,8 +1,8 @@
 import React from "react";
 import LineChart from "./components/LineChart";
 import "./assets/css/main.css";
-import Tailwind from "./components/tailwindexample";
-import Menu from "./components/selectMenu";
+// import Tailwind from "./components/tailwindexample";
+// import Menu from "./components/selectMenu";
 import SimpleToggle from "./components/simpleToggle";
 
 function App() {
