@@ -33,12 +33,10 @@ function LineChartComponent(props) {
     fetchTotals();
   }, []);
   return (
-    <div className="flex flex-col items-center px-12 ">
-      {/* {totalCases && console.log("date parsed: ", totalCases[0].date)} */}
-      {/* {totalCases && console.log("rendered return: ", totalCases)} */}
+    <div className="flex flex-col items-center px-12 my-12 ">
       {totalCases ? <h1>Total Positive</h1> : "nothing to see here"}
       {totalCases && (
-        <ResponsiveContainer width="99%" height={300}>
+        <ResponsiveContainer width="99%" height={300} className="bg-gray-300">
           <LineChart
             width={500}
             height={500}
@@ -76,8 +74,6 @@ function LineChartComponent(props) {
 
               // tickLine={false}
             />
-            {/* {console.log(DateTime.fromISO(Date.toString()))} */}
-            {console.log(today)}
             <YAxis dataKey="positive" />
             <Tooltip
               itemStyle={{ color: "purple" }}
