@@ -1,7 +1,8 @@
 import React from "react";
 import LineChart from "./components/LineChart";
-import "./App.css";
+// import "./App.css";
 import "./assets/css/main.css";
+import Tailwind from "./components/tailwindexample";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
       <p class="text-6xl ...">The quick brown fox ...</p>
       <header className="App-header">
         <LineChart />
+        <Tailwind />
       </header>
     </div>
   );
