@@ -11,10 +11,8 @@ function App() {
         <p>By State</p>
       </header>
       <main>
-        {/* <Menu /> */}
         <SimpleToggle />
         <LineChart />
-        {/* <Tailwind /> */}
       </main>
       <footer>
         <p className="text-2xl bg-gray-700">Footer Here</p>
