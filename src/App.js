@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import Layout from "./components/Layout";
 import State from "./components/State/state";
-import SimpleToggle from "./components/simpleToggle";
+import US from "./components/US/usData";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Link to="/state">State Data</Link>
       <Switch>
         <Route path="/us">
-          <SimpleToggle />
+          <US />
         </Route>
         <Route path="/state">
           <State />
