@@ -16,6 +16,7 @@ import { stateLabelValues } from "../../data/stateLabel";
 function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
+  const [selectedType, setSelectedType] = useState("newCases");
 
   // const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   const today = DateTime.local().toFormat("LLL d");
@@ -55,6 +56,11 @@ function LineChartComponent(props) {
     setSelectedState(e.target.value);
   };
 
+  const handleTypeChange = (e) => {
+    console.log("Selected Type: ", e.target.value);
+    setSelectedType(e.target.value);
+  };
+
   return (
     <div className="flex flex-col items-center px-12 my-12 ">
       <div className="p-12">
@@ -69,6 +75,12 @@ function LineChartComponent(props) {
               </option>
             );
           })}
+        </select>
+      </div>
+      <div>
+        <select value={selectedType} onChange={handleTypeChange}>
+          <option value="newCases">New Cases</option>
+          <option value="newDeaths">New Deaths</option>
         </select>
       </div>
 
@@ -116,7 +128,13 @@ function LineChartComponent(props) {
 
               // tickLine={false}
             />
-            <YAxis dataKey="positiveIncrease" />
+            <YAxis
+              dataKey={
+                selectedType === "newCases"
+                  ? "positiveIncrease"
+                  : "deathIncrease"
+              }
+            />
             <Tooltip
               itemStyle={{ color: "purple" }}
               wrapperStyle={{ backgroundColor: "pink", color: "black" }}
@@ -125,7 +143,11 @@ function LineChartComponent(props) {
             <Legend />
             <Line
               type="monotone"
-              dataKey="positiveIncrease"
+              dataKey={
+                selectedType === "newCases"
+                  ? "positiveIncrease"
+                  : "deathIncrease"
+              }
               name={`Positive Cases in ${totalCases[0].state}`}
               stroke="#88844d"
               activeDot={{ r: 8 }}

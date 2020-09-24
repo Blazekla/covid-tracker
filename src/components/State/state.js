@@ -1,5 +1,5 @@
 import React from "react";
-import LineChart from "../common/LineChart";
+import LineChart from "../common/stateLineChart";
 
 function State() {
   return (
