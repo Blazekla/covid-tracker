@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { DateTime } from "luxon";
-import { stateLabelValues } from "../data/stateLabel";
+import { stateLabelValues } from "../../data/stateLabel";
 
 function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
