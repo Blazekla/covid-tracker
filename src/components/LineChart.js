@@ -92,7 +92,7 @@ function LineChartComponent(props) {
     fetchTotals();
   }, [selectedState]);
 
-  const handleChane = (e) => {
+  const handleChange = (e) => {
     // e.preventDefault();
     console.log("selected state: ", e.target.value);
     setSelectedState(e.target.value);
@@ -101,7 +101,7 @@ function LineChartComponent(props) {
   return (
     <div className="flex flex-col items-center px-12 my-12 ">
       <div className="p-12">
-        <select value={selectedState} onChange={handleChane}>
+        <select value={selectedState} onChange={handleChange}>
           <option value="one" disabled>
             Choose a State
           </option>
@@ -159,7 +159,7 @@ function LineChartComponent(props) {
 
               // tickLine={false}
             />
-            <YAxis dataKey="positive" />
+            <YAxis dataKey="positiveIncrease" />
             <Tooltip
               itemStyle={{ color: "purple" }}
               wrapperStyle={{ backgroundColor: "pink", color: "black" }}
@@ -168,7 +168,7 @@ function LineChartComponent(props) {
             <Legend />
             <Line
               type="monotone"
-              dataKey="positive"
+              dataKey="positiveIncrease"
               name={`Positive Cases in ${totalCases[0].state}`}
               stroke="#88844d"
               activeDot={{ r: 8 }}
