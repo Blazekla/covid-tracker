@@ -19,7 +19,7 @@ function Layout({ children }) {
           <p className="">
             Created by{" "}
             <a
-              href="luiscristo.com"
+              href="https://luiscristo.com"
               className="text-indigo-500 italic underline text-lg"
             >
               Luis C

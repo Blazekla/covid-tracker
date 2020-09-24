@@ -50,13 +50,10 @@ function LineChartComponent(props) {
   }, [selectedState]);
 
   const handleChange = (e) => {
-    // e.preventDefault();
-    console.log("selected state: ", e.target.value);
     setSelectedState(e.target.value);
   };
 
   const handleTypeChange = (e) => {
-    console.log("Selected Type: ", e.target.value);
     setSelectedType(e.target.value);
   };
 
@@ -127,8 +124,6 @@ function LineChartComponent(props) {
                   today,
                   // DateTime.local().toFormat("LLL d").valueOf(String),
                 ]}
-
-                // tickLine={false}
               />
               <YAxis
                 dataKey={

@@ -14,10 +14,8 @@ import { DateTime } from "luxon";
 
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
-  //   const [selectedState, setSelectedState] = useState("TX");
 
-  // const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
-  const today = DateTime.local().toFormat("LLL d");
+  const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
     async function fetchTotals() {
       try {
@@ -77,15 +75,8 @@ function USLineChart({ timeframe }) {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               reversed
-              // allowDataOverflow
               dataKey="date"
-              // domain={["auto", "auto"]}
-              // domain={[0, 200]}
-              // type="category"
-              // interval="preserveStart"
               interval="preserveStartEnd"
-              // interval="preserveEnd"
-              // interval={2}
               ticks={[
                 // "Mar 4",
                 "Apr 1",
@@ -95,10 +86,7 @@ function USLineChart({ timeframe }) {
                 "Aug 1",
                 "Sep 1",
                 today,
-                // DateTime.local().toFormat("LLL d").valueOf(String),
               ]}
-
-              // tickLine={false}
             />
             <YAxis dataKey="positiveIncrease" />
             <Tooltip
