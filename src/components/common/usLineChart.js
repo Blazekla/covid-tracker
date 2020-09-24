@@ -11,11 +11,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { DateTime } from "luxon";
-import { stateLabelValues } from "../../data/stateLabel";
 
-function USLineChart(props) {
+function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
-  const [selectedState, setSelectedState] = useState("TX");
+  //   const [selectedState, setSelectedState] = useState("TX");
 
   // const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   const today = DateTime.local().toFormat("LLL d");
@@ -23,7 +22,7 @@ function USLineChart(props) {
     async function fetchTotals() {
       try {
         const data = await axios.get(
-          `https://api.covidtracking.com/v1/us/${props.timeframe}.json`
+          `https://api.covidtracking.com/v1/us/${timeframe}.json`
         );
 
         data.data.forEach((item) => {
@@ -36,18 +35,18 @@ function USLineChart(props) {
     }
 
     fetchTotals();
-  }, [selectedState]);
+  }, [timeframe]);
 
-  const handleChange = (e) => {
-    // e.preventDefault();
-    console.log("selected state: ", e.target.value);
-    setSelectedState(e.target.value);
-  };
+  //   const handleChange = (e) => {
+  //     // e.preventDefault();
+  //     console.log("selected state: ", e.target.value);
+  //     setSelectedState(e.target.value);
+  //   };
 
   return (
     <div className="flex flex-col items-center px-12 my-12 ">
       <div className="p-12">
-        <select value={selectedState} onChange={handleChange}>
+        {/* <select value={selectedState} onChange={handleChange}>
           <option value="one" disabled>
             Choose a State
           </option>
@@ -58,14 +57,10 @@ function USLineChart(props) {
               </option>
             );
           })}
-        </select>
+        </select> */}
       </div>
 
-      {totalCases ? (
-        <h1>Total Positive in {selectedState}</h1>
-      ) : (
-        "nothing to see here"
-      )}
+      {totalCases ? <h1>New Positive Cases in US</h1> : "nothing to see here"}
       {totalCases && (
         <ResponsiveContainer width="99%" height={300} className="bg-gray-300">
           <LineChart
@@ -115,7 +110,7 @@ function USLineChart(props) {
             <Line
               type="monotone"
               dataKey="positiveIncrease"
-              name={`Positive Cases in ${totalCases[0].state}`}
+              name={`New Postive Cases in the US`}
               stroke="#88844d"
               activeDot={{ r: 8 }}
             />
