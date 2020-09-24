@@ -88,11 +88,12 @@ function LineChartComponent(props) {
               $limit: 50000,
             },
             headers: {
-              "X-App-Token": "ejoxeLoILwBD0fm2BiRRYj9Je",
+              "X-App-Token": process.env.REACT_APP_TEST,
             },
           }
         );
         console.log(cdcData.data);
+        console.log(process.env.REACT_APP_TEST);
         console.log(cdcData.headers);
 
         data.data.forEach((item) => {
