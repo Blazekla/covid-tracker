@@ -15,7 +15,18 @@ function Layout({ children }) {
       </Header>
       <main>{children}</main>
       <Footer>
-        <p className="text-2xl bg-gray-700">Footer Here</p>
+        <div className="flex justify-between max-w-full bg-gray-700 items-center">
+          <p className="">
+            Created by{" "}
+            <a
+              href="luiscristo.com"
+              className="text-indigo-500 italic underline text-lg"
+            >
+              Luis C
+            </a>
+          </p>
+          <p>More updates incoming</p>
+        </div>
       </Footer>
     </div>
   );
