@@ -25,20 +25,17 @@ function LineChartComponent(props) {
         const data = await axios.get(
           `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
         );
-        const cdcData = await axios.get(
-          `https://data.cdc.gov/resource/9mfq-cb36.json`,
-          {
-            params: {
-              $limit: 50000,
-            },
-            headers: {
-              "X-App-Token": process.env.REACT_APP_TEST,
-            },
-          }
-        );
-        console.log(cdcData.data);
-        console.log(process.env.REACT_APP_TEST);
-        console.log(cdcData.headers);
+        // const cdcData = await axios.get(
+        //   `https://data.cdc.gov/resource/9mfq-cb36.json`,
+        //   {
+        //     params: {
+        //       $limit: 50000,
+        //     },
+        //     headers: {
+        //       "X-App-Token": process.env.REACT_APP_TEST,
+        //     },
+        //   }
+        // );
 
         data.data.forEach((item) => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
