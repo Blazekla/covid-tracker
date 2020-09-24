@@ -8,10 +8,18 @@ function App() {
   return (
     <Layout>
       <div className="flex justify-center">
-        <NavLink to="/us" className="p-4" activeClassName="bg-red-800">
+        <NavLink
+          to="/us"
+          className="p-4 rounded-full border-solid border-2 border-indigo-500"
+          activeClassName="underline bg-indigo-500"
+        >
           US Data
         </NavLink>
-        <NavLink to="/state" className="p-4" activeClassName="bg-red-800">
+        <NavLink
+          to="/state"
+          className="p-4 rounded-full border-solid border-2 border-indigo-500"
+          activeClassName="underline bg-indigo-500"
+        >
           State Data
         </NavLink>
       </div>
