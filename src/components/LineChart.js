@@ -73,13 +73,28 @@ function LineChartComponent(props) {
     { label: "Wyoming", value: "WY" },
   ];
 
-  const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
+  // const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
+  const today = DateTime.local().toFormat("LLL d");
   useEffect(() => {
     async function fetchTotals() {
       try {
         const data = await axios.get(
           `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
         );
+        const cdcData = await axios.get(
+          `https://data.cdc.gov/resource/9mfq-cb36.json`,
+          {
+            params: {
+              $limit: 50000,
+            },
+            headers: {
+              "X-App-Token": "ejoxeLoILwBD0fm2BiRRYj9Je",
+            },
+          }
+        );
+        console.log(cdcData.data);
+        console.log(cdcData.headers);
+
         data.data.forEach((item) => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
