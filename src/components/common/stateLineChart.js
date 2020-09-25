@@ -145,7 +145,11 @@ function LineChartComponent(props) {
                     ? "positiveIncrease"
                     : "deathIncrease"
                 }
-                name={`Positive Cases in ${totalCases[0].state}`}
+                name={
+                  selectedType === "newCases"
+                    ? `New Cases in ${totalCases[0].state}`
+                    : `New Deaths in ${totalCases[0].state}`
+                }
                 stroke="#88844d"
                 activeDot={{ r: 8 }}
               />
