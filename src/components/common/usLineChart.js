@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
 import { DateTime } from "luxon";
+import LineChart from "./lineChart";
 
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
@@ -59,58 +50,12 @@ function USLineChart({ timeframe }) {
 
       {totalCases ? <h1>New Positive Cases in US</h1> : "nothing to see here"}
       {totalCases && (
-        <ResponsiveContainer width="99%" height={300} className="bg-gray-300">
-          <LineChart
-            width={500}
-            height={500}
-            data={totalCases}
-            margin={{
-              top: 10,
-              right: 0,
-              left: 0,
-              bottom: 10,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-              reversed
-              dataKey="date"
-              interval="preserveStartEnd"
-              ticks={[
-                // "Mar 4",
-                "Apr 1",
-                "May 1",
-                "Jun 1",
-                "Jul 1",
-                "Aug 1",
-                "Sep 1",
-                today,
-              ]}
-            />
-            <YAxis domain={["dataMin", "dataMax"]} />
-            <Tooltip
-              itemStyle={{ color: "purple" }}
-              wrapperStyle={{ backgroundColor: "pink", color: "black" }}
-              isAnimationActive={false}
-            />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey={
-                selectedType === "newCases"
-                  ? "positiveIncrease"
-                  : "deathIncrease"
-              }
-              name={
-                selectedType === "newCases"
-                  ? `New Cases in the US`
-                  : `New Deaths in the US`
-              }
-              stroke="#88844d"
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <LineChart
+          totalCases={totalCases}
+          today={today}
+          selectedType={selectedType}
+          // state={}
+        />
       )}
     </div>
   );
