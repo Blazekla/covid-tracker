@@ -1,3 +1,4 @@
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
@@ -11,5 +12,14 @@ module.exports = {
     }),
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".calculate-100": {
+          height: "calc( 100vh - 100px )",
+        },
+      };
+      addUtilities(newUtilities);
+    }),
+  ],
 };
