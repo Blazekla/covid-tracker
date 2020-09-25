@@ -14,6 +14,7 @@ import { DateTime } from "luxon";
 
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
+  const [selectedType, setSelectedType] = useState("newCases");
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
@@ -41,21 +42,19 @@ function USLineChart({ timeframe }) {
   //     setSelectedState(e.target.value);
   //   };
 
+  const handleTypeChange = (e) => {
+    setSelectedType(e.target.value);
+  };
+
   return (
     <div className="flex flex-col items-center px-12 my-12 ">
       <div className="p-12">
-        {/* <select value={selectedState} onChange={handleChange}>
-          <option value="one" disabled>
-            Choose a State
-          </option>
-          {stateLabelValues.map((state) => {
-            return (
-              <option key={state.label} value={state.value}>
-                {state.label}
-              </option>
-            );
-          })}
-        </select> */}
+        <div>
+          <select value={selectedType} onChange={handleTypeChange}>
+            <option value="newCases">New Cases</option>
+            <option value="newDeaths">New Deaths</option>
+          </select>
+        </div>
       </div>
 
       {totalCases ? <h1>New Positive Cases in US</h1> : "nothing to see here"}
@@ -88,7 +87,7 @@ function USLineChart({ timeframe }) {
                 today,
               ]}
             />
-            <YAxis dataKey="positiveIncrease" />
+            <YAxis domain={["dataMin", "dataMax"]} />
             <Tooltip
               itemStyle={{ color: "purple" }}
               wrapperStyle={{ backgroundColor: "pink", color: "black" }}
@@ -97,8 +96,16 @@ function USLineChart({ timeframe }) {
             <Legend />
             <Line
               type="monotone"
-              dataKey="positiveIncrease"
-              name={`New Postive Cases in the US`}
+              dataKey={
+                selectedType === "newCases"
+                  ? "positiveIncrease"
+                  : "deathIncrease"
+              }
+              name={
+                selectedType === "newCases"
+                  ? `New Cases in the US`
+                  : `New Deaths in the US`
+              }
               stroke="#88844d"
               activeDot={{ r: 8 }}
             />

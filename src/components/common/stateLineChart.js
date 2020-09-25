@@ -122,16 +122,9 @@ function LineChartComponent(props) {
                   "Aug 1",
                   "Sep 1",
                   today,
-                  // DateTime.local().toFormat("LLL d").valueOf(String),
                 ]}
               />
-              <YAxis
-                dataKey={
-                  selectedType === "newCases"
-                    ? "positiveIncrease"
-                    : "deathIncrease"
-                }
-              />
+              <YAxis domain={["dataMin", "dataMax"]} />
               <Tooltip
                 itemStyle={{ color: "purple" }}
                 wrapperStyle={{ backgroundColor: "pink", color: "black" }}

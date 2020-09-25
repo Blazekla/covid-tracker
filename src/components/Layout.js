@@ -13,7 +13,7 @@ function Layout({ children }) {
         </NavLink>
         <p>By State</p>
       </Header>
-      <main>{children}</main>
+      <main className="h-screen">{children}</main>
       <Footer>
         <div className="flex justify-between max-w-full bg-gray-700 items-center">
           <p className="">
