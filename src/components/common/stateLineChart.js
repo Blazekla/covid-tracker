@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import {
-//   LineChart,
-//   Line,
-//   XAxis,
-//   YAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   Legend,
-//   ResponsiveContainer,
-// } from "recharts";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
 import LineChart from "./lineChart";
@@ -81,12 +71,8 @@ function LineChartComponent(props) {
         </select>
       </div>
 
-      {totalCases ? (
-        <h1>Total Positive in {selectedState}</h1>
-      ) : (
-        "nothing to see here"
-      )}
-      <div className="container mx-auto px-1 sm:px-4">
+      {totalCases ? <h1>Totals in {selectedState}</h1> : "Loading Data"}
+      <div className="container mx-auto px-2 sm:px-4">
         {totalCases && (
           <LineChart
             totalCases={totalCases}

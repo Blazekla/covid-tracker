@@ -32,7 +32,7 @@ function USLineChart({ timeframe }) {
   };
 
   return (
-    <div className="flex flex-col items-center px-12 my-12 ">
+    <div className="flex flex-col items-center my-12 ">
       <div className="p-12">
         <div>
           <select value={selectedType} onChange={handleTypeChange}>
@@ -42,15 +42,17 @@ function USLineChart({ timeframe }) {
         </div>
       </div>
 
-      {totalCases ? <h1>New Positive Cases in US</h1> : "nothing to see here"}
-      {totalCases && (
-        <LineChart
-          totalCases={totalCases}
-          today={today}
-          selectedType={selectedType}
-          location="US"
-        />
-      )}
+      {totalCases ? <h1>Totals in US</h1> : "Loading Data"}
+      <div className="container mx-auto px-2 sm:px-4">
+        {totalCases && (
+          <LineChart
+            totalCases={totalCases}
+            today={today}
+            selectedType={selectedType}
+            location="US"
+          />
+        )}
+      </div>
     </div>
   );
 }
