@@ -23,10 +23,10 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
         height={500}
         data={totalCases}
         margin={{
-          top: 5,
+          top: 10,
           right: 30,
-          left: 20,
-          bottom: 5,
+          left: 0,
+          bottom: 10,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
@@ -37,7 +37,7 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
           ticks={["Apr 1", "May 1", "Jun 1", "Jul 1", "Aug 1", "Sep 1", today]}
         />
         <YAxis domain={["dataMin", "dataMax"]} />
-        <Tooltip />
+        <Tooltip isAnimationActive={false} />
         <Legend />
         <Bar
           dataKey={

@@ -22,8 +22,8 @@ function lineChart({ totalCases, today, selectedType, location }) {
         data={totalCases}
         margin={{
           top: 10,
-          right: 10,
-          left: -10,
+          right: 30,
+          left: 0,
           bottom: 10,
         }}
       >
@@ -50,7 +50,7 @@ function lineChart({ totalCases, today, selectedType, location }) {
             selectedType === "newCases" ? positiveSelection : negativeSelection
           }
           stroke="#88844d"
-          activeDot={{ r: 8 }}
+          activeDot={{ r: 4 }}
         />
       </LineChart>
     </ResponsiveContainer>
