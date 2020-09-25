@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
 import LineChart from "../common/lineChart";
+import BarChart from "../common/barChart";
 
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
@@ -46,6 +47,16 @@ function USLineChart({ timeframe }) {
       <div className="container mx-auto px-2 sm:px-4">
         {totalCases && (
           <LineChart
+            totalCases={totalCases}
+            today={today}
+            selectedType={selectedType}
+            location="US"
+          />
+        )}
+      </div>
+      <div className="container mx-auto px-2 sm:px-4 mt-16 mb-16">
+        {totalCases && (
+          <BarChart
             totalCases={totalCases}
             today={today}
             selectedType={selectedType}

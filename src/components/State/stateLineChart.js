@@ -3,6 +3,7 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
 import LineChart from "../common/lineChart";
+import BarChart from "../common/barChart";
 
 function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
@@ -75,6 +76,16 @@ function LineChartComponent(props) {
       <div className="container mx-auto px-2 sm:px-4">
         {totalCases && (
           <LineChart
+            totalCases={totalCases}
+            today={today}
+            selectedType={selectedType}
+            location={selectedState}
+          />
+        )}
+      </div>
+      <div className="container mx-auto px-2 sm:px-4 mt-16 mb-16">
+        {totalCases && (
+          <BarChart
             totalCases={totalCases}
             today={today}
             selectedType={selectedType}
