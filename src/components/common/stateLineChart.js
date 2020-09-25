@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+// import {
+//   LineChart,
+//   Line,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   Legend,
+//   ResponsiveContainer,
+// } from "recharts";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
+import LineChart from "./lineChart";
 
 function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
@@ -87,67 +88,12 @@ function LineChartComponent(props) {
       )}
       <div className="container mx-auto px-1 sm:px-4">
         {totalCases && (
-          <ResponsiveContainer
-            width="100%"
-            height={300}
-            className="bg-gray-300"
-          >
-            <LineChart
-              data={totalCases}
-              margin={{
-                top: 10,
-                right: 10,
-                left: -10,
-                bottom: 10,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis
-                reversed
-                // allowDataOverflow
-                dataKey="date"
-                // domain={["auto", "auto"]}
-                // domain={[0, 200]}
-                // type="category"
-                // interval="preserveStart"
-                interval="preserveStartEnd"
-                // interval="preserveEnd"
-                // interval={2}
-                ticks={[
-                  // "Mar 4",
-                  "Apr 1",
-                  "May 1",
-                  "Jun 1",
-                  "Jul 1",
-                  "Aug 1",
-                  "Sep 1",
-                  today,
-                ]}
-              />
-              <YAxis domain={["dataMin", "dataMax"]} />
-              <Tooltip
-                itemStyle={{ color: "purple" }}
-                wrapperStyle={{ backgroundColor: "pink", color: "black" }}
-                isAnimationActive={false}
-              />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey={
-                  selectedType === "newCases"
-                    ? "positiveIncrease"
-                    : "deathIncrease"
-                }
-                name={
-                  selectedType === "newCases"
-                    ? `New Cases in ${totalCases[0].state}`
-                    : `New Deaths in ${totalCases[0].state}`
-                }
-                stroke="#88844d"
-                activeDot={{ r: 8 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <LineChart
+            totalCases={totalCases}
+            today={today}
+            selectedType={selectedType}
+            location={selectedState}
+          />
         )}
       </div>
     </div>

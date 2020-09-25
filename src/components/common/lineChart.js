@@ -10,7 +10,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function lineChart({ totalCases, today, selectedType, state }) {
+function lineChart({ totalCases, today, selectedType, location }) {
+  const positiveSelection =
+    location === "US" ? `New Cases in the US` : `New Cases in ${location}`;
+  const negativeSelection =
+    location === "US" ? `New Deaths in the US` : `New Deaths in ${location}`;
+
   return (
     <ResponsiveContainer width="100%" height={300} className="bg-gray-300">
       <LineChart
@@ -24,7 +29,6 @@ function lineChart({ totalCases, today, selectedType, state }) {
           bottom: 10,
         }}
       >
-        {console.log("props: ", selectedType, today)}
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           reversed
@@ -45,9 +49,7 @@ function lineChart({ totalCases, today, selectedType, state }) {
             selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
           }
           name={
-            selectedType === "newCases"
-              ? `New Cases in the US`
-              : `New Deaths in the US`
+            selectedType === "newCases" ? positiveSelection : negativeSelection
           }
           stroke="#88844d"
           activeDot={{ r: 8 }}

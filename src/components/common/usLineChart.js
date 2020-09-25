@@ -27,12 +27,6 @@ function USLineChart({ timeframe }) {
     fetchTotals();
   }, [timeframe]);
 
-  //   const handleChange = (e) => {
-  //     // e.preventDefault();
-  //     console.log("selected state: ", e.target.value);
-  //     setSelectedState(e.target.value);
-  //   };
-
   const handleTypeChange = (e) => {
     setSelectedType(e.target.value);
   };
@@ -54,7 +48,7 @@ function USLineChart({ timeframe }) {
           totalCases={totalCases}
           today={today}
           selectedType={selectedType}
-          // state={}
+          location="US"
         />
       )}
     </div>
