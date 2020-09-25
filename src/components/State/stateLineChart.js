@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
-import LineChart from "./lineChart";
+import LineChart from "../common/lineChart";
 
 function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);

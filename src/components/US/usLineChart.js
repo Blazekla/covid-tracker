@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
-import LineChart from "./lineChart";
+import LineChart from "../common/lineChart";
 
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);

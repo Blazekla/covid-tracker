@@ -1,5 +1,5 @@
 import React from "react";
-import USLineChart from "../common/usLineChart";
+import USLineChart from "./usLineChart";
 
 function UsData() {
   return (
