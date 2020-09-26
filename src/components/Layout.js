@@ -9,14 +9,14 @@ function Layout({ children }) {
     <div className="flex flex-col  bg-indigo-900">
       <Header>
         <NavLink to="/">
-          <h1 className="text-4xl ">Covid Tracker</h1>
+          <h1 className="text-4xl text-white">Covid Tracker</h1>
         </NavLink>
-        <p>By State</p>
+        <p className="text-white">Select below</p>
       </Header>
       <main className="min-h-screen">{children}</main>
       <Footer>
         <div className="flex justify-between max-w-full bg-gray-700 items-center">
-          <p className="">
+          <p className="text-white">
             Created by{" "}
             <a
               href="https://luiscristo.com"
@@ -25,7 +25,7 @@ function Layout({ children }) {
               Luis C
             </a>
           </p>
-          <p>More updates incoming</p>
+          <p className="text-white">More updates incoming</p>
         </div>
       </Footer>
     </div>

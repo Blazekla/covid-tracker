@@ -3,7 +3,7 @@ import React from "react";
 function Intro() {
   return (
     <div>
-      <div>
+      <div className="text-white">
         This app currently consumes the API from{" "}
         <a
           href="https://covidtracking.com/"
@@ -15,7 +15,7 @@ function Intro() {
         .
       </div>
       <div>
-        <p>
+        <p className="text-white">
           Please select one of the options above to see the corresponding chart.
         </p>
       </div>

@@ -11,7 +11,7 @@ function App() {
       <div className="flex justify-center">
         <NavLink
           to="/us"
-          className="p-4 rounded-full border-solid border-2 border-indigo-500"
+          className="p-4 rounded-full border-solid border-2 border-indigo-500 text-white"
           activeClassName="underline bg-indigo-500"
           aria-label="See US Numbers"
         >
@@ -19,7 +19,7 @@ function App() {
         </NavLink>
         <NavLink
           to="/state"
-          className="p-4 rounded-full border-solid border-2 border-indigo-500"
+          className="p-4 rounded-full border-solid border-2 border-indigo-500 text-white"
           activeClassName="underline bg-indigo-500"
           aria-label="See State's Numbers"
         >
