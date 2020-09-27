@@ -4,7 +4,7 @@ import USLineChart from "./usLineChart";
 function UsData() {
   return (
     <div>
-      <p>Here is the US data</p>
+      <p className="text-white">Here is the US data</p>
       <USLineChart timeframe="daily" />
     </div>
   );

@@ -10,7 +10,9 @@ function LineChartComponent(props) {
   const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
 
-  const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
+  const today = DateTime.local()
+    .minus({ day: 1 })
+    .toFormat("LLL d");
   useEffect(() => {
     async function fetchTotals() {
       try {
@@ -29,7 +31,7 @@ function LineChartComponent(props) {
         //   }
         // );
 
-        data.data.forEach((item) => {
+        data.data.forEach(item => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
         setTotalCases(data.data);
@@ -41,11 +43,11 @@ function LineChartComponent(props) {
     fetchTotals();
   }, [selectedState]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setSelectedState(e.target.value);
   };
 
-  const handleTypeChange = (e) => {
+  const handleTypeChange = e => {
     setSelectedType(e.target.value);
   };
 
@@ -56,7 +58,7 @@ function LineChartComponent(props) {
           <option value="one" disabled>
             Choose a State
           </option>
-          {stateLabelValues.map((state) => {
+          {stateLabelValues.map(state => {
             return (
               <option key={state.label} value={state.value}>
                 {state.label}
@@ -72,7 +74,11 @@ function LineChartComponent(props) {
         </select>
       </div>
 
-      {totalCases ? <h1>Totals in {selectedState}</h1> : "Loading Data"}
+      {totalCases ? (
+        <h1 className="text-white">Totals in {selectedState}</h1>
+      ) : (
+        <h1 className="text-white">Loading Data</h1>
+      )}
       <div className="container mx-auto px-2 sm:px-4">
         {totalCases && (
           <LineChart

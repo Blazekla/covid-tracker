@@ -3,12 +3,15 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import LineChart from "../common/lineChart";
 import BarChart from "../common/barChart";
+import { white } from "color-name";
 
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedType, setSelectedType] = useState("newCases");
 
-  const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
+  const today = DateTime.local()
+    .minus({ day: 1 })
+    .toFormat("LLL d");
   useEffect(() => {
     async function fetchTotals() {
       try {
@@ -16,7 +19,7 @@ function USLineChart({ timeframe }) {
           `https://api.covidtracking.com/v1/us/${timeframe}.json`
         );
 
-        data.data.forEach((item) => {
+        data.data.forEach(item => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
         setTotalCases(data.data);
@@ -28,7 +31,7 @@ function USLineChart({ timeframe }) {
     fetchTotals();
   }, [timeframe]);
 
-  const handleTypeChange = (e) => {
+  const handleTypeChange = e => {
     setSelectedType(e.target.value);
   };
 
@@ -43,7 +46,11 @@ function USLineChart({ timeframe }) {
         </div>
       </div>
 
-      {totalCases ? <h1>Totals in US</h1> : "Loading Data"}
+      {totalCases ? (
+        <h1 className="text-white">Totals in US</h1>
+      ) : (
+        <h1 className="text-white">Loading Data</h1>
+      )}
       <div className="container mx-auto px-2 sm:px-4">
         {totalCases && (
           <LineChart
