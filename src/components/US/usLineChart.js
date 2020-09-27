@@ -46,9 +46,9 @@ function USLineChart({ timeframe }) {
       </div>
 
       {totalCases ? (
-        <h1 className="text-white">Totals in US</h1>
+        <h1 className="text-white p-8">Totals in US</h1>
       ) : (
-        <h1 className="text-white">Loading Data</h1>
+        <h1 className="text-white p-8">Loading Data</h1>
       )}
       <div className="container mx-auto px-2 sm:px-4">
         {totalCases && (
