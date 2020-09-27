@@ -3,7 +3,6 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import LineChart from "../common/lineChart";
 import BarChart from "../common/barChart";
-import { white } from "color-name";
 
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
