@@ -87,7 +87,7 @@ function LineChartComponent(props) {
           />
         )}
       </div>
-      <div className="container mx-auto px-2 sm:px-4 mt-16 mb-16">
+      <div className="container mx-auto px-2 sm:px-4 mb-16">
         {totalCases && (
           <BarChart
             totalCases={totalCases}
