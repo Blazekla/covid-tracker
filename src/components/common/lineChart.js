@@ -46,7 +46,16 @@ function lineChart({ totalCases, today, selectedType, location }) {
         <XAxis
           dataKey="date"
           interval="preserveStartEnd"
-          ticks={["Apr 1", "May 1", "Jun 1", "Jul 1", "Aug 1", "Sep 1", today]}
+          ticks={[
+            totalCases[0].date,
+            "Apr 1",
+            "May 1",
+            "Jun 1",
+            "Jul 1",
+            "Aug 1",
+            "Sep 1",
+            today,
+          ]}
         />
         <YAxis domain={["dataMin", "dataMax"]} />
         <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
