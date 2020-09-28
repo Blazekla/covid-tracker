@@ -16,6 +16,19 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
   const negativeSelection =
     location === "US" ? `New Deaths in the US` : `New Deaths in ${location}`;
 
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active) {
+      return (
+        <div className="mx-auto w-full bg-gray-300 px-1">
+          <p className="text-indigo-900 text-xl">{`${payload[0].value}`}</p>
+          <p className="">{`${label}`}</p>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <ResponsiveContainer width="100%" height={300} className="bg-gray-300">
       <BarChart
@@ -37,7 +50,7 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
           ticks={["Apr 1", "May 1", "Jun 1", "Jul 1", "Aug 1", "Sep 1", today]}
         />
         <YAxis domain={["dataMin", "dataMax"]} />
-        <Tooltip isAnimationActive={false} />
+        <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         <Legend />
         <Bar
           dataKey={
