@@ -8,9 +8,7 @@ function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedType, setSelectedType] = useState("newCases");
 
-  const today = DateTime.local()
-    .minus({ day: 1 })
-    .toFormat("LLL d");
+  const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
     async function fetchTotals() {
       try {
@@ -18,10 +16,10 @@ function USLineChart({ timeframe }) {
           `https://api.covidtracking.com/v1/us/${timeframe}.json`
         );
 
-        data.data.forEach(item => {
+        data.data.forEach((item) => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
-        setTotalCases(data.data);
+        setTotalCases(data.data.reverse());
       } catch (error) {
         console.log("error fetching api data: ", error);
       }
@@ -30,7 +28,7 @@ function USLineChart({ timeframe }) {
     fetchTotals();
   }, [timeframe]);
 
-  const handleTypeChange = e => {
+  const handleTypeChange = (e) => {
     setSelectedType(e.target.value);
   };
 

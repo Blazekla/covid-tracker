@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Brush,
   ResponsiveContainer,
 } from "recharts";
 
@@ -29,7 +30,7 @@ function lineChart({ totalCases, today, selectedType, location }) {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
-          reversed
+          // reversed
           dataKey="date"
           interval="preserveStartEnd"
           ticks={["Apr 1", "May 1", "Jun 1", "Jul 1", "Aug 1", "Sep 1", today]}
@@ -52,6 +53,7 @@ function lineChart({ totalCases, today, selectedType, location }) {
           stroke="#88844d"
           activeDot={{ r: 4 }}
         />
+        <Brush />
       </LineChart>
     </ResponsiveContainer>
   );

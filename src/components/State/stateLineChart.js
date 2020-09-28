@@ -10,9 +10,7 @@ function LineChartComponent(props) {
   const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
 
-  const today = DateTime.local()
-    .minus({ day: 1 })
-    .toFormat("LLL d");
+  const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
     async function fetchTotals() {
       try {
@@ -31,10 +29,10 @@ function LineChartComponent(props) {
         //   }
         // );
 
-        data.data.forEach(item => {
+        data.data.forEach((item) => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
-        setTotalCases(data.data);
+        setTotalCases(data.data.reverse());
       } catch (error) {
         console.log("error fetching api data: ", error);
       }
@@ -43,11 +41,11 @@ function LineChartComponent(props) {
     fetchTotals();
   }, [selectedState]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setSelectedState(e.target.value);
   };
 
-  const handleTypeChange = e => {
+  const handleTypeChange = (e) => {
     setSelectedType(e.target.value);
   };
 
@@ -58,7 +56,7 @@ function LineChartComponent(props) {
           <option value="one" disabled>
             Choose a State
           </option>
-          {stateLabelValues.map(state => {
+          {stateLabelValues.map((state) => {
             return (
               <option key={state.label} value={state.value}>
                 {state.label}
@@ -82,7 +80,7 @@ function LineChartComponent(props) {
       <div className="container mx-auto px-2 sm:px-4">
         {totalCases && (
           <LineChart
-            totalCases={totalCases}
+            totalCases={totalCases.reverse()}
             today={today}
             selectedType={selectedType}
             location={selectedState}

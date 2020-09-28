@@ -32,7 +32,6 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="date"
-          reversed
           interval="preserveStartEnd"
           ticks={["Apr 1", "May 1", "Jun 1", "Jul 1", "Aug 1", "Sep 1", today]}
         />
