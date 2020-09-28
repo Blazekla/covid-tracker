@@ -32,11 +32,7 @@ function composedChart({ totalCases, today, selectedType, location }) {
   };
 
   return (
-    <ResponsiveContainer
-      width="100%"
-      height={300}
-      className="bg-white rounded-t"
-    >
+    <ResponsiveContainer width="100%" height={300} className="bg-white rounded">
       <ComposedChart
         margin={{
           top: 10,
