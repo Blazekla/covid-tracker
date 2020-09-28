@@ -22,6 +22,7 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
         width={500}
         height={500}
         data={totalCases}
+        syncId="chartSync"
         margin={{
           top: 10,
           right: 30,

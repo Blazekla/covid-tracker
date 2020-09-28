@@ -27,6 +27,7 @@ function lineChart({ totalCases, today, selectedType, location }) {
           left: 0,
           bottom: 10,
         }}
+        syncId="chartSync"
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
