@@ -31,7 +31,7 @@ function lineChart({ totalCases, today, selectedType, location }) {
   };
 
   return (
-    <ResponsiveContainer width="100%" height={300} className="bg-gray-300">
+    <ResponsiveContainer width="100%" height={300} className="bg-white rounded">
       <LineChart
         data={totalCases}
         margin={{

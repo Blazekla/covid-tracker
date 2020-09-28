@@ -30,7 +30,7 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
   };
 
   return (
-    <ResponsiveContainer width="100%" height={300} className="bg-gray-300">
+    <ResponsiveContainer width="100%" height={300} className="bg-white rounded">
       <BarChart
         width={500}
         height={500}

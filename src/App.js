@@ -8,7 +8,7 @@ import Intro from "./components/intro";
 function App() {
   return (
     <Layout>
-      <div className="flex justify-center">
+      <div className="flex justify-center py-8">
         <NavLink
           to="/us"
           className="p-4 rounded-full border-solid border-2 border-indigo-500 text-white"
@@ -26,17 +26,19 @@ function App() {
           State Data
         </NavLink>
       </div>
-      <Switch>
-        <Route path="/us">
-          <US />
-        </Route>
-        <Route path="/state">
-          <State />
-        </Route>
-        <Route path="/">
-          <Intro />
-        </Route>
-      </Switch>
+      <div className="py-4">
+        <Switch>
+          <Route path="/us">
+            <US />
+          </Route>
+          <Route path="/state">
+            <State />
+          </Route>
+          <Route path="/">
+            <Intro />
+          </Route>
+        </Switch>
+      </div>
     </Layout>
   );
 }
