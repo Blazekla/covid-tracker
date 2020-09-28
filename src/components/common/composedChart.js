@@ -59,7 +59,6 @@ function composedChart({ totalCases, today, selectedType, location }) {
         />
         <YAxis domain={["dataMin", "dataMax"]} />
         <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
-        <Legend />
         <Line
           type="monotone"
           dataKey={
