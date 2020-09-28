@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
-import LineChart from "../common/lineChart";
-import BarChart from "../common/barChart";
 import ComposedChart from "../common/composedChart";
 
 function LineChartComponent(props) {
