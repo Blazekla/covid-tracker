@@ -87,7 +87,7 @@ function LineChartComponent(props) {
           Line Chart:
           <input
             type="checkbox"
-            name="chartcheck"
+            name="linechartcheck"
             checked={lineChart}
             onChange={handleLineChartChange}
           />
@@ -96,7 +96,7 @@ function LineChartComponent(props) {
           Bar Chart:
           <input
             type="checkbox"
-            name="chartcheck"
+            name="barchartcheck"
             checked={barChart}
             onChange={handleBarChartChange}
           />
