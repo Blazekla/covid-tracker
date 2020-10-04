@@ -8,7 +8,7 @@ function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
-  // const [lineChart, setLineChart] = useState(false);
+  const [lineChart, setLineChart] = useState(false);
   // const [barChart, setBarChart] = useState(false);
   // const [areaChart, setAreaChart] = useState(false);
 
@@ -43,7 +43,7 @@ function LineChartComponent(props) {
     fetchTotals();
   }, [selectedState]);
 
-  const handleChange = (e) => {
+  const handleStateChange = (e) => {
     setSelectedState(e.target.value);
   };
 
@@ -51,10 +51,17 @@ function LineChartComponent(props) {
     setSelectedType(e.target.value);
   };
 
+  const handleChartChange = (e) => {
+    console.log("value of linechart before: ", lineChart);
+    console.log("value of checked box: ", e.target.checked);
+    setLineChart(!lineChart);
+    console.log("value of linechart after: ", lineChart);
+  };
+
   return (
     <div className="flex flex-col items-center my-12 ">
       <div className="p-12">
-        <select value={selectedState} onChange={handleChange}>
+        <select value={selectedState} onChange={handleStateChange}>
           <option value="one" disabled>
             Choose a State
           </option>
@@ -72,6 +79,15 @@ function LineChartComponent(props) {
           <option value="newCases">New Cases</option>
           <option value="newDeaths">New Deaths</option>
         </select>
+      </div>
+
+      <div>
+        <input
+          type="checkbox"
+          name="chartcheck"
+          checked={lineChart}
+          onChange={handleChartChange}
+        />
       </div>
       {totalCases ? (
         <h1 className="text-white p-8">Totals in {selectedState}</h1>
