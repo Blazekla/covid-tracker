@@ -9,7 +9,7 @@ function LineChartComponent(props) {
   const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
-  // const [barChart, setBarChart] = useState(false);
+  const [barChart, setBarChart] = useState(false);
   // const [areaChart, setAreaChart] = useState(false);
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
@@ -51,11 +51,16 @@ function LineChartComponent(props) {
     setSelectedType(e.target.value);
   };
 
-  const handleChartChange = (e) => {
+  const handleLineChartChange = (e) => {
     console.log("value of linechart before: ", lineChart);
     console.log("value of checked box: ", e.target.checked);
     setLineChart(!lineChart);
     console.log("value of linechart after: ", lineChart);
+  };
+
+  const handleBarChartChange = (e) => {
+    console.log("Bar chart selected");
+    setBarChart(!barChart);
   };
 
   return (
@@ -82,12 +87,24 @@ function LineChartComponent(props) {
       </div>
 
       <div>
-        <input
-          type="checkbox"
-          name="chartcheck"
-          checked={lineChart}
-          onChange={handleChartChange}
-        />
+        <label>
+          Line Chart Toggle:
+          <input
+            type="checkbox"
+            name="chartcheck"
+            checked={lineChart}
+            onChange={handleLineChartChange}
+          />
+        </label>
+        <label>
+          Bar Chart Toggle:
+          <input
+            type="checkbox"
+            name="chartcheck"
+            checked={barChart}
+            onChange={handleBarChartChange}
+          />
+        </label>
       </div>
       {totalCases ? (
         <h1 className="text-white p-8">Totals in {selectedState}</h1>
@@ -101,6 +118,8 @@ function LineChartComponent(props) {
             today={today}
             selectedType={selectedType}
             location={selectedState}
+            lineToggle={lineChart}
+            barToggle={barChart}
           />
         )}
       </div>

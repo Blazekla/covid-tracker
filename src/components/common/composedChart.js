@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Line,
   XAxis,
@@ -11,7 +12,14 @@ import {
   ComposedChart,
 } from "recharts";
 
-function composedChart({ totalCases, today, selectedType, location }) {
+function composedChart({
+  totalCases,
+  today,
+  selectedType,
+  location,
+  lineToggle,
+  barToggle,
+}) {
   const positiveSelection =
     location === "US" ? `New Cases` : `New Cases in ${location}`;
   const negativeSelection =
@@ -41,6 +49,7 @@ function composedChart({ totalCases, today, selectedType, location }) {
         }}
         data={totalCases}
       >
+        {console.log("linechart valued passed: ", lineToggle)}
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="date"
@@ -58,29 +67,37 @@ function composedChart({ totalCases, today, selectedType, location }) {
         />
         <YAxis domain={["dataMin", "dataMax"]} />
         <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
-        <Line
-          type="monotone"
-          dataKey={
-            selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
-          }
-          name={
-            selectedType === "newCases" ? positiveSelection : negativeSelection
-          }
-          stroke="#88844d"
-          activeDot={{ r: 4 }}
-        />
         <Brush dataKey="date" />
+        {lineToggle && (
+          <Line
+            type="monotone"
+            dataKey={
+              selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
+            }
+            name={
+              selectedType === "newCases"
+                ? positiveSelection
+                : negativeSelection
+            }
+            stroke="#88844d"
+            activeDot={{ r: 4 }}
+          />
+        )}
 
-        <Bar
-          dataKey={
-            selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
-          }
-          name={
-            selectedType === "newCases" ? positiveSelection : negativeSelection
-          }
-          barSize={20}
-          fill="#8884d8"
-        />
+        {barToggle && (
+          <Bar
+            dataKey={
+              selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
+            }
+            name={
+              selectedType === "newCases"
+                ? positiveSelection
+                : negativeSelection
+            }
+            barSize={20}
+            fill="#8884d8"
+          />
+        )}
       </ComposedChart>
     </ResponsiveContainer>
   );
