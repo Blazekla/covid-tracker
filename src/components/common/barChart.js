@@ -11,10 +11,8 @@ import {
 } from "recharts";
 
 function BarChartComponent({ totalCases, today, selectedType, location }) {
-  const positiveSelection =
-    location === "US" ? `New Cases in the US` : `New Cases in ${location}`;
-  const negativeSelection =
-    location === "US" ? `New Deaths in the US` : `New Deaths in ${location}`;
+  const positiveSelection = location === "US" ? `New Cases` : `New Cases`;
+  const negativeSelection = location === "US" ? `New Deaths` : `New Deaths`;
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active) {

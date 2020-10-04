@@ -52,14 +52,10 @@ function LineChartComponent(props) {
   };
 
   const handleLineChartChange = (e) => {
-    console.log("value of linechart before: ", lineChart);
-    console.log("value of checked box: ", e.target.checked);
     setLineChart(!lineChart);
-    console.log("value of linechart after: ", lineChart);
   };
 
   const handleBarChartChange = (e) => {
-    console.log("Bar chart selected");
     setBarChart(!barChart);
   };
 

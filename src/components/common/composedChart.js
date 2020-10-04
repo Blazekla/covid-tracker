@@ -49,7 +49,6 @@ function composedChart({
         }}
         data={totalCases}
       >
-        {console.log("linechart valued passed: ", lineToggle)}
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="date"
@@ -66,7 +65,9 @@ function composedChart({
           ]}
         />
         <YAxis domain={["dataMin", "dataMax"]} />
-        <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
+        {(lineToggle || barToggle) && (
+          <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
+        )}
         <Brush dataKey="date" />
         {lineToggle && (
           <Line
