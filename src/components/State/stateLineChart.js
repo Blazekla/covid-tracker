@@ -8,7 +8,7 @@ function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
-  const [lineChart, setLineChart] = useState(false);
+  const [lineChart, setLineChart] = useState(true);
   const [barChart, setBarChart] = useState(false);
   // const [areaChart, setAreaChart] = useState(false);
 
@@ -61,7 +61,7 @@ function LineChartComponent(props) {
 
   return (
     <div className="flex flex-col items-center my-12 ">
-      <div className="p-12">
+      <div className="p-8">
         <select value={selectedState} onChange={handleStateChange}>
           <option value="one" disabled>
             Choose a State
@@ -82,9 +82,9 @@ function LineChartComponent(props) {
         </select>
       </div>
 
-      <div>
-        <label>
-          Line Chart Toggle:
+      <div className="text-white mx-auto px-2 sm:px-4 p-8">
+        <label className="m-4">
+          Line Chart:
           <input
             type="checkbox"
             name="chartcheck"
@@ -92,8 +92,8 @@ function LineChartComponent(props) {
             onChange={handleLineChartChange}
           />
         </label>
-        <label>
-          Bar Chart Toggle:
+        <label className="m-4">
+          Bar Chart:
           <input
             type="checkbox"
             name="chartcheck"
@@ -103,9 +103,9 @@ function LineChartComponent(props) {
         </label>
       </div>
       {totalCases ? (
-        <h1 className="text-white p-8">Totals in {selectedState}</h1>
+        <h1 className="text-white p-4">Totals in {selectedState}</h1>
       ) : (
-        <h1 className="text-white p-8">Loading Data</h1>
+        <h1 className="text-white p-4">Loading Data</h1>
       )}
       <div className="container mx-auto px-2 sm:px-4 mb-16">
         {totalCases && (
