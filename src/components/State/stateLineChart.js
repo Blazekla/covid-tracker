@@ -83,24 +83,26 @@ function LineChartComponent(props) {
       </div>
 
       <div className="text-white mx-auto px-2 sm:px-4 p-8">
-        <label className="m-4">
-          Line Chart:
-          <input
-            type="checkbox"
-            name="linechartcheck"
-            checked={lineChart}
-            onChange={handleLineChartChange}
-          />
-        </label>
-        <label className="m-4">
+        <label className="m-4" htmlFor="barchart">
           Bar Chart:
-          <input
-            type="checkbox"
-            name="barchartcheck"
-            checked={barChart}
-            onChange={handleBarChartChange}
-          />
         </label>
+        <input
+          type="checkbox"
+          name="barchartcheck"
+          id="barchart"
+          checked={barChart}
+          onChange={handleBarChartChange}
+        />
+        <label className="m-4" htmlFor="7dayaverage">
+          7-Day Average:
+        </label>
+        <input
+          type="checkbox"
+          name="lineaveragechart"
+          id="7dayaverage"
+          checked={lineChart}
+          onChange={handleLineChartChange}
+        />
       </div>
       {totalCases ? (
         <h1 className="text-white p-4">Totals in {selectedState}</h1>
