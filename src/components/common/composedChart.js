@@ -11,7 +11,7 @@ import {
   Legend,
   ComposedChart,
 } from "recharts";
-import movingAverage from "./movingAverage";
+import movingAverage from "../../utils/movingAverage";
 
 function composedChart({
   totalCases,
