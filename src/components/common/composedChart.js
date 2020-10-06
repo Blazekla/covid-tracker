@@ -8,8 +8,10 @@ import {
   Brush,
   ResponsiveContainer,
   Bar,
+  Legend,
   ComposedChart,
 } from "recharts";
+import movingAverage from "./movingAverage";
 
 function composedChart({
   totalCases,
@@ -28,7 +30,18 @@ function composedChart({
     if (active) {
       return (
         <div className="mx-auto w-full bg-gray-300 px-1">
-          <p className="text-indigo-900 text-xl">{`${payload[0].value}`}</p>
+          {payload.map((item) => {
+            return (
+              <p
+                key={item.dataKey}
+                className={` text-xl ${
+                  item.dataKey === "movingAverage"
+                    ? "text-red-800"
+                    : "text-indigo-900"
+                }`}
+              >{`${item.value}`}</p>
+            );
+          })}
           <p className="">{`${label}`}</p>
         </div>
       );
@@ -36,6 +49,16 @@ function composedChart({
 
     return null;
   };
+
+  const haha = movingAverage(totalCases);
+  console.log("haha value: ", haha);
+
+  console.log("value of totalCases prior: ", totalCases);
+  totalCases.forEach((element, index) => {
+    element.movingAverage = haha[index];
+  });
+
+  console.log("value Afterwards!!!!: ", totalCases);
 
   return (
     <ResponsiveContainer width="100%" height={300} className="bg-white rounded">
@@ -68,18 +91,13 @@ function composedChart({
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
         <Brush dataKey="date" />
+        <Legend />
         {lineToggle && (
           <Line
             type="monotone"
-            dataKey={
-              selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
-            }
-            name={
-              selectedType === "newCases"
-                ? positiveSelection
-                : negativeSelection
-            }
-            stroke="#88844d"
+            dataKey="movingAverage"
+            name="7-day Average"
+            stroke="#ff0000"
             activeDot={{ r: 4 }}
           />
         )}
