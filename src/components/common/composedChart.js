@@ -50,15 +50,11 @@ function composedChart({
     return null;
   };
 
-  const haha = movingAverage(totalCases);
-  console.log("haha value: ", haha);
+  const averagedData = movingAverage(totalCases, selectedType);
 
-  console.log("value of totalCases prior: ", totalCases);
   totalCases.forEach((element, index) => {
-    element.movingAverage = haha[index];
+    element.movingAverage = averagedData[index];
   });
-
-  console.log("value Afterwards!!!!: ", totalCases);
 
   return (
     <ResponsiveContainer width="100%" height={300} className="bg-white rounded">
