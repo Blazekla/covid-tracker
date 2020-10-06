@@ -6,6 +6,8 @@ import ComposedChart from "../common/composedChart";
 function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedType, setSelectedType] = useState("newCases");
+  const [lineChart, setLineChart] = useState(false);
+  const [barChart, setBarChart] = useState(true);
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
@@ -31,6 +33,13 @@ function USLineChart({ timeframe }) {
     setSelectedType(e.target.value);
   };
 
+  const handleLineChartChange = (e) => {
+    setLineChart(!lineChart);
+  };
+
+  const handleBarChartChange = (e) => {
+    setBarChart(!barChart);
+  };
   return (
     <div className="flex flex-col items-center my-12 ">
       <div className="p-12">
@@ -40,6 +49,28 @@ function USLineChart({ timeframe }) {
             <option value="newDeaths">New Deaths</option>
           </select>
         </div>
+      </div>
+      <div className="text-white mx-auto px-2 sm:px-4 p-8">
+        <label className="m-4" htmlFor="barchart">
+          Bar Chart:
+        </label>
+        <input
+          type="checkbox"
+          name="barchartcheck"
+          id="barchart"
+          checked={barChart}
+          onChange={handleBarChartChange}
+        />
+        <label className="m-4" htmlFor="7dayaverage">
+          7-Day Average:
+        </label>
+        <input
+          type="checkbox"
+          name="lineaveragechart"
+          id="7dayaverage"
+          checked={lineChart}
+          onChange={handleLineChartChange}
+        />
       </div>
 
       {totalCases ? (
@@ -54,8 +85,8 @@ function USLineChart({ timeframe }) {
             today={today}
             selectedType={selectedType}
             location="US"
-            lineToggle={false}
-            barToggle={true}
+            lineToggle={lineChart}
+            barToggle={barChart}
           />
         )}
       </div>
