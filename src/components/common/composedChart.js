@@ -36,7 +36,7 @@ function composedChart({
                 key={item.dataKey}
                 className={` text-xl ${
                   item.dataKey === "movingAverage"
-                    ? "text-red-500"
+                    ? "text-red-700"
                     : "text-indigo-900"
                 }`}
               >{`${item.dataKey === "movingAverage" ? "7day: " : ""}${
@@ -86,23 +86,10 @@ function composedChart({
         }}
         data={totalCases}
       >
-        <CartesianGrid
-          strokeDasharray="3 3"
-          // stroke="#f5f5f5"
-        />
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           dataKey="date"
           interval="preserveStartEnd"
-          // ticks={[
-          //   totalCases[0].date,
-          //   "Apr 1",
-          //   "May 1",
-          //   "Jun 1",
-          //   "Jul 1",
-          //   "Aug 1",
-          //   "Sep 1",
-          //   today,
-          // ]}
           tick={<CustomizedAxisTick />}
           height={60}
         />
@@ -117,8 +104,9 @@ function composedChart({
             type="monotone"
             dataKey="movingAverage"
             name="7-day Average"
-            stroke="#ff0000"
             activeDot={{ r: 4 }}
+            dot={false}
+            stroke="#ff0000"
           />
         )}
 
