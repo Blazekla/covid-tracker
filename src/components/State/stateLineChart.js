@@ -8,8 +8,8 @@ function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
-  const [lineChart, setLineChart] = useState(true);
-  const [barChart, setBarChart] = useState(false);
+  const [lineChart, setLineChart] = useState(false);
+  const [barChart, setBarChart] = useState(true);
   // const [areaChart, setAreaChart] = useState(false);
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
