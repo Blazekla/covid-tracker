@@ -74,7 +74,7 @@ function composedChart({
   });
 
   return (
-    <ResponsiveContainer width="100%" height={300} className="bg-white rounded">
+    <ResponsiveContainer width="100%" height={400} className="bg-white rounded">
       <ComposedChart
         margin={{
           top: 10,
@@ -100,12 +100,13 @@ function composedChart({
           ]}
           // tick={{ stroke: "red", strokeWidth: 2 }}
           tick={<CustomizedAxisTick />}
+          height={50}
         />
         <YAxis domain={["dataMin", "dataMax"]} />
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
-        <Brush dataKey="date" />
+        <Brush dataKey="date" height={20} />
         <Legend />
         {lineToggle && (
           <Line
