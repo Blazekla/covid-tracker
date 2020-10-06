@@ -36,10 +36,12 @@ function composedChart({
                 key={item.dataKey}
                 className={` text-xl ${
                   item.dataKey === "movingAverage"
-                    ? "text-red-800"
+                    ? "text-red-500"
                     : "text-indigo-900"
                 }`}
-              >{`${item.value}`}</p>
+              >{`${item.dataKey === "movingAverage" ? "7day: " : ""}${
+                item.value
+              }`}</p>
             );
           })}
           <p className="">{`${label}`}</p>
@@ -84,23 +86,25 @@ function composedChart({
         }}
         data={totalCases}
       >
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid
+          strokeDasharray="3 3"
+          // stroke="#f5f5f5"
+        />
         <XAxis
           dataKey="date"
           interval="preserveStartEnd"
-          ticks={[
-            totalCases[0].date,
-            "Apr 1",
-            "May 1",
-            "Jun 1",
-            "Jul 1",
-            "Aug 1",
-            "Sep 1",
-            today,
-          ]}
-          // tick={{ stroke: "red", strokeWidth: 2 }}
+          // ticks={[
+          //   totalCases[0].date,
+          //   "Apr 1",
+          //   "May 1",
+          //   "Jun 1",
+          //   "Jul 1",
+          //   "Aug 1",
+          //   "Sep 1",
+          //   today,
+          // ]}
           tick={<CustomizedAxisTick />}
-          height={50}
+          height={60}
         />
         <YAxis domain={["dataMin", "dataMax"]} />
         {(lineToggle || barToggle) && (
