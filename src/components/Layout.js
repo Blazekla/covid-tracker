@@ -15,7 +15,7 @@ function Layout({ children }) {
       </Header>
       <main className="min-h-screen">{children}</main>
       <Footer>
-        <div className="flex justify-between max-w-full bg-gray-700 items-center">
+        <div className="flex justify-between max-w-full bg-gray-700 items-center px-1 sm:px-4">
           <p className="text-white">
             Created by{" "}
             <a
