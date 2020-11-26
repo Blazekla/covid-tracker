@@ -1,10 +1,11 @@
 const plugin = require("tailwindcss/plugin");
+
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-  purge: [],
+  purge: [
+    './src/**/*.html',
+    './src/**/*.js',
+  ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     backgroundColor: (theme) => ({
       ...theme("colors"),
@@ -17,16 +18,15 @@ module.exports = {
         danger: "#e3342f",
       },
     },
+    extend: {},
   },
   variants: {},
-  plugins: [
-    plugin(function ({ addUtilities }) {
-      const newUtilities = {
-        ".calculate-100": {
-          height: "calc( 100vh - 100px )",
-        },
-      };
-      addUtilities(newUtilities);
-    }),
-  ],
-};
+  plugins: [ plugin(function ({ addUtilities }) {
+    const newUtilities = {
+      ".calculate-100": {
+        height: "calc( 100vh - 100px )",
+      },
+    };
+    addUtilities(newUtilities);
+  }),],
+}
