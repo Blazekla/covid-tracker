@@ -1,5 +1,5 @@
 import React from "react";
-import USLineChart from "./usLineChart";
+import USComposedChart from "./usLineChart";
 
 function UsData() {
   return (
@@ -7,7 +7,7 @@ function UsData() {
       <p className="text-white container mx-auto px-2 sm:px-4">
         Here is the US data
       </p>
-      <USLineChart timeframe="daily" />
+      <USComposedChart timeframe="daily" />
     </div>
   );
 }

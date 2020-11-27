@@ -1,9 +1,10 @@
 import React from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Layout from "./components/Layout";
-import State from "./components/State/state";
-import US from "./components/US/usData";
 import Intro from "./components/intro";
+
+import US from "./components/US/usData";
+import State from "./components/State/state";
 
 function App() {
   return (
