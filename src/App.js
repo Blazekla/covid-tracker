@@ -3,7 +3,7 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Layout from "./components/Layout";
 import Intro from "./components/intro";
 
-import US from "./components/US/usData";
+import US from "./components/US/us";
 import State from "./components/State/state";
 
 function App() {
