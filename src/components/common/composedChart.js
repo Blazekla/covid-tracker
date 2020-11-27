@@ -97,7 +97,7 @@ function composedChart({
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
-        <Brush dataKey="date" height={20} />
+        <Brush dataKey="date" height={40} />
         <Legend />
         {lineToggle && (
           <Line
