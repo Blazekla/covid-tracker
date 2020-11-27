@@ -93,7 +93,13 @@ function composedChart({
           tick={<CustomizedAxisTick />}
           height={60}
         />
-        <YAxis domain={["dataMin", "dataMax"]} />
+        <YAxis domain={["dataMin", "dataMax"]}
+        interval="preserveEnd"
+        scale="linear" 
+        // ticks={['0','5000','10k','20k']}
+        tick={{stroke: 'red', strokeWidth: 2}}
+        tickFormatter={(tick)=>{return tick>=1000?(tick/1000+"k"):tick}}
+        />
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
