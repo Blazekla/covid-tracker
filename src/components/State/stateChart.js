@@ -61,6 +61,11 @@ function LineChartComponent(props) {
 
   return (
     <div className="flex flex-col items-center my-12 ">
+      {totalCases ? (
+        <h1 className="text-white p-4">Totals in {selectedState}</h1>
+      ) : (
+        <h1 className="text-white p-4">Loading Data</h1>
+      )}
       <div className="flex flex-wrap justify-center">
         <div className="p-2 sm:p-8">
           <select
@@ -118,11 +123,6 @@ function LineChartComponent(props) {
         </div>
       </div>
 
-      {totalCases ? (
-        <h1 className="text-white p-4">Totals in {selectedState}</h1>
-      ) : (
-        <h1 className="text-white p-4">Loading Data</h1>
-      )}
       <div className="container mx-auto px-2 sm:px-4 mb-16">
         {totalCases && (
           <ComposedChart

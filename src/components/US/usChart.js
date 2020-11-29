@@ -42,7 +42,12 @@ function USLineChart({ timeframe }) {
   };
   return (
     <div className="flex flex-col items-center my-12 ">
-      <div className="p-12 flex flex-wrap justify-center">
+      {totalCases ? (
+        <h1 className="text-white p-8">Totals in US</h1>
+      ) : (
+        <h1 className="text-white p-8">Loading Data</h1>
+      )}
+      <div className="flex flex-wrap justify-center">
         <div className="p-2 sm:p-8">
           <select
             value={selectedType}
@@ -81,11 +86,6 @@ function USLineChart({ timeframe }) {
         </div>
       </div>
 
-      {totalCases ? (
-        <h1 className="text-white p-8">Totals in US</h1>
-      ) : (
-        <h1 className="text-white p-8">Loading Data</h1>
-      )}
       <div className="container mx-auto px-2 sm:px-4 mb-16">
         {totalCases && (
           <ComposedChart

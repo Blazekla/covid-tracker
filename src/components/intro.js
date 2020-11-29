@@ -14,7 +14,7 @@ function Intro() {
         </a>
         .
       </div>
-      <div>
+      <div className="pt-4">
         <p className="text-white">
           Please select one of the options above to see the corresponding chart.
         </p>
