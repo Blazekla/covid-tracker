@@ -43,7 +43,7 @@ function USLineChart({ timeframe }) {
   return (
     <div className="flex flex-col items-center my-12 ">
       <div className="p-12 flex flex-wrap justify-center">
-        <div className="p-8">
+        <div className="p-2 sm:p-8">
           <select
             value={selectedType}
             onChange={handleTypeChange}
@@ -53,27 +53,31 @@ function USLineChart({ timeframe }) {
             <option value="newDeaths">New Deaths</option>
           </select>
         </div>
-        <div className="text-white p-2 sm:p-8">
-          <label className="m-4" htmlFor="barchart">
-            Bar Chart:
-          </label>
-          <input
-            type="checkbox"
-            name="barchartcheck"
-            id="barchart"
-            checked={barChart}
-            onChange={handleBarChartChange}
-          />
-          <label className="m-4" htmlFor="7dayaverage">
-            7-Day Average:
-          </label>
-          <input
-            type="checkbox"
-            name="lineaveragechart"
-            id="7dayaverage"
-            checked={lineChart}
-            onChange={handleLineChartChange}
-          />
+        <div className="text-white p-2 sm:p-8 flex flex-wrap justify-center">
+          <div>
+            <label className="m-4" htmlFor="barchart">
+              Bar Chart:
+            </label>
+            <input
+              type="checkbox"
+              name="barchartcheck"
+              id="barchart"
+              checked={barChart}
+              onChange={handleBarChartChange}
+            />
+          </div>
+          <div>
+            <label className="m-4" htmlFor="7dayaverage">
+              7-Day Average:
+            </label>
+            <input
+              type="checkbox"
+              name="lineaveragechart"
+              id="7dayaverage"
+              checked={lineChart}
+              onChange={handleLineChartChange}
+            />
+          </div>
         </div>
       </div>
 
