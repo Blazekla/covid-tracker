@@ -1,10 +1,7 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  purge: [
-    './src/**/*.html',
-    './src/**/*.js',
-  ],
+  purge: ["./src/**/*.js", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     backgroundColor: (theme) => ({
@@ -21,12 +18,14 @@ module.exports = {
     extend: {},
   },
   variants: {},
-  plugins: [ plugin(function ({ addUtilities }) {
-    const newUtilities = {
-      ".calculate-100": {
-        height: "calc( 100vh - 100px )",
-      },
-    };
-    addUtilities(newUtilities);
-  }),],
-}
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".calculate-100": {
+          height: "calc( 100vh - 100px )",
+        },
+      };
+      addUtilities(newUtilities);
+    }),
+  ],
+};
