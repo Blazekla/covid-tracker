@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Layout from "./components/Layout";
 import Intro from "./components/intro";
-
+import "./assets/css/tailwind.css";
 import US from "./components/US/us";
 import State from "./components/State/state";
 

@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./header";
 import Footer from "./footer";
-import "../assets/css/main.css";
 import { NavLink } from "react-router-dom";
 
 function Layout({ children }) {
