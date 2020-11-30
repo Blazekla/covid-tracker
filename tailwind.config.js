@@ -15,7 +15,6 @@ module.exports = {
         danger: "#e3342f",
       },
     },
-    extend: {},
   },
   variants: {},
   plugins: [
