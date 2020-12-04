@@ -20,6 +20,7 @@ function composedChart({
   location,
   lineToggle,
   barToggle,
+  heightInput = 400,
 }) {
   const positiveSelection =
     location === "US" ? `New Cases` : `New Cases in ${location}`;
@@ -76,7 +77,11 @@ function composedChart({
   });
 
   return (
-    <ResponsiveContainer width="100%" height={400} className="bg-white rounded">
+    <ResponsiveContainer
+      width="50%"
+      height={heightInput}
+      className="bg-white rounded"
+    >
       <ComposedChart
         margin={{
           top: 10,

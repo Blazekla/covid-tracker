@@ -8,6 +8,7 @@ function State() {
         Here is the state data
       </p> */}
       <StateComposedChart />
+      <StateComposedChart height={200} />
       <div className="px-16 flex flex-wrap">
         <h2>Table</h2>
         <table>

@@ -132,6 +132,7 @@ function LineChartComponent(props) {
             location={selectedState}
             lineToggle={lineChart}
             barToggle={barChart}
+            heightInput={props.height}
           />
         )}
       </div>
