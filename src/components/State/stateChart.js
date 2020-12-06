@@ -62,15 +62,18 @@ function LineChartComponent(props) {
   return (
     <>
       {props.display ? (
-        <div
-          className="flex flex-col items-center my-12 "
-          onClick={props.onClick}
-        >
+        <div className="flex flex-col items-center my-12 ">
           {totalCases ? (
             <h1 className="text-white p-4">Totals in {selectedState}</h1>
           ) : (
             <h1 className="text-white p-4">Loading Data</h1>
           )}
+          <button
+            onClick={props.onClick}
+            className="text-white border-green-900 border"
+          >
+            X
+          </button>
           <div className="flex flex-wrap justify-center">
             <div className="p-2 sm:p-8">
               <select
