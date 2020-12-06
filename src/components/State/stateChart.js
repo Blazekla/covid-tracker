@@ -141,6 +141,7 @@ function LineChartComponent(props) {
                 lineToggle={lineChart}
                 barToggle={barChart}
                 heightInput={props.height}
+                minified={props.display}
               />
             )}
           </div>
@@ -156,6 +157,7 @@ function LineChartComponent(props) {
               lineToggle={lineChart}
               barToggle={barChart}
               heightInput={props.height}
+              minified={props.display}
             />
           )}
         </div>

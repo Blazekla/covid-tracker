@@ -21,12 +21,12 @@ function composedChart({
   lineToggle,
   barToggle,
   heightInput = 400,
+  minified,
 }) {
   const positiveSelection =
     location === "US" ? `New Cases` : `New Cases in ${location}`;
   const negativeSelection =
     location === "US" ? `New Deaths` : `New Deaths in ${location}`;
-
   const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
       return (
@@ -92,12 +92,15 @@ function composedChart({
         data={totalCases}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="date"
-          interval="preserveStartEnd"
-          tick={<CustomizedAxisTick />}
-          height={60}
-        />
+        {minified ? (
+          <XAxis
+            dataKey="date"
+            interval="preserveStartEnd"
+            tick={<CustomizedAxisTick />}
+            height={60}
+          />
+        ) : null}
+        {/* {minified ? ( */}
         <YAxis
           domain={["dataMin", "dataMax"]}
           interval="preserveEnd"
@@ -106,11 +109,13 @@ function composedChart({
             return tick >= 1000 ? tick / 1000 + "k" : tick;
           }}
         />
+        {/* ) : null} */}
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
-        <Brush dataKey="date" height={40} />
-        <Legend />
+        {minified ? <Brush dataKey="date" height={40} /> : null}
+        {minified ? <Legend /> : null}
+
         {lineToggle && (
           <Line
             type="monotone"
