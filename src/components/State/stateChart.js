@@ -1,52 +1,55 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, {
+  useState,
+  //  useEffect
+} from "react";
+// import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
 import ComposedChart from "../common/composedChart";
 import SmallComposedChart from "../common/smallComposedChart";
 
-function LineChartComponent(props) {
-  const [totalCases, setTotalCases] = useState(null);
-  const [selectedState, setSelectedState] = useState("TX");
+function LineChartComponent({ totalCases, selectedState, handleStateChange }) {
+  // const [totalCases, setTotalCases] = useState(null);
+  // const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
   const [barChart, setBarChart] = useState(true);
   const [toggle, setToggle] = useState(false);
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
-  useEffect(() => {
-    async function fetchTotals() {
-      try {
-        const data = await axios.get(
-          `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
-        );
-        // const cdcData = await axios.get(
-        //   `https://data.cdc.gov/resource/9mfq-cb36.json`,
-        //   {
-        //     params: {
-        //       $limit: 50000,
-        //     },
-        //     headers: {
-        //       "X-App-Token": process.env.REACT_APP_TEST,
-        //     },
-        //   }
-        // );
+  // useEffect(() => {
+  //   async function fetchTotals() {
+  //     try {
+  //       const data = await axios.get(
+  //         `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
+  //       );
+  //       // const cdcData = await axios.get(
+  //       //   `https://data.cdc.gov/resource/9mfq-cb36.json`,
+  //       //   {
+  //       //     params: {
+  //       //       $limit: 50000,
+  //       //     },
+  //       //     headers: {
+  //       //       "X-App-Token": process.env.REACT_APP_TEST,
+  //       //     },
+  //       //   }
+  //       // );
 
-        data.data.forEach((item) => {
-          item.date = DateTime.fromISO(item.date).toFormat("LLL d");
-        });
-        setTotalCases(data.data.reverse());
-      } catch (error) {
-        console.log("error fetching api data: ", error);
-      }
-    }
+  //       data.data.forEach((item) => {
+  //         item.date = DateTime.fromISO(item.date).toFormat("LLL d");
+  //       });
+  //       setTotalCases(data.data.reverse());
+  //     } catch (error) {
+  //       console.log("error fetching api data: ", error);
+  //     }
+  //   }
 
-    fetchTotals();
-  }, [selectedState]);
+  //   fetchTotals();
+  // }, [selectedState]);
 
-  const handleStateChange = (e) => {
-    setSelectedState(e.target.value);
-  };
+  // const handleStateChange = (e) => {
+  //   setSelectedState(e.target.value);
+  // };
 
   const handleTypeChange = (e) => {
     setSelectedType(e.target.value);
@@ -72,7 +75,6 @@ function LineChartComponent(props) {
             lineToggle={false}
             barToggle={true}
             heightInput={200}
-            // minified={props.display}
           />
         ) : (
           <div style={{ height: "200px" }}>placeholder...waiting</div>

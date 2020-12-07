@@ -1,14 +1,71 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import StateComposedChart from "./stateChart";
+import { DateTime } from "luxon";
 
 function State() {
+  const [totalCases, setTotalCases] = useState(null);
+  const [selectedState, setSelectedState] = useState("TX");
+  useEffect(() => {
+    async function fetchTotals() {
+      try {
+        const data = await axios.get(
+          `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
+        );
+        // const cdcData = await axios.get(
+        //   `https://data.cdc.gov/resource/9mfq-cb36.json`,
+        //   {
+        //     params: {
+        //       $limit: 50000,
+        //     },
+        //     headers: {
+        //       "X-App-Token": process.env.REACT_APP_TEST,
+        //     },
+        //   }
+        // );
+
+        data.data.forEach((item) => {
+          item.date = DateTime.fromISO(item.date).toFormat("LLL d");
+        });
+        setTotalCases(data.data.reverse());
+      } catch (error) {
+        console.log("error fetching api data: ", error);
+      }
+    }
+
+    fetchTotals();
+  }, [selectedState]);
+
+  const handleStateChange = (e) => {
+    setSelectedState(e.target.value);
+  };
   return (
     <div>
       <div className="bg-primary flex flex-wrap justify-center">
-        <StateComposedChart display="newCases" />
-        <StateComposedChart display="newDeaths" />
-        <StateComposedChart display="tests" />
-        <StateComposedChart display="hospitalizations" />
+        <StateComposedChart
+          totalCases={totalCases}
+          selectedState={selectedState}
+          handleStateChange={handleStateChange}
+          display="newCases"
+        />
+        <StateComposedChart
+          totalCases={totalCases}
+          selectedState={selectedState}
+          handleStateChange={handleStateChange}
+          display="newDeaths"
+        />
+        <StateComposedChart
+          totalCases={totalCases}
+          selectedState={selectedState}
+          handleStateChange={handleStateChange}
+          display="tests"
+        />
+        <StateComposedChart
+          totalCases={totalCases}
+          selectedState={selectedState}
+          handleStateChange={handleStateChange}
+          display="hospitalizations"
+        />
       </div>
       {/* <div className="px-16 flex flex-wrap">
         <h2>Table</h2>
