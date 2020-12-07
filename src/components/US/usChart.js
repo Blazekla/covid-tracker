@@ -95,6 +95,7 @@ function USLineChart({ timeframe }) {
             location="US"
             lineToggle={lineChart}
             barToggle={barChart}
+            minified={true}
           />
         )}
       </div>

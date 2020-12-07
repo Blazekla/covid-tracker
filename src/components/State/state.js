@@ -2,22 +2,15 @@ import React from "react";
 import StateComposedChart from "./stateChart";
 
 function State() {
-  // const [toggle, setToggle] = useState(false);
   return (
     <div>
       <div className="bg-primary flex flex-wrap justify-center">
-        <StateComposedChart
-        // height={toggle ? 400 : 200}
-        // onClick={() => setToggle(!toggle)}
-        // display={toggle}
-        />
-        <StateComposedChart
-        // height={toggle ? 400 : 200}
-        // onClick={() => setToggle(!toggle)}
-        // display={toggle}
-        />
+        <StateComposedChart display="newCases" />
+        <StateComposedChart display="newDeaths" />
+        <StateComposedChart display="tests" />
+        <StateComposedChart display="hospitalizations" />
       </div>
-      <div className="px-16 flex flex-wrap">
+      {/* <div className="px-16 flex flex-wrap">
         <h2>Table</h2>
         <table>
           <thead>
@@ -44,7 +37,7 @@ function State() {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
 import ComposedChart from "../common/composedChart";
+import SmallComposedChart from "../common/smallComposedChart";
 
 function LineChartComponent(props) {
   const [totalCases, setTotalCases] = useState(null);
@@ -61,23 +62,25 @@ function LineChartComponent(props) {
 
   return (
     <>
-      <div className="bg-pink-600 mx-4" style={{ width: "400px" }}>
-        {totalCases && (
-          <ComposedChart
+      <div className="bg-pink-600 m-4" style={{ width: "400px" }}>
+        {totalCases ? (
+          <SmallComposedChart
             totalCases={totalCases}
             today={today}
             selectedType={selectedType}
             location={selectedState}
-            lineToggle={lineChart}
-            barToggle={barChart}
+            lineToggle={false}
+            barToggle={true}
             heightInput={200}
-            minified={props.display}
+            // minified={props.display}
           />
+        ) : (
+          <div style={{ height: "200px" }}>placeholder...waiting</div>
         )}
         <button onClick={() => setToggle(!toggle)}>Click here</button>
       </div>
       {toggle ? (
-        <div className="absolute top-0 bottom-0 right-0 left-0 bg-black bg-opacity-30">
+        <div className="absolute top-0 bottom-0 right-0 left-0 bg-black bg-opacity-30 z-50">
           <div className="flex flex-col items-center my-12">
             {totalCases ? (
               <h1 className="text-white p-4">Totals in {selectedState}</h1>
@@ -157,7 +160,7 @@ function LineChartComponent(props) {
                   lineToggle={lineChart}
                   barToggle={barChart}
                   heightInput={400}
-                  minified={props.display}
+                  minified={true}
                 />
               )}
             </div>
