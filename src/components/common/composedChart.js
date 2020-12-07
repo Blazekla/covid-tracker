@@ -61,7 +61,7 @@ function composedChart({
           y={0}
           dy={16}
           textAnchor="end"
-          fill="#666"
+          className="fill-current text-gray-600"
           transform="rotate(-35)"
         >
           {payload.value}
@@ -78,7 +78,7 @@ function composedChart({
 
   return (
     <ResponsiveContainer
-      width="50%"
+      width="100%"
       height={heightInput}
       className="bg-white rounded"
     >
@@ -90,6 +90,7 @@ function composedChart({
           bottom: 10,
         }}
         data={totalCases}
+        // className="bg-gray-400"
       >
         <CartesianGrid strokeDasharray="3 3" />
         {minified ? (
@@ -100,7 +101,6 @@ function composedChart({
             height={60}
           />
         ) : null}
-        {/* {minified ? ( */}
         <YAxis
           domain={["dataMin", "dataMax"]}
           interval="preserveEnd"
@@ -109,7 +109,6 @@ function composedChart({
             return tick >= 1000 ? tick / 1000 + "k" : tick;
           }}
         />
-        {/* ) : null} */}
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
