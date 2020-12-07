@@ -8,7 +8,7 @@ function UsData() {
         Here is the US data
       </p> */}
       <USComposedChart timeframe="daily" />
-      <div className="px-16 flex flex-wrap">
+      {/* <div className="px-16 flex flex-wrap">
         <h2>Table</h2>
         <table>
           <thead>
@@ -35,7 +35,7 @@ function UsData() {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 }
