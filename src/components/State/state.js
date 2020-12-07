@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import StateComposedChart from "./stateChart";
 
 function State() {
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
   return (
     <div>
-      {/* <StateComposedChart /> */}
-      <div className="bg-primary">
+      <div className="bg-primary flex flex-wrap justify-center">
         <StateComposedChart
-          height={toggle ? 400 : 200}
-          onClick={() => setToggle(!toggle)}
-          display={toggle}
+        // height={toggle ? 400 : 200}
+        // onClick={() => setToggle(!toggle)}
+        // display={toggle}
+        />
+        <StateComposedChart
+        // height={toggle ? 400 : 200}
+        // onClick={() => setToggle(!toggle)}
+        // display={toggle}
         />
       </div>
       <div className="px-16 flex flex-wrap">
