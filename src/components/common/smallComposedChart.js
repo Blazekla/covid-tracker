@@ -22,6 +22,7 @@ function smallComposedChart({
   barToggle,
   heightInput = 400,
   minified,
+  display,
 }) {
   const positiveSelection =
     location === "US" ? `New Cases` : `New Cases in ${location}`;
@@ -76,6 +77,7 @@ function smallComposedChart({
     element.movingAverage = averagedData[index];
   });
 
+  console.log("total passed: ", totalCases);
   return (
     <ResponsiveContainer
       width="100%"
@@ -93,12 +95,13 @@ function smallComposedChart({
         // className="bg-gray-400"
       >
         <CartesianGrid strokeDasharray="3 3" />
-        {minified ? (
+        {true ? (
           <XAxis
             dataKey="date"
-            interval="preserveStartEnd"
-            tick={<CustomizedAxisTick />}
-            height={60}
+            hide="true"
+            // interval="preserveStartEnd"
+            // tick={<CustomizedAxisTick />}
+            // height={60}
           />
         ) : null}
         <YAxis
@@ -129,9 +132,14 @@ function smallComposedChart({
         {barToggle && (
           <Bar
             dataKey={
-              selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
+              display
+              // || selectedType === "newCases"
+              //   ? "positiveIncrease"
+              //   : "deathIncrease"
             }
             name={
+              // display
+              // ||
               selectedType === "newCases"
                 ? positiveSelection
                 : negativeSelection

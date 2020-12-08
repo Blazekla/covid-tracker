@@ -8,7 +8,7 @@ import { stateLabelValues } from "../../data/stateLabel";
 import ComposedChart from "../common/composedChart";
 import SmallComposedChart from "../common/smallComposedChart";
 
-function LineChartComponent({ totalCases, selectedState, handleStateChange }) {
+function StateChart({ totalCases, selectedState, handleStateChange, display }) {
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
   const [barChart, setBarChart] = useState(true);
@@ -49,6 +49,7 @@ function LineChartComponent({ totalCases, selectedState, handleStateChange }) {
             lineToggle={false}
             barToggle={true}
             heightInput={200}
+            display={display}
           />
         ) : (
           <div style={{ height: "200px" }}>placeholder...waiting</div>
@@ -147,4 +148,4 @@ function LineChartComponent({ totalCases, selectedState, handleStateChange }) {
   );
 }
 
-export default LineChartComponent;
+export default StateChart;

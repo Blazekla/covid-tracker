@@ -46,25 +46,25 @@ function State() {
           totalCases={totalCases}
           selectedState={selectedState}
           handleStateChange={handleStateChange}
-          display="newCases"
+          display="positiveIncrease"
         />
         <StateComposedChart
           totalCases={totalCases}
           selectedState={selectedState}
           handleStateChange={handleStateChange}
-          display="newDeaths"
+          display="deathIncrease"
         />
         <StateComposedChart
           totalCases={totalCases}
           selectedState={selectedState}
           handleStateChange={handleStateChange}
-          display="tests"
+          display="totalTestResults"
         />
         <StateComposedChart
           totalCases={totalCases}
           selectedState={selectedState}
           handleStateChange={handleStateChange}
-          display="hospitalizations"
+          display="hospitalizedCurrently"
         />
       </div>
       {/* <div className="px-16 flex flex-wrap">
