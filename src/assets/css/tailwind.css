@@ -3,3 +3,9 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+  .modal-open {
+    @apply overflow-hidden;
+  }
+}

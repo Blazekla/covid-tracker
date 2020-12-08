@@ -9,47 +9,18 @@ import ComposedChart from "../common/composedChart";
 import SmallComposedChart from "../common/smallComposedChart";
 
 function LineChartComponent({ totalCases, selectedState, handleStateChange }) {
-  // const [totalCases, setTotalCases] = useState(null);
-  // const [selectedState, setSelectedState] = useState("TX");
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
   const [barChart, setBarChart] = useState(true);
   const [toggle, setToggle] = useState(false);
 
+  if (toggle) {
+    document.body.classList.add("modal-open");
+  } else {
+    document.body.classList.remove("modal-open");
+  }
+
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
-  // useEffect(() => {
-  //   async function fetchTotals() {
-  //     try {
-  //       const data = await axios.get(
-  //         `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
-  //       );
-  //       // const cdcData = await axios.get(
-  //       //   `https://data.cdc.gov/resource/9mfq-cb36.json`,
-  //       //   {
-  //       //     params: {
-  //       //       $limit: 50000,
-  //       //     },
-  //       //     headers: {
-  //       //       "X-App-Token": process.env.REACT_APP_TEST,
-  //       //     },
-  //       //   }
-  //       // );
-
-  //       data.data.forEach((item) => {
-  //         item.date = DateTime.fromISO(item.date).toFormat("LLL d");
-  //       });
-  //       setTotalCases(data.data.reverse());
-  //     } catch (error) {
-  //       console.log("error fetching api data: ", error);
-  //     }
-  //   }
-
-  //   fetchTotals();
-  // }, [selectedState]);
-
-  // const handleStateChange = (e) => {
-  //   setSelectedState(e.target.value);
-  // };
 
   const handleTypeChange = (e) => {
     setSelectedType(e.target.value);
@@ -63,6 +34,9 @@ function LineChartComponent({ totalCases, selectedState, handleStateChange }) {
     setBarChart(!barChart);
   };
 
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
   return (
     <>
       <div className="bg-pink-600 m-4" style={{ width: "400px" }}>
@@ -82,15 +56,15 @@ function LineChartComponent({ totalCases, selectedState, handleStateChange }) {
         <button onClick={() => setToggle(!toggle)}>Click here</button>
       </div>
       {toggle ? (
-        <div className="absolute top-0 bottom-0 right-0 left-0 bg-black bg-opacity-30 z-50">
-          <div className="flex flex-col items-center my-12">
+        <div className="h-screen w-screen left-0 top-0 fixed z-50 flex flex-col justify-center bg-black bg-opacity-30">
+          <div className="flex flex-col items-center my-12 bg-red-900">
             {totalCases ? (
               <h1 className="text-white p-4">Totals in {selectedState}</h1>
             ) : (
               <h1 className="text-white p-4">Loading Data</h1>
             )}
             <button
-              onClick={() => setToggle(!toggle)}
+              onClick={handleToggle}
               className="text-white border-green-900 border"
             >
               X

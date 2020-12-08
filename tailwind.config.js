@@ -14,6 +14,9 @@ module.exports = {
         secondary: "#ffed4a",
         danger: "#e3342f",
       },
+      maxWidth: {
+        viewport: "100vw",
+      },
     },
   },
   variants: {},
