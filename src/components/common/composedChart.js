@@ -112,7 +112,9 @@ function composedChart({
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
-        {minified ? <Brush dataKey="date" height={40} /> : null}
+        {minified ? (
+          <Brush dataKey="date" height={40} travellerWidth={20} />
+        ) : null}
         {minified ? <Legend /> : null}
 
         {lineToggle && (
