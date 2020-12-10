@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StateComposedChart from "./stateChart";
 import { DateTime } from "luxon";
+import { stateLabelValues } from "../../data/stateLabel";
 
 function State() {
   const [totalCases, setTotalCases] = useState(null);
@@ -41,31 +42,61 @@ function State() {
   };
   return (
     <div>
-      <div className="bg-primary flex flex-wrap justify-center">
-        <StateComposedChart
-          totalCases={totalCases}
-          selectedState={selectedState}
-          handleStateChange={handleStateChange}
-          display="positiveIncrease"
-        />
-        <StateComposedChart
-          totalCases={totalCases}
-          selectedState={selectedState}
-          handleStateChange={handleStateChange}
-          display="deathIncrease"
-        />
-        <StateComposedChart
-          totalCases={totalCases}
-          selectedState={selectedState}
-          handleStateChange={handleStateChange}
-          display="totalTestResults"
-        />
-        <StateComposedChart
-          totalCases={totalCases}
-          selectedState={selectedState}
-          handleStateChange={handleStateChange}
-          display="hospitalizedCurrently"
-        />
+      <div className="my-12">
+        {totalCases ? (
+          <h1 className="text-white p-4 text-center">
+            Totals in {selectedState}
+          </h1>
+        ) : (
+          <h1 className="text-white p-4 text-center">Loading Data</h1>
+        )}
+
+        <div className="flex flex-wrap justify-center">
+          <div className="p-2 sm:p-8">
+            <select
+              value={selectedState}
+              onChange={handleStateChange}
+              className="rounded-full px-1"
+            >
+              <option value="one" disabled>
+                Choose a State
+              </option>
+              {stateLabelValues.map((state) => {
+                return (
+                  <option key={state.label} value={state.value}>
+                    {state.label}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="flex flex-wrap justify-center">
+          <StateComposedChart
+            totalCases={totalCases}
+            selectedState={selectedState}
+            handleStateChange={handleStateChange}
+            display="positiveIncrease"
+          />
+          <StateComposedChart
+            totalCases={totalCases}
+            selectedState={selectedState}
+            handleStateChange={handleStateChange}
+            display="deathIncrease"
+          />
+          <StateComposedChart
+            totalCases={totalCases}
+            selectedState={selectedState}
+            handleStateChange={handleStateChange}
+            display="totalTestResults"
+          />
+          <StateComposedChart
+            totalCases={totalCases}
+            selectedState={selectedState}
+            handleStateChange={handleStateChange}
+            display="hospitalizedCurrently"
+          />
+        </div>
       </div>
       {/* <div className="px-16 flex flex-wrap">
         <h2>Table</h2>

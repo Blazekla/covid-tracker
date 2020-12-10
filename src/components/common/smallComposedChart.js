@@ -60,7 +60,6 @@ function smallComposedChart({
     element.movingAverage = averagedData[index];
   });
 
-  console.log("total passed: ", totalCases);
   return (
     <ResponsiveContainer
       width="100%"
@@ -77,7 +76,7 @@ function smallComposedChart({
         data={totalCases}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        {true ? <XAxis dataKey="date" hide="true" /> : null}
+        {true ? <XAxis dataKey="date" hide={true} /> : null}
         <YAxis
           domain={["dataMin", "dataMax"]}
           interval="preserveEnd"

@@ -52,9 +52,11 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
             display={display}
           />
         ) : (
-          <div style={{ height: "200px" }}>placeholder...waiting</div>
+          <div style={{ height: "200px", padding: "4rem" }}>
+            loading data...
+          </div>
         )}
-        <button onClick={() => setToggle(!toggle)}>Click here</button>
+        <button onClick={() => setToggle(!toggle)}>Expand Chart</button>
       </div>
       {toggle ? (
         <div className="h-screen w-screen left-0 top-0 fixed z-50 flex flex-col justify-center bg-black bg-opacity-30">
@@ -66,7 +68,7 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
             )}
             <button
               onClick={handleToggle}
-              className="text-white border-green-900 border"
+              className="text-white border-green-900 border p-2"
             >
               X
             </button>
