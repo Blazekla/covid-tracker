@@ -54,23 +54,6 @@ function smallComposedChart({
     return null;
   };
 
-  const CustomizedAxisTick = ({ x, y, stroke, payload }) => {
-    return (
-      <g transform={`translate(${x},${y})`}>
-        <text
-          x={0}
-          y={0}
-          dy={16}
-          textAnchor="end"
-          className="fill-current text-gray-600"
-          transform="rotate(-35)"
-        >
-          {payload.value}
-        </text>
-      </g>
-    );
-  };
-
   const averagedData = movingAverage(totalCases, selectedType);
 
   totalCases.forEach((element, index) => {
@@ -92,18 +75,9 @@ function smallComposedChart({
           bottom: 10,
         }}
         data={totalCases}
-        // className="bg-gray-400"
       >
         <CartesianGrid strokeDasharray="3 3" />
-        {true ? (
-          <XAxis
-            dataKey="date"
-            hide="true"
-            // interval="preserveStartEnd"
-            // tick={<CustomizedAxisTick />}
-            // height={60}
-          />
-        ) : null}
+        {true ? <XAxis dataKey="date" hide="true" /> : null}
         <YAxis
           domain={["dataMin", "dataMax"]}
           interval="preserveEnd"
@@ -131,15 +105,8 @@ function smallComposedChart({
 
         {barToggle && (
           <Bar
-            dataKey={
-              display
-              // || selectedType === "newCases"
-              //   ? "positiveIncrease"
-              //   : "deathIncrease"
-            }
+            dataKey={display}
             name={
-              // display
-              // ||
               selectedType === "newCases"
                 ? positiveSelection
                 : negativeSelection
