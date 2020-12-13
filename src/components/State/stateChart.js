@@ -56,11 +56,11 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
             loading data...
           </div>
         )}
-        <div className="flex justify-between py-2">
-          <div>{`Total ${display} in ${selectedState}`}</div>
+        <div className="flex justify-between py-2 items-center">
+          <div className="mx-4">{`Total ${display} in ${selectedState}`}</div>
           <button
             onClick={() => setToggle(!toggle)}
-            className="mx-4  border-r-2 border-gray-700"
+            className="mx-4  border-2 border-gray-700 rounded-md p-1"
           >
             Expand Chart
           </button>
