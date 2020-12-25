@@ -24,10 +24,7 @@ function smallComposedChart({
   minified,
   display,
 }) {
-  const positiveSelection =
-    location === "US" ? `New Cases` : `New Cases in ${location}`;
-  const negativeSelection =
-    location === "US" ? `New Deaths` : `New Deaths in ${location}`;
+
   const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
       return (
@@ -105,11 +102,6 @@ function smallComposedChart({
         {barToggle && (
           <Bar
             dataKey={display}
-            name={
-              selectedType === "newCases"
-                ? positiveSelection
-                : negativeSelection
-            }
             barSize={20}
             fill="#8884d8"
           />
