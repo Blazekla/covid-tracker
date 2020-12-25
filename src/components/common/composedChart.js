@@ -22,6 +22,7 @@ function composedChart({
   barToggle,
   heightInput = 400,
   minified,
+  display
 }) {
   const positiveSelection =
     location === "US" ? `New Cases` : `New Cases in ${location}`;
@@ -130,7 +131,8 @@ function composedChart({
 
         {barToggle && (
           <Bar
-            dataKey={
+            dataKey={display?
+              display:
               selectedType === "newCases" ? "positiveIncrease" : "deathIncrease"
             }
             name={

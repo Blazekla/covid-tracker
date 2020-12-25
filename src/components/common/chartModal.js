@@ -13,6 +13,7 @@ function ChartModal({
   lineChart,
   handleLineChartChange,
   today,
+  display
 }) {
   useEffect(() => {
     // effect
@@ -109,6 +110,7 @@ function ChartModal({
               barToggle={barChart}
               heightInput={400}
               minified={true}
+              {...display ?display={display}:null}
             />
           )}
         </div>

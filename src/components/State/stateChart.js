@@ -81,6 +81,7 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
           lineChart={lineChart}
           handleLineChartChange={handleLineChartChange}
           today={today}
+          display={display}
         />
       ) : null}
     </>
