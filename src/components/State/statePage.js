@@ -40,6 +40,9 @@ function State() {
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
   };
+  if(totalCases){
+    console.log('totalcases data: ', totalCases)
+  }
   return (
     <div>
       <div className="my-12">
@@ -98,7 +101,7 @@ function State() {
           />
         </div>
       </div>
-      {/* <div className="px-16 flex flex-wrap">
+      <div className="px-16 flex flex-wrap">
         <h2>Table</h2>
         <table>
           <thead>
@@ -112,9 +115,14 @@ function State() {
               <th>Total Test Results</th>
             </tr>
           </thead>
+          {totalCases?
           <tbody>
-            <tr>
-              <td>0</td>
+            {
+            (totalCases.map(cases=>{
+return(
+
+  <tr key={cases.date}>
+              <td>{cases.date}</td>
               <td>0</td>
               <td>0</td>
               <td>0</td>
@@ -123,9 +131,18 @@ function State() {
               <td>0</td>
               <td>0</td>
             </tr>
+  )
+
+            }))
+
+            }
           </tbody>
+:
+null
+          }
         </table>
-      </div> */}
+        {totalCases?null:<p>Loading Case Numbers</p>}
+      </div>
     </div>
   );
 }
