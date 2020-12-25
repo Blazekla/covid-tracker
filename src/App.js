@@ -3,8 +3,8 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Layout from "./components/Layout";
 import Intro from "./components/intro";
 import "./assets/css/tailwind.css";
-import US from "./components/US/us";
-import State from "./components/State/state";
+import US from "./components/US/usPage";
+import State from "./components/State/statePage";
 
 function App() {
   return (
