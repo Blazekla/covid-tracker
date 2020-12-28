@@ -38,6 +38,7 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
   const handleToggle = () => {
     setToggle(!toggle);
   };
+
   return (
     <>
       <div className="bg-pink-600 m-4" style={{ width: "400px" }}>
@@ -53,8 +54,19 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
             display={display}
           />
         ) : (
-          <div style={{ height: "200px", padding: "4rem" }}>
-            loading data...
+          <div
+            className="border border-blue-400 shadow rounded-md p-4  w-full mx-auto"
+            style={{ height: "200px" }}
+          >
+            <div className="animate-pulse flex flex-col h-full ">
+              <div className="flex h-4/5">
+                <div className="bg-blue-200 rounded h-full w-1/12"></div>
+                <div className="bg-blue-200 rounded w-10/12 mx-auto"></div>
+              </div>
+              <div>
+                <div className="bg-blue-200 rounded w-full h-8 mt-1"></div>
+              </div>
+            </div>
           </div>
         )}
         <div className="flex justify-between py-2 items-center">
