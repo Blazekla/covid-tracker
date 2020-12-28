@@ -54,17 +54,17 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
             display={display}
           />
         ) : (
-          <div
-            className="border border-blue-400 shadow rounded-md p-4  w-full mx-auto"
-            style={{ height: "200px" }}
-          >
-            <div className="animate-pulse flex flex-col h-full ">
-              <div className="flex h-4/5">
-                <div className="bg-blue-200 rounded h-full w-1/12"></div>
-                <div className="bg-blue-200 rounded w-10/12 mx-auto"></div>
-              </div>
-              <div>
-                <div className="bg-blue-200 rounded w-full h-8 mt-1"></div>
+          <div className="p-4  w-full mx-auto" style={{ height: "200px" }}>
+            <div className="animate-pulse h-full bg-blue-100 w-full">
+              <div className="flex  rounded w-full h-full justify-between max-w-xs mx-auto items-end">
+                <div className="bg-blue-200 w-1/12 h-1/6"></div>
+                <div className="bg-blue-200 w-1/12 h-4/6"></div>
+                <div className="bg-blue-200 w-1/12 h-3/6"></div>
+                <div className="bg-blue-200 w-1/12 h-5/6"></div>
+                <div className="bg-blue-200 w-1/12 h-4/6"></div>
+                <div className="bg-blue-200 w-1/12 h-4/6"></div>
+                <div className="bg-blue-200 w-1/12 h-2/6"></div>
+                <div className="bg-blue-200 w-1/12 h-5/6"></div>
               </div>
             </div>
           </div>
