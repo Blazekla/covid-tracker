@@ -118,7 +118,7 @@ function State() {
             totalCases={totalCases}
             selectedState={selectedState}
             handleStateChange={handleStateChange}
-            display="totalTestResults"
+            display="totalTestResultsIncrease"
             loading={skeleton}
           />
           <StateComposedChart

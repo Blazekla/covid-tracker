@@ -42,6 +42,21 @@ function StateChart({
     setToggle(!toggle);
   };
 
+  const displayMessage = () => {
+    switch (display) {
+      case "positiveIncrease":
+        return `Daily Increase in ${selectedState}`;
+      case "deathIncrease":
+        return `Daily Deaths in ${selectedState}`;
+      case "totalTestResultsIncrease":
+        return `Daily Tests in ${selectedState}`;
+      case "hospitalizedCurrently":
+        return `Currently Hospitalized in ${selectedState}`;
+      default:
+        return `Data from ${selectedState}`;
+    }
+  };
+
   return (
     <>
       <div className="bg-pink-600 m-4" style={{ width: "400px" }}>
@@ -73,7 +88,7 @@ function StateChart({
           </div>
         )}
         <div className="flex justify-between py-2 items-center">
-          <div className="mx-4">{`Total ${display} in ${selectedState}`}</div>
+          <div className="mx-4">{displayMessage()}</div>
           <button
             onClick={() => setToggle(!toggle)}
             className="mx-4  border-2 border-gray-700 rounded-md p-1"
