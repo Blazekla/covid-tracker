@@ -136,47 +136,49 @@ function State() {
             totalCases && !skeleton ? "h-screen" : null
           } overflow-y-auto`}
         >
-          <caption className="table-caption">Table</caption>
+          <caption className="table-caption text-white">Data</caption>
           <thead>
-            <tr>
+            <tr
+            //  className="border-4 border-white "
+            >
               <th
-                className="sticky top-0 bg-yellow-300 px-1"
+                className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("rawDate")}
               >
                 Date
               </th>
               <th
-                className="sticky top-0 bg-yellow-300 px-1"
+                className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("totalTestResults")}
               >
                 New Tests
               </th>
               <th
-                className="sticky top-0 bg-yellow-300 px-1"
+                className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("positiveIncrease")}
               >
                 Cases
               </th>
               <th
-                className="sticky top-0 bg-yellow-300 px-1"
+                className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("negativeIncrease")}
               >
                 Negative PCR Test
               </th>
               <th
-                className="sticky top-0 bg-yellow-300 px-1"
+                className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
               >
                 Currently hopitalized
               </th>
               <th
-                className="sticky top-0 bg-yellow-300 px-1"
+                className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("deathIncrease")}
               >
                 Deaths
               </th>
               <th
-                className="sticky top-0 bg-yellow-300 px-1"
+                className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("totalTestResults")}
               >
                 Total Test Results
@@ -184,21 +186,26 @@ function State() {
             </tr>
           </thead>
           {sortedData ? (
-            <tbody>
+            <tbody className="text-white">
               {sortedData.map((cases) => {
                 return (
                   <tr
                     key={cases.date}
-                    className="text-right border-b-8 border-indigo-300"
+                    className="text-right border-4 border-white hover:bg-indigo-400 hover:bg-opacity-40 "
                   >
-                    <td className="text-left">{cases.date}</td>
-                    <td>0</td>
-                    <td>{cases.positiveIncrease}</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>{cases.deathIncrease}</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td className="text-left border-r-4 border-white px-1">
+                      {cases.date}
+                    </td>
+                    <td className="border-r-4 border-white px-1">0</td>
+                    <td className="border-r-4 border-white px-1">
+                      {cases.positiveIncrease}
+                    </td>
+                    <td className="border-r-4 border-white px-1">0</td>
+                    <td className="border-r-4 border-white px-1">0</td>
+                    <td className="border-r-4 border-white px-1">
+                      {cases.deathIncrease}
+                    </td>
+                    <td className="border-r-4 border-white px-1">0</td>
                   </tr>
                 );
               })}
@@ -207,8 +214,8 @@ function State() {
             <tbody>
               <tr>
                 <td colSpan="7">
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
+                  <div className="animate-pulse h-6 bg-blue-100 w-full">
+                    <div className="bg-blue-200 "></div>
                   </div>
                 </td>
                 {/* <td>
@@ -219,8 +226,8 @@ function State() {
               </tr>
               <tr>
                 <td colSpan="7">
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
+                  <div className="animate-pulse h-6 bg-blue-100 w-full">
+                    <div className="bg-blue-200 "></div>
                   </div>
                 </td>
                 {/* <td>
@@ -231,8 +238,8 @@ function State() {
               </tr>
               <tr>
                 <td colSpan="7">
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
+                  <div className="animate-pulse h-6 bg-blue-100 w-full">
+                    <div className="bg-blue-200 "></div>
                   </div>
                 </td>
                 {/* <td>
@@ -243,8 +250,8 @@ function State() {
               </tr>
               <tr>
                 <td colSpan="7">
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
+                  <div className="animate-pulse h-6 bg-blue-100 w-full">
+                    <div className="bg-blue-200 "></div>
                   </div>
                 </td>
                 {/* <td>

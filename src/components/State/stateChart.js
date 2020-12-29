@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
@@ -17,11 +17,6 @@ function StateChart({
   const [lineChart, setLineChart] = useState(false);
   const [barChart, setBarChart] = useState(true);
   const [toggle, setToggle] = useState(false);
-  //   const [skeleton,setSkeleton]=useState(false)
-
-  // useEffect(() => {
-
-  // }, [selectedState])
 
   if (toggle) {
     document.body.classList.add("modal-open");
