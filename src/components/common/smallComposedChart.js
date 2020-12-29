@@ -24,7 +24,6 @@ function smallComposedChart({
   minified,
   display,
 }) {
-
   const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
       return (
@@ -66,7 +65,7 @@ function smallComposedChart({
       <ComposedChart
         margin={{
           top: 10,
-          right: 30,
+          right: 10,
           left: 0,
           bottom: 10,
         }}
@@ -99,13 +98,7 @@ function smallComposedChart({
           />
         )}
 
-        {barToggle && (
-          <Bar
-            dataKey={display}
-            barSize={20}
-            fill="#8884d8"
-          />
-        )}
+        {barToggle && <Bar dataKey={display} barSize={20} fill="#8884d8" />}
       </ComposedChart>
     </ResponsiveContainer>
   );
