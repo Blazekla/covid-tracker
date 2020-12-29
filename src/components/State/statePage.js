@@ -206,9 +206,52 @@ function State() {
           ) : (
             <tbody>
               <tr>
-                <td>
-                  <p>Loading data</p>
+                <td colSpan="7">
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
                 </td>
+                {/* <td>
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
+                </td> */}
+              </tr>
+              <tr>
+                <td colSpan="7">
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
+                </td>
+                {/* <td>
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
+                </td> */}
+              </tr>
+              <tr>
+                <td colSpan="7">
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
+                </td>
+                {/* <td>
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
+                </td> */}
+              </tr>
+              <tr>
+                <td colSpan="7">
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
+                </td>
+                {/* <td>
+                  <div className="animate-pulse h-full bg-blue-100 w-full">
+                    <div className="bg-blue-200 ">&nbsp;</div>
+                  </div>
+                </td> */}
               </tr>
             </tbody>
           )}
