@@ -212,54 +212,47 @@ function State() {
             </tbody>
           ) : (
             <tbody>
-              <tr>
-                <td colSpan="7">
-                  <div className="animate-pulse h-6 bg-blue-100 w-full">
-                    <div className="bg-blue-200 "></div>
-                  </div>
-                </td>
-                {/* <td>
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
-                  </div>
-                </td> */}
-              </tr>
-              <tr>
-                <td colSpan="7">
-                  <div className="animate-pulse h-6 bg-blue-100 w-full">
-                    <div className="bg-blue-200 "></div>
-                  </div>
-                </td>
-                {/* <td>
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
-                  </div>
-                </td> */}
-              </tr>
-              <tr>
-                <td colSpan="7">
-                  <div className="animate-pulse h-6 bg-blue-100 w-full">
-                    <div className="bg-blue-200 "></div>
-                  </div>
-                </td>
-                {/* <td>
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
-                  </div>
-                </td> */}
-              </tr>
-              <tr>
-                <td colSpan="7">
-                  <div className="animate-pulse h-6 bg-blue-100 w-full">
-                    <div className="bg-blue-200 "></div>
-                  </div>
-                </td>
-                {/* <td>
-                  <div className="animate-pulse h-full bg-blue-100 w-full">
-                    <div className="bg-blue-200 ">&nbsp;</div>
-                  </div>
-                </td> */}
-              </tr>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
+                <tr key={item}>
+                  <td
+                  //  colSpan="7"
+                  >
+                    <div className="animate-pulse h-6 bg-blue-100 w-full">
+                      <div className="bg-blue-200 "></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="animate-pulse h-6 bg-blue-100 w-full">
+                      <div className="bg-blue-200 "></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="animate-pulse h-6 bg-blue-100 w-full">
+                      <div className="bg-blue-200 "></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="animate-pulse h-6 bg-blue-100 w-full">
+                      <div className="bg-blue-200 "></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="animate-pulse h-6 bg-blue-100 w-full">
+                      <div className="bg-blue-200 "></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="animate-pulse h-6 bg-blue-100 w-full">
+                      <div className="bg-blue-200 "></div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="animate-pulse h-6 bg-blue-100 w-full">
+                      <div className="bg-blue-200 "></div>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           )}
         </table>
