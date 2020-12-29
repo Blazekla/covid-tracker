@@ -40,8 +40,8 @@ function State() {
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
   };
-  if(totalCases){
-    console.log('totalcases data: ', totalCases)
+  if (totalCases) {
+    console.log("totalcases data: ", totalCases);
   }
   return (
     <div>
@@ -101,47 +101,49 @@ function State() {
           />
         </div>
       </div>
-      <div className="px-16 flex flex-wrap">
-        <h2>Table</h2>
-        <table>
+      <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto">
+        <table className="table-auto border-collapse overflow-x-auto block w-full h-screen overflow-y-scroll">
+          <caption className="table-caption">Table</caption>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>New Tests</th>
-              <th>Cases</th>
-              <th>Negative PCR Test</th>
-              <th>Currently hopitalized</th>
-              <th>Deaths</th>
-              <th>Total Test Results</th>
+              <th className="sticky top-0 bg-yellow-300 px-1 max-w-md">Date</th>
+              <th className="sticky top-0 bg-yellow-300 px-1">New Tests</th>
+              <th className="sticky top-0 bg-yellow-300 px-1">Cases</th>
+              <th className="sticky top-0 bg-yellow-300 px-1">
+                Negative PCR Test
+              </th>
+              <th className="sticky top-0 bg-yellow-300 px-1">
+                Currently hopitalized
+              </th>
+              <th className="sticky top-0 bg-yellow-300 px-1">Deaths</th>
+              <th className="sticky top-0 bg-yellow-300 px-1">
+                Total Test Results
+              </th>
             </tr>
           </thead>
-          {totalCases?
-          <tbody>
-            {
-            (totalCases.map(cases=>{
-return(
-
-  <tr key={cases.date}>
-              <td>{cases.date}</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-  )
-
-            }))
-
-            }
-          </tbody>
-:
-null
-          }
+          {totalCases ? (
+            <tbody>
+              {totalCases.map((cases) => {
+                return (
+                  <tr
+                    key={cases.date}
+                    className="text-right border-b-8 border-indigo-300"
+                  >
+                    <td className="text-left">{cases.date}</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>{cases.positiveIncrease}</td>
+                    <td>0</td>
+                    <td>{cases.deathIncrease}</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          ) : null}
         </table>
-        {totalCases?null:<p>Loading Case Numbers</p>}
+        {totalCases ? null : <p>Loading Case Numbers</p>}
       </div>
     </div>
   );
