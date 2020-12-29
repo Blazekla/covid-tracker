@@ -136,11 +136,8 @@ function State() {
             totalCases && !skeleton ? "calculate-100" : null
           } overflow-y-auto`}
         >
-          <caption className="table-caption text-white">Data</caption>
           <thead>
-            <tr
-            //  className="border-4 border-white "
-            >
+            <tr>
               <th
                 className="sticky top-0 bg-yellow-300 px-2"
                 onClick={() => handleTableHeaderClick("rawDate")}
@@ -214,9 +211,7 @@ function State() {
             <tbody>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
                 <tr key={item}>
-                  <td
-                  //  colSpan="7"
-                  >
+                  <td>
                     <div className="animate-pulse h-6 bg-blue-100 w-full">
                       <div className="bg-blue-200 "></div>
                     </div>
