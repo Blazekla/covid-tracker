@@ -8,6 +8,7 @@ function State() {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
   const [skeleton, setSkeleton] = useState(true);
+  const [sortedField, setSortedField] = useState(null);
 
   useEffect(() => {
     async function fetchTotals() {
@@ -16,19 +17,10 @@ function State() {
         const data = await axios.get(
           `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
         );
-        // const cdcData = await axios.get(
-        //   `https://data.cdc.gov/resource/9mfq-cb36.json`,
-        //   {
-        //     params: {
-        //       $limit: 50000,
-        //     },
-        //     headers: {
-        //       "X-App-Token": process.env.REACT_APP_TEST,
-        //     },
-        //   }
-        // );
+
         setSkeleton(false);
         data.data.forEach((item) => {
+          item.rawDate = item.date;
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
         setTotalCases(data.data.reverse());
@@ -43,8 +35,37 @@ function State() {
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
   };
+
+  const handleTableHeaderClick = (name) => {
+    requestSort(name);
+  };
+
+  const requestSort = (key) => {
+    let direction = "ascending";
+    console.log("key passed: ", key);
+    if (
+      sortedField &&
+      sortedField.key === key &&
+      sortedField.direction === "ascending"
+    ) {
+      direction = "descending";
+    }
+    console.log("values set: ", key, direction);
+    setSortedField({ key, direction });
+  };
+
   if (totalCases) {
     console.log("totalcases data: ", totalCases);
+  }
+
+  let sortedData = null;
+  if (
+    totalCases
+    // && sortedField !== null
+  ) {
+    console.log("entered the needed if block");
+    sortedData = [...totalCases];
+    sortedData.reverse();
   }
   return (
     <div>
@@ -117,24 +138,54 @@ function State() {
           <caption className="table-caption">Table</caption>
           <thead>
             <tr>
-              <th className="sticky top-0 bg-yellow-300 px-1">Date</th>
-              <th className="sticky top-0 bg-yellow-300 px-1">New Tests</th>
-              <th className="sticky top-0 bg-yellow-300 px-1">Cases</th>
-              <th className="sticky top-0 bg-yellow-300 px-1">
+              <th
+                className="sticky top-0 bg-yellow-300 px-1"
+                onClick={() => handleTableHeaderClick("rawDate")}
+              >
+                Date
+              </th>
+              <th
+                className="sticky top-0 bg-yellow-300 px-1"
+                onClick={() => handleTableHeaderClick("totalTestResults")}
+              >
+                New Tests
+              </th>
+              <th
+                className="sticky top-0 bg-yellow-300 px-1"
+                onClick={() => handleTableHeaderClick("positiveIncrease")}
+              >
+                Cases
+              </th>
+              <th
+                className="sticky top-0 bg-yellow-300 px-1"
+                onClick={() => handleTableHeaderClick("negativeIncrease")}
+              >
                 Negative PCR Test
               </th>
-              <th className="sticky top-0 bg-yellow-300 px-1">
+              <th
+                className="sticky top-0 bg-yellow-300 px-1"
+                onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
+              >
                 Currently hopitalized
               </th>
-              <th className="sticky top-0 bg-yellow-300 px-1">Deaths</th>
-              <th className="sticky top-0 bg-yellow-300 px-1">
+              <th
+                className="sticky top-0 bg-yellow-300 px-1"
+                onClick={() => handleTableHeaderClick("deathIncrease")}
+              >
+                Deaths
+              </th>
+              <th
+                className="sticky top-0 bg-yellow-300 px-1"
+                onClick={() => handleTableHeaderClick("totalTestResults")}
+              >
                 Total Test Results
               </th>
             </tr>
           </thead>
-          {totalCases && !skeleton ? (
+          {console.log("value of sortedData: ", sortedData)}
+          {sortedData ? (
             <tbody>
-              {totalCases.map((cases) => {
+              {sortedData.map((cases) => {
                 return (
                   <tr
                     key={cases.date}
@@ -142,8 +193,8 @@ function State() {
                   >
                     <td className="text-left">{cases.date}</td>
                     <td>0</td>
-                    <td>0</td>
                     <td>{cases.positiveIncrease}</td>
+                    <td>0</td>
                     <td>0</td>
                     <td>{cases.deathIncrease}</td>
                     <td>0</td>
