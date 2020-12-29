@@ -109,11 +109,15 @@ function State() {
         </div>
       </div>
       <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto">
-        <table className="table-auto border-collapse overflow-x-auto block w-full h-screen overflow-y-scroll">
+        <table
+          className={`table-auto border-collapse overflow-x-auto block w-full ${
+            totalCases && !skeleton ? "h-screen" : null
+          } overflow-y-auto`}
+        >
           <caption className="table-caption">Table</caption>
           <thead>
             <tr>
-              <th className="sticky top-0 bg-yellow-300 px-1 max-w-md">Date</th>
+              <th className="sticky top-0 bg-yellow-300 px-1">Date</th>
               <th className="sticky top-0 bg-yellow-300 px-1">New Tests</th>
               <th className="sticky top-0 bg-yellow-300 px-1">Cases</th>
               <th className="sticky top-0 bg-yellow-300 px-1">
@@ -128,7 +132,7 @@ function State() {
               </th>
             </tr>
           </thead>
-          {totalCases ? (
+          {totalCases && !skeleton ? (
             <tbody>
               {totalCases.map((cases) => {
                 return (
@@ -148,9 +152,16 @@ function State() {
                 );
               })}
             </tbody>
-          ) : null}
+          ) : (
+            <tbody>
+              <tr>
+                <td>
+                  <p>Loading data</p>
+                </td>
+              </tr>
+            </tbody>
+          )}
         </table>
-        {totalCases ? null : <p>Loading Case Numbers</p>}
       </div>
     </div>
   );
