@@ -42,7 +42,6 @@ function State() {
 
   const requestSort = (key) => {
     let direction = "ascending";
-    console.log("key passed: ", key);
     if (
       sortedField &&
       sortedField.key === key &&
@@ -50,20 +49,22 @@ function State() {
     ) {
       direction = "descending";
     }
-    console.log("values set: ", key, direction);
     setSortedField({ key, direction });
   };
 
-  if (totalCases) {
-    console.log("totalcases data: ", totalCases);
-  }
-
   let sortedData = null;
-  if (
-    totalCases
-    // && sortedField !== null
-  ) {
-    console.log("entered the needed if block");
+  if (totalCases && sortedField !== null) {
+    sortedData = [...totalCases];
+    sortedData.sort((a, b) => {
+      if (a[sortedField.key] < b[sortedField.key]) {
+        return sortedField.direction === "ascending" ? -1 : 1;
+      }
+      if (a[sortedField.key] > b[sortedField.key]) {
+        return sortedField.direction === "ascending" ? 1 : -1;
+      }
+      return 0;
+    });
+  } else if (totalCases) {
     sortedData = [...totalCases];
     sortedData.reverse();
   }
@@ -182,7 +183,6 @@ function State() {
               </th>
             </tr>
           </thead>
-          {console.log("value of sortedData: ", sortedData)}
           {sortedData ? (
             <tbody>
               {sortedData.map((cases) => {
