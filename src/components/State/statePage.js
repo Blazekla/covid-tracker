@@ -133,7 +133,7 @@ function State() {
       <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto">
         <table
           className={`table-auto border-collapse overflow-x-auto block w-full ${
-            totalCases && !skeleton ? "h-screen" : null
+            totalCases && !skeleton ? "calculate-100" : null
           } overflow-y-auto`}
         >
           <caption className="table-caption text-white">Data</caption>
@@ -185,7 +185,7 @@ function State() {
               </th>
             </tr>
           </thead>
-          {sortedData ? (
+          {sortedData && !skeleton ? (
             <tbody className="text-white">
               {sortedData.map((cases) => {
                 return (
