@@ -1,7 +1,4 @@
-import React, {
-  useState,
-  //  useEffect
-} from "react";
+import React, { useState, useEffect } from "react";
 // import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
@@ -9,11 +6,22 @@ import { stateLabelValues } from "../../data/stateLabel";
 import ChartModal from "../common/chartModal";
 import SmallComposedChart from "../common/smallComposedChart";
 
-function StateChart({ totalCases, selectedState, handleStateChange, display }) {
+function StateChart({
+  totalCases,
+  selectedState,
+  handleStateChange,
+  display,
+  loading,
+}) {
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
   const [barChart, setBarChart] = useState(true);
   const [toggle, setToggle] = useState(false);
+  //   const [skeleton,setSkeleton]=useState(false)
+
+  // useEffect(() => {
+
+  // }, [selectedState])
 
   if (toggle) {
     document.body.classList.add("modal-open");
@@ -42,7 +50,7 @@ function StateChart({ totalCases, selectedState, handleStateChange, display }) {
   return (
     <>
       <div className="bg-pink-600 m-4" style={{ width: "400px" }}>
-        {totalCases ? (
+        {totalCases && !loading ? (
           <SmallComposedChart
             totalCases={totalCases}
             today={today}

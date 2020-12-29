@@ -7,9 +7,12 @@ import { stateLabelValues } from "../../data/stateLabel";
 function State() {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
+  const [skeleton, setSkeleton] = useState(true);
+
   useEffect(() => {
     async function fetchTotals() {
       try {
+        setSkeleton(true);
         const data = await axios.get(
           `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
         );
@@ -24,7 +27,7 @@ function State() {
         //     },
         //   }
         // );
-
+        setSkeleton(false);
         data.data.forEach((item) => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
@@ -80,24 +83,28 @@ function State() {
             selectedState={selectedState}
             handleStateChange={handleStateChange}
             display="positiveIncrease"
+            loading={skeleton}
           />
           <StateComposedChart
             totalCases={totalCases}
             selectedState={selectedState}
             handleStateChange={handleStateChange}
             display="deathIncrease"
+            loading={skeleton}
           />
           <StateComposedChart
             totalCases={totalCases}
             selectedState={selectedState}
             handleStateChange={handleStateChange}
             display="totalTestResults"
+            loading={skeleton}
           />
           <StateComposedChart
             totalCases={totalCases}
             selectedState={selectedState}
             handleStateChange={handleStateChange}
             display="hospitalizedCurrently"
+            loading={skeleton}
           />
         </div>
       </div>
