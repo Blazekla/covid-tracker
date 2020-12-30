@@ -24,10 +24,6 @@ function composedChart({
   minified,
   display,
 }) {
-  const positiveSelection =
-    location === "US" ? `New Cases` : `New Cases in ${location}`;
-  const negativeSelection =
-    location === "US" ? `New Deaths` : `New Deaths in ${location}`;
   const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
       return (
@@ -81,6 +77,26 @@ function composedChart({
     element.movingAverage = averagedData[index];
   });
 
+  const displayMessage = () => {
+    if (location === "US" && selectedType === "newCases") {
+      return `New Cases`;
+    } else if (location === "US" && selectedType === "newDeaths") {
+      return `New Deaths`;
+    }
+
+    switch (display) {
+      case "positiveIncrease":
+        return `Daily Increase in ${location}`;
+      case "deathIncrease":
+        return `Daily Deaths in ${location}`;
+      case "totalTestResultsIncrease":
+        return `Daily Tests in ${location}`;
+      case "hospitalizedCurrently":
+        return `Currently Hospitalized in ${location}`;
+      default:
+        return `Data from ${location}`;
+    }
+  };
   return (
     <ResponsiveContainer
       width="100%"
@@ -142,11 +158,7 @@ function composedChart({
                 ? "positiveIncrease"
                 : "deathIncrease"
             }
-            name={
-              selectedType === "newCases"
-                ? positiveSelection
-                : negativeSelection
-            }
+            name={displayMessage()}
             barSize={20}
             fill="#8884d8"
           />
