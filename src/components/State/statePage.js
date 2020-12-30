@@ -212,39 +212,25 @@ function State() {
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
                 <tr key={item}>
                   <td>
-                    <div className="animate-pulse h-6 bg-blue-100 w-full">
-                      <div className="bg-blue-200 "></div>
-                    </div>
+                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
                   </td>
                   <td>
-                    <div className="animate-pulse h-6 bg-blue-100 w-full">
-                      <div className="bg-blue-200 "></div>
-                    </div>
+                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
                   </td>
                   <td>
-                    <div className="animate-pulse h-6 bg-blue-100 w-full">
-                      <div className="bg-blue-200 "></div>
-                    </div>
+                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
                   </td>
                   <td>
-                    <div className="animate-pulse h-6 bg-blue-100 w-full">
-                      <div className="bg-blue-200 "></div>
-                    </div>
+                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
                   </td>
                   <td>
-                    <div className="animate-pulse h-6 bg-blue-100 w-full">
-                      <div className="bg-blue-200 "></div>
-                    </div>
+                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
                   </td>
                   <td>
-                    <div className="animate-pulse h-6 bg-blue-100 w-full">
-                      <div className="bg-blue-200 "></div>
-                    </div>
+                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
                   </td>
                   <td>
-                    <div className="animate-pulse h-6 bg-blue-100 w-full">
-                      <div className="bg-blue-200 "></div>
-                    </div>
+                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
                   </td>
                 </tr>
               ))}
