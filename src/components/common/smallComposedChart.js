@@ -11,7 +11,6 @@ import {
   Legend,
   ComposedChart,
 } from "recharts";
-import movingAverage from "../../utils/movingAverage";
 
 function smallComposedChart({
   totalCases,
@@ -50,12 +49,6 @@ function smallComposedChart({
     return null;
   };
 
-  const averagedData = movingAverage(totalCases, selectedType);
-
-  totalCases.forEach((element, index) => {
-    element.movingAverage = averagedData[index];
-  });
-
   return (
     <ResponsiveContainer
       width="100%"
@@ -86,17 +79,6 @@ function smallComposedChart({
         )}
         {minified ? <Brush dataKey="date" height={40} /> : null}
         {minified ? <Legend /> : null}
-
-        {lineToggle && (
-          <Line
-            type="monotone"
-            dataKey="movingAverage"
-            name="7-day Average"
-            activeDot={{ r: 4 }}
-            dot={false}
-            stroke="#ff0000"
-          />
-        )}
 
         {barToggle && <Bar dataKey={display} barSize={20} fill="#8884d8" />}
       </ComposedChart>
