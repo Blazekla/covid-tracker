@@ -22,11 +22,11 @@ module.exports = {
           dark: "#740000",
         },
       },
-      textColor: {
-        primary: "#3490dc",
-        secondary: "#ffed4a",
-        danger: "#e3342f",
-      },
+      // textColor: {
+      //   primary: "#3490dc",
+      //   secondary: "#ffed4a",
+      //   danger: "#e3342f",
+      // },
       maxWidth: {
         viewport: "100vw",
       },

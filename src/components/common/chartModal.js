@@ -27,10 +27,10 @@ function ChartModal({
       className="h-screen w-screen left-0 top-0 fixed z-30 flex flex-col justify-center "
     >
       <div
-        className="bg-black bg-opacity-30 z-40 left-0 top-0 right-0 bottom-0 absolute"
+        className="bg-black bg-opacity-60 z-40 left-0 top-0 right-0 bottom-0 absolute"
         onClick={handleToggle}
       ></div>
-      <div className="flex flex-col items-center my-12 bg-red-900 z-50">
+      <div className="flex flex-col items-center my-12 bg-secondary-dark z-50">
         <div
           className="flex flex-wrap justify-between w-full"
           style={{ maxWidth: "1500px" }}
@@ -49,9 +49,11 @@ function ChartModal({
               />
             </div>
           </div>
-          <button onClick={handleToggle} className="text-white p-2 px-4 sm:p-8">
-            X
-          </button>
+          <div className="p-2 px-4 sm:p-8 flex justify-center items-center">
+            <button onClick={handleToggle} className="text-white ">
+              X
+            </button>
+          </div>
         </div>
 
         <div className="container mx-auto px-2 sm:px-4 mb-16">

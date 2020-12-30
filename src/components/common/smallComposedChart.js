@@ -32,8 +32,8 @@ function smallComposedChart({
                 key={item.dataKey}
                 className={` text-xl ${
                   item.dataKey === "movingAverage"
-                    ? "text-red-700"
-                    : "text-indigo-900"
+                    ? "text-secondary-main"
+                    : "text-primary-main"
                 }`}
               >{`${item.dataKey === "movingAverage" ? "7day: " : ""}${
                 item.value
@@ -52,7 +52,7 @@ function smallComposedChart({
     <ResponsiveContainer
       width="100%"
       height={heightInput}
-      className="bg-white rounded"
+      className="bg-gray-900 rounded"
     >
       <ComposedChart
         margin={{
@@ -79,7 +79,13 @@ function smallComposedChart({
         {minified ? <Brush dataKey="date" height={40} /> : null}
         {minified ? <Legend /> : null}
 
-        {barToggle && <Bar dataKey={display} barSize={20} fill="#8884d8" />}
+        {barToggle && (
+          <Bar
+            dataKey={display}
+            barSize={20}
+            className="fill-current text-primary-light"
+          />
+        )}
       </ComposedChart>
     </ResponsiveContainer>
   );

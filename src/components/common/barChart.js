@@ -31,7 +31,7 @@ function BarChartComponent({ totalCases, today, selectedType, location }) {
     <ResponsiveContainer
       width="100%"
       height={300}
-      className="bg-white rounded-b"
+      className="border-gray-900 rounded-b"
     >
       <BarChart
         width={500}

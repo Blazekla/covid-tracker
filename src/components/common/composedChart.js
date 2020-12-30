@@ -34,8 +34,8 @@ function composedChart({
                 key={item.dataKey}
                 className={` text-xl ${
                   item.dataKey === "movingAverage"
-                    ? "text-red-700"
-                    : "text-indigo-900"
+                    ? "text-secondary-main"
+                    : "text-primary-main"
                 }`}
               >{`${item.dataKey === "movingAverage" ? "7day: " : ""}${
                 item.value
@@ -101,7 +101,7 @@ function composedChart({
     <ResponsiveContainer
       width="100%"
       height={heightInput}
-      className="bg-white rounded"
+      className="bg-gray-900 rounded text-white"
     >
       <ComposedChart
         margin={{
@@ -111,7 +111,7 @@ function composedChart({
           bottom: 10,
         }}
         data={totalCases}
-        // className="bg-gray-400"
+        // className="bg-gray-400 text-white"
       >
         <CartesianGrid strokeDasharray="3 3" />
         {minified ? (
@@ -145,7 +145,7 @@ function composedChart({
             name="7-day Average"
             activeDot={{ r: 4 }}
             dot={false}
-            stroke="#ff0000"
+            className="stroke-current text-secondary-main"
           />
         )}
 
@@ -160,7 +160,7 @@ function composedChart({
             }
             name={displayMessage()}
             barSize={20}
-            fill="#8884d8"
+            className="fill-current text-primary-light"
           />
         )}
       </ComposedChart>

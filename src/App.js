@@ -12,16 +12,16 @@ function App() {
       <div className="flex justify-center py-8">
         <NavLink
           to="/us"
-          className="p-4 rounded-full border-solid border-2 border-indigo-500 text-white"
-          activeClassName="underline bg-indigo-500"
+          className="p-4 rounded-full border-solid border-2 border-primary-light text-white"
+          activeClassName="underline bg-primary-light"
           aria-label="See US Numbers"
         >
           US Data
         </NavLink>
         <NavLink
           to="/state"
-          className="p-4 rounded-full border-solid border-2 border-indigo-500 text-white"
-          activeClassName="underline bg-indigo-500"
+          className="p-4 rounded-full border-solid border-2 border-primary-light text-white"
+          activeClassName="underline bg-primary-light"
           aria-label="See State's Numbers"
         >
           State Data

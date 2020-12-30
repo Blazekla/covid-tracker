@@ -34,7 +34,7 @@ function lineChart({ totalCases, today, selectedType, location }) {
     <ResponsiveContainer
       width="100%"
       height={300}
-      className="bg-white rounded-t"
+      className="bg-gray-800 rounded-t"
     >
       <LineChart
         data={totalCases}

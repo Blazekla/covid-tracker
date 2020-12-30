@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function Layout({ children }) {
   return (
-    <div className="flex flex-col  bg-indigo-900">
+    <div className="flex flex-col bg-black">
       <Header>
         <NavLink to="/">
           <h1 className="text-4xl text-white">Covid Tracker</h1>
@@ -14,12 +14,12 @@ function Layout({ children }) {
       </Header>
       <main className="min-h-screen">{children}</main>
       <Footer>
-        <div className="flex justify-between max-w-full bg-gray-700 items-center px-1 sm:px-4">
+        <div className="flex justify-between max-w-full bg-black items-center px-1 sm:px-4">
           <p className="text-white">
             Created by{" "}
             <a
               href="https://luiscristo.com"
-              className="text-indigo-500 italic underline text-lg"
+              className="text-primary-main italic underline text-lg"
             >
               Luis C
             </a>

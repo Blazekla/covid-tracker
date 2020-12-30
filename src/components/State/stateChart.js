@@ -59,7 +59,7 @@ function StateChart({
 
   return (
     <>
-      <div className="bg-pink-600 m-4" style={{ width: "400px" }}>
+      <div className="bg-pink-600 m-4 rounded" style={{ width: "400px" }}>
         {totalCases && !loading ? (
           <SmallComposedChart
             totalCases={totalCases}
