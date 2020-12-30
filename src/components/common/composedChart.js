@@ -58,7 +58,7 @@ function composedChart({
           y={0}
           dy={16}
           textAnchor="end"
-          className="fill-current text-gray-600"
+          className="fill-current text-white"
           transform="rotate(-35)"
         >
           {payload.value}
@@ -129,6 +129,7 @@ function composedChart({
           tickFormatter={(tick) => {
             return tick >= 1000 ? tick / 1000 + "k" : tick;
           }}
+          stroke="#fff"
         />
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />

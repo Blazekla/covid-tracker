@@ -72,6 +72,7 @@ function smallComposedChart({
           tickFormatter={(tick) => {
             return tick >= 1000 ? tick / 1000 + "k" : tick;
           }}
+          stroke="#fff"
         />
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />

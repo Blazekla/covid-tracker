@@ -59,7 +59,7 @@ function StateChart({
 
   return (
     <>
-      <div className="bg-pink-600 m-4 rounded" style={{ width: "400px" }}>
+      <div className="bg-secondary-main m-4 rounded" style={{ width: "400px" }}>
         {totalCases && !loading ? (
           <SmallComposedChart
             totalCases={totalCases}
@@ -75,23 +75,23 @@ function StateChart({
           <div className="p-4  w-full mx-auto" style={{ height: "200px" }}>
             <div className="animate-pulse h-full bg-blue-100 w-full">
               <div className="flex  rounded w-full h-full justify-between max-w-xs mx-auto items-end">
-                <div className="bg-blue-200 w-1/12 h-1/6"></div>
-                <div className="bg-blue-200 w-1/12 h-4/6"></div>
-                <div className="bg-blue-200 w-1/12 h-3/6"></div>
-                <div className="bg-blue-200 w-1/12 h-5/6"></div>
-                <div className="bg-blue-200 w-1/12 h-4/6"></div>
-                <div className="bg-blue-200 w-1/12 h-4/6"></div>
-                <div className="bg-blue-200 w-1/12 h-2/6"></div>
-                <div className="bg-blue-200 w-1/12 h-5/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-1/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-3/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-2/6"></div>
+                <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
               </div>
             </div>
           </div>
         )}
-        <div className="flex justify-between py-2 items-center">
+        <div className="flex justify-between py-2 items-center text-white">
           <div className="mx-4">{displayMessage()}</div>
           <button
             onClick={() => setToggle(!toggle)}
-            className="mx-4  border-2 border-gray-700 rounded-md p-1"
+            className="mx-4  border-2 border-secondary-dark rounded-md p-1"
           >
             Expand Chart
           </button>
