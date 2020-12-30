@@ -31,16 +31,13 @@ function ChartModal({
         onClick={handleToggle}
       ></div>
       <div className="flex flex-col items-center my-12 bg-red-900 z-50">
-        <button
-          onClick={handleToggle}
-          className="text-white border-green-900 border p-2 my-8"
+        <div
+          className="flex flex-wrap justify-between w-full"
+          style={{ maxWidth: "1500px" }}
         >
-          X
-        </button>
-        <div className="flex flex-wrap justify-center">
           <div className="text-white p-2 sm:p-8 flex flex-wrap justify-center">
-            <div>
-              <label className="m-4" htmlFor="7dayaverage">
+            <div className="p-1">
+              <label className="mr-4" htmlFor="7dayaverage">
                 7-Day Average:
               </label>
               <input
@@ -52,6 +49,9 @@ function ChartModal({
               />
             </div>
           </div>
+          <button onClick={handleToggle} className="text-white p-2 px-4 sm:p-8">
+            X
+          </button>
         </div>
 
         <div className="container mx-auto px-2 sm:px-4 mb-16">
