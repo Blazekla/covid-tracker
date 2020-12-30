@@ -1,7 +1,5 @@
 function movingAverage(array, type) {
   const copyOfArray = [...array];
-  const selectedData =
-    type === "newCases" ? "positiveIncrease" : "deathIncrease";
   const newMappedArr = copyOfArray.map((element, index) => {
     let N = 7;
 
@@ -11,7 +9,7 @@ function movingAverage(array, type) {
 
     let sum = 0;
     for (let x = 0; x < N; x++) {
-      sum += copyOfArray[index - x][selectedData];
+      sum += copyOfArray[index - x][type];
     }
     const result = Math.round(sum / N);
     return result;

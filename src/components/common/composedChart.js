@@ -70,8 +70,12 @@ function composedChart({
       </g>
     );
   };
+  const selectedData =
+    selectedType === "newCases" ? "positiveIncrease" : "deathIncrease";
 
-  const averagedData = movingAverage(totalCases, selectedType);
+  const averagedData = display
+    ? movingAverage(totalCases, display)
+    : movingAverage(totalCases, selectedData);
 
   totalCases.forEach((element, index) => {
     element.movingAverage = averagedData[index];
