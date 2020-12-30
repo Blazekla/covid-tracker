@@ -13,7 +13,7 @@ function ChartModal({
   lineChart,
   handleLineChartChange,
   today,
-  display
+  display,
 }) {
   useEffect(() => {
     // effect
@@ -31,59 +31,14 @@ function ChartModal({
         onClick={handleToggle}
       ></div>
       <div className="flex flex-col items-center my-12 bg-red-900 z-50">
-        {totalCases ? (
-          <h1 className="text-white p-4">Totals in {selectedState}</h1>
-        ) : (
-          <h1 className="text-white p-4">Loading Data</h1>
-        )}
         <button
           onClick={handleToggle}
-          className="text-white border-green-900 border p-2"
+          className="text-white border-green-900 border p-2 my-8"
         >
           X
         </button>
         <div className="flex flex-wrap justify-center">
-          <div className="p-2 sm:p-8">
-            <select
-              value={selectedState}
-              onChange={handleStateChange}
-              className="rounded-full px-1"
-            >
-              <option value="one" disabled>
-                Choose a State
-              </option>
-              {stateLabelValues.map((state) => {
-                return (
-                  <option key={state.label} value={state.value}>
-                    {state.label}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="p-2 sm:p-8">
-            <select
-              value={selectedType}
-              onChange={handleTypeChange}
-              className="rounded-full px-1"
-            >
-              <option value="newCases">New Cases</option>
-              <option value="newDeaths">New Deaths</option>
-            </select>
-          </div>
           <div className="text-white p-2 sm:p-8 flex flex-wrap justify-center">
-            <div>
-              <label className="m-4" htmlFor="barchart">
-                Bar Chart:
-              </label>
-              <input
-                type="checkbox"
-                name="barchartcheck"
-                id="barchart"
-                checked={barChart}
-                onChange={handleBarChartChange}
-              />
-            </div>
             <div>
               <label className="m-4" htmlFor="7dayaverage">
                 7-Day Average:
@@ -110,7 +65,7 @@ function ChartModal({
               barToggle={barChart}
               heightInput={400}
               minified={true}
-              {...display ?display={display}:null}
+              display={display ? display : null}
             />
           )}
         </div>
