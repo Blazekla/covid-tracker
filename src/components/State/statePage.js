@@ -139,7 +139,7 @@ function State() {
           <thead className="text-white">
             <tr>
               <th
-                className="sticky top-0 left-0 z-50 bg-secondary-main px-2"
+                className="sticky top-0 left-0 z-10 bg-secondary-main px-2"
                 onClick={() => handleTableHeaderClick("rawDate")}
               >
                 Date
