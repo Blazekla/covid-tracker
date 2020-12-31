@@ -7,7 +7,6 @@ function USLineChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
-  const [barChart, setBarChart] = useState(true);
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
@@ -37,9 +36,6 @@ function USLineChart({ timeframe }) {
     setLineChart(!lineChart);
   };
 
-  const handleBarChartChange = (e) => {
-    setBarChart(!barChart);
-  };
   return (
     <div className="flex flex-col items-center my-12 ">
       {totalCases ? (
@@ -59,18 +55,6 @@ function USLineChart({ timeframe }) {
           </select>
         </div>
         <div className="text-white p-2 sm:p-8 flex flex-wrap justify-center">
-          <div>
-            <label className="m-4" htmlFor="barchart">
-              Bar Chart:
-            </label>
-            <input
-              type="checkbox"
-              name="barchartcheck"
-              id="barchart"
-              checked={barChart}
-              onChange={handleBarChartChange}
-            />
-          </div>
           <div>
             <label className="m-4" htmlFor="7dayaverage">
               7-Day Average:
@@ -94,7 +78,7 @@ function USLineChart({ timeframe }) {
             selectedType={selectedType}
             location="US"
             lineToggle={lineChart}
-            barToggle={barChart}
+            barToggle={true}
             minified={true}
           />
         ) : (
