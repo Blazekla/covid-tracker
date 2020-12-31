@@ -29,6 +29,7 @@ function composedChart({
       return (
         <div className="mx-auto w-full bg-gray-300 px-1">
           {payload.map((item) => {
+            console.log("value of the datakey: ", item.dataKey);
             return (
               <p
                 key={item.dataKey}
@@ -42,7 +43,7 @@ function composedChart({
               }`}</p>
             );
           })}
-          <p className="">{`${label}`}</p>
+          <p className="text-secondary-light">{`${label}`}</p>
         </div>
       );
     }
@@ -101,7 +102,7 @@ function composedChart({
     <ResponsiveContainer
       width="100%"
       height={heightInput}
-      className="bg-gray-900 rounded text-white"
+      className="bg-gray-900 rounded"
     >
       <ComposedChart
         margin={{
@@ -137,7 +138,15 @@ function composedChart({
         {minified ? (
           <Brush dataKey="date" height={40} travellerWidth={20} />
         ) : null}
-        {minified ? <Legend /> : null}
+        {minified ? (
+          <Legend
+            // className="fill-current text-secondary-main"
+            // style={{ color: "white" }}
+            formatter={(value, entry, index) => {
+              return <span className="text-white">{value}</span>;
+            }}
+          />
+        ) : null}
 
         {lineToggle && (
           <Line
@@ -146,7 +155,8 @@ function composedChart({
             name="7-day Average"
             activeDot={{ r: 4 }}
             dot={false}
-            className="stroke-current text-secondary-main"
+            // className="stroke-current text-secondary-main"
+            stroke="#aa1200"
           />
         )}
 
