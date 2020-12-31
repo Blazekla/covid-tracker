@@ -29,7 +29,6 @@ function composedChart({
       return (
         <div className="mx-auto w-full bg-gray-300 px-1">
           {payload.map((item) => {
-            console.log("value of the datakey: ", item.dataKey);
             return (
               <p
                 key={item.dataKey}

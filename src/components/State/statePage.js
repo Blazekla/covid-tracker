@@ -3,6 +3,7 @@ import axios from "axios";
 import StateComposedChart from "./stateChart";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
+import StateTable from "./stateTable";
 
 function State() {
   const [totalCases, setTotalCases] = useState(null);
@@ -68,6 +69,12 @@ function State() {
     sortedData = [...totalCases];
     sortedData.reverse();
   }
+  const chartsDisplayed = [
+    "positiveIncrease",
+    "deathIncrease",
+    "totalTestResultsIncrease",
+    "hospitalizedCurrently",
+  ];
   return (
     <div>
       <div className="my-12">
@@ -100,143 +107,27 @@ function State() {
           </div>
         </div>
         <div className="flex flex-wrap justify-center">
-          <StateComposedChart
-            totalCases={totalCases}
-            selectedState={selectedState}
-            handleStateChange={handleStateChange}
-            display="positiveIncrease"
-            loading={skeleton}
-          />
-          <StateComposedChart
-            totalCases={totalCases}
-            selectedState={selectedState}
-            handleStateChange={handleStateChange}
-            display="deathIncrease"
-            loading={skeleton}
-          />
-          <StateComposedChart
-            totalCases={totalCases}
-            selectedState={selectedState}
-            handleStateChange={handleStateChange}
-            display="totalTestResultsIncrease"
-            loading={skeleton}
-          />
-          <StateComposedChart
-            totalCases={totalCases}
-            selectedState={selectedState}
-            handleStateChange={handleStateChange}
-            display="hospitalizedCurrently"
-            loading={skeleton}
-          />
+          {chartsDisplayed.map((chart) => {
+            return (
+              <StateComposedChart
+                key={chart}
+                totalCases={totalCases}
+                selectedState={selectedState}
+                handleStateChange={handleStateChange}
+                display={chart}
+                loading={skeleton}
+              />
+            );
+          })}
         </div>
       </div>
       <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto">
-        <table
-          className={`table-auto border-collapse overflow-x-auto block w-full ${
-            totalCases && !skeleton ? "calculate-100" : null
-          } overflow-y-auto`}
-        >
-          <thead className="text-white">
-            <tr>
-              <th
-                className="sticky top-0 left-0 z-10 bg-secondary-main px-2"
-                onClick={() => handleTableHeaderClick("rawDate")}
-              >
-                Date
-              </th>
-              <th
-                className="sticky top-0 bg-secondary-main px-2"
-                onClick={() => handleTableHeaderClick("totalTestResults")}
-              >
-                New Tests
-              </th>
-              <th
-                className="sticky top-0 bg-secondary-main px-2"
-                onClick={() => handleTableHeaderClick("positiveIncrease")}
-              >
-                Cases
-              </th>
-              <th
-                className="sticky top-0 bg-secondary-main px-2"
-                onClick={() => handleTableHeaderClick("negativeIncrease")}
-              >
-                Negative PCR Test
-              </th>
-              <th
-                className="sticky top-0 bg-secondary-main px-2"
-                onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
-              >
-                Currently hopitalized
-              </th>
-              <th
-                className="sticky top-0 bg-secondary-main px-2"
-                onClick={() => handleTableHeaderClick("deathIncrease")}
-              >
-                Deaths
-              </th>
-              <th
-                className="sticky top-0 bg-secondary-main px-2"
-                onClick={() => handleTableHeaderClick("totalTestResults")}
-              >
-                Total Test Results
-              </th>
-            </tr>
-          </thead>
-          {sortedData && !skeleton ? (
-            <tbody className="text-white">
-              {sortedData.map((cases) => {
-                return (
-                  <tr
-                    key={cases.date}
-                    className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
-                  >
-                    <td className="text-left border-r-4 bg-secondary-main border-white px-1 sticky left-0">
-                      {cases.date}
-                    </td>
-                    <td className="border-r-4 border-white px-1">0</td>
-                    <td className="border-r-4 border-white px-1">
-                      {cases.positiveIncrease}
-                    </td>
-                    <td className="border-r-4 border-white px-1">0</td>
-                    <td className="border-r-4 border-white px-1">0</td>
-                    <td className="border-r-4 border-white px-1">
-                      {cases.deathIncrease}
-                    </td>
-                    <td className="border-r-4 border-white px-1">0</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          ) : (
-            <tbody>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
-                <tr key={item}>
-                  <td>
-                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                  </td>
-                  <td>
-                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                  </td>
-                  <td>
-                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                  </td>
-                  <td>
-                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                  </td>
-                  <td>
-                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                  </td>
-                  <td>
-                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                  </td>
-                  <td>
-                    <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          )}
-        </table>
+        <StateTable
+          totalCases={totalCases}
+          sortedData={sortedData}
+          handleTableHeaderClick={handleTableHeaderClick}
+          skeleton={skeleton}
+        />
       </div>
     </div>
   );
