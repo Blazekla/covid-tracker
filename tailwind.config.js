@@ -30,6 +30,9 @@ module.exports = {
       maxWidth: {
         viewport: "100vw",
       },
+      flex: {
+        "no-shrink": "1 0 auto",
+      },
     },
   },
   variants: {},
