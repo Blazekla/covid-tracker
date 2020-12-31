@@ -39,7 +39,7 @@ function USLineChart({ timeframe }) {
   return (
     <div className="flex flex-col items-center my-12 ">
       {totalCases ? (
-        <h1 className="text-white p-8">Totals in US</h1>
+        <h1 className="text-white p-8 text-lg">Totals in the US</h1>
       ) : (
         <h1 className="text-white p-8">Loading Data</h1>
       )}

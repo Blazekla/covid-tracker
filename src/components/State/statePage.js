@@ -88,16 +88,11 @@ function State() {
   return (
     <div>
       <div className="my-12">
-        {totalCases ? (
-          <h1 className="text-white p-4 text-center">
-            Totals in {selectedState}
-          </h1>
-        ) : (
-          <h1 className="text-white p-4 text-center">Loading Data</h1>
-        )}
-
         <div className="flex flex-wrap justify-center">
-          <div className="p-2 sm:p-8">
+          {/* {totalCases ? null : (
+            <h1 className="text-white p-4 text-center">Loading Data</h1>
+          )} */}
+          <div className="p-8 pb-12 sm:p-8">
             <select
               value={selectedState}
               onChange={handleStateChange}
