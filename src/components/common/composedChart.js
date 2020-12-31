@@ -38,12 +38,12 @@ function composedChart({
                     ? "text-secondary-main"
                     : "text-primary-main"
                 }`}
-              >{`${item.dataKey === "movingAverage" ? "7day: " : ""}${
+              >{`${item.dataKey === "movingAverage" ? "7-day: " : ""}${
                 item.value
               }`}</p>
             );
           })}
-          <p className="text-secondary-light">{`${label}`}</p>
+          <p className="text-black">{`${label}`}</p>
         </div>
       );
     }
@@ -112,7 +112,6 @@ function composedChart({
           bottom: 10,
         }}
         data={totalCases}
-        // className="bg-gray-400 text-white"
       >
         <CartesianGrid strokeDasharray="3 3" />
         {minified ? (
@@ -140,8 +139,6 @@ function composedChart({
         ) : null}
         {minified ? (
           <Legend
-            // className="fill-current text-secondary-main"
-            // style={{ color: "white" }}
             formatter={(value, entry, index) => {
               return <span className="text-white">{value}</span>;
             }}
@@ -155,7 +152,6 @@ function composedChart({
             name="7-day Average"
             activeDot={{ r: 4 }}
             dot={false}
-            // className="stroke-current text-secondary-main"
             stroke="#aa1200"
           />
         )}

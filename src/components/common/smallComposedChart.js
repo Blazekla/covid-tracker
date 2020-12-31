@@ -40,7 +40,7 @@ function smallComposedChart({
               }`}</p>
             );
           })}
-          <p className="">{`${label}`}</p>
+          <p className="text-black">{`${label}`}</p>
         </div>
       );
     }
