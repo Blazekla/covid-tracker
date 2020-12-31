@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import StateComposedChart from "./stateChart";
 import { DateTime } from "luxon";
@@ -9,12 +9,12 @@ function State() {
   const [totalCases, setTotalCases] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
   const [skeleton, setSkeleton] = useState(true);
-  const [sortedField, setSortedField] = useState(null);
 
   useEffect(() => {
     async function fetchTotals() {
       try {
         setSkeleton(true);
+        setTotalCases(null);
         const data = await axios.get(
           `https://api.covidtracking.com/v1/states/${selectedState}/daily.json`
         );
@@ -37,6 +37,8 @@ function State() {
     setSelectedState(e.target.value);
   };
 
+  // ****** //
+  const [sortedField, setSortedField] = useState(null);
   const handleTableHeaderClick = (name) => {
     requestSort(name);
   };
@@ -53,28 +55,36 @@ function State() {
     setSortedField({ key, direction });
   };
 
-  let sortedData = null;
-  if (totalCases && sortedField !== null) {
-    sortedData = [...totalCases];
-    sortedData.sort((a, b) => {
-      if (a[sortedField.key] < b[sortedField.key]) {
-        return sortedField.direction === "ascending" ? -1 : 1;
-      }
-      if (a[sortedField.key] > b[sortedField.key]) {
-        return sortedField.direction === "ascending" ? 1 : -1;
-      }
-      return 0;
-    });
-  } else if (totalCases) {
-    sortedData = [...totalCases];
-    sortedData.reverse();
-  }
+  let sortedData = useMemo(() => {
+    if (totalCases && sortedField !== null) {
+      const data = [...totalCases];
+      data.sort((a, b) => {
+        if (a[sortedField.key] < b[sortedField.key]) {
+          return sortedField.direction === "ascending" ? -1 : 1;
+        }
+        if (a[sortedField.key] > b[sortedField.key]) {
+          return sortedField.direction === "ascending" ? 1 : -1;
+        }
+        return 0;
+      });
+      return data;
+    } else if (totalCases) {
+      const data = [...totalCases];
+      return data.reverse();
+    } else {
+      return null;
+    }
+  }, [sortedField, totalCases]);
+
+  // ****** //
+
   const chartsDisplayed = [
     "positiveIncrease",
     "deathIncrease",
     "totalTestResultsIncrease",
     "hospitalizedCurrently",
   ];
+
   return (
     <div>
       <div className="my-12">

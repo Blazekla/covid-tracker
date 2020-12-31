@@ -84,6 +84,7 @@ function smallComposedChart({
           <Bar
             dataKey={display}
             barSize={20}
+            isAnimationActive={false}
             className="fill-current text-primary-light"
           />
         )}
