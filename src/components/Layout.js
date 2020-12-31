@@ -19,7 +19,7 @@ function Layout({ children }) {
             Created by{" "}
             <a
               href="https://luiscristo.com"
-              className="text-primary-main italic underline text-lg"
+              className="text-white italic underline text-lg"
             >
               Luis C
             </a>

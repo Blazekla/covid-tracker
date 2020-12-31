@@ -8,7 +8,7 @@ function Intro() {
         <a
           href="https://covidtracking.com/"
           aria-label="Go to API Source"
-          className="text-indigo-500 italic underline"
+          className="text-white italic underline"
         >
           The Covid Tracking Project
         </a>
