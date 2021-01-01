@@ -89,9 +89,6 @@ function State() {
     <div>
       <div className="my-12">
         <div className="flex flex-wrap justify-center">
-          {/* {totalCases ? null : (
-            <h1 className="text-white p-4 text-center">Loading Data</h1>
-          )} */}
           <div className="p-8 pb-12 sm:p-8">
             <select
               value={selectedState}
@@ -126,7 +123,7 @@ function State() {
           })}
         </div>
       </div>
-      <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto">
+      <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
         <StateTable
           totalCases={totalCases}
           sortedData={sortedData}
