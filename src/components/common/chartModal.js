@@ -16,11 +16,19 @@ function ChartModal({
   display,
 }) {
   useEffect(() => {
-    // effect
+    function handleKeyPress(e) {
+      if (e.key === "Escape" || e.keyCode === 27) {
+        handleToggle();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+
     return () => {
-      //   cleanup;
+      document.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
+  }, [handleToggle]);
+
   return (
     <div
       //   onClick={handleToggle}
