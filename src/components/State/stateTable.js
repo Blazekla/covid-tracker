@@ -22,39 +22,45 @@ function StateTable({
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2"
-            onClick={() => handleTableHeaderClick("totalTestResults")}
+            onClick={() => handleTableHeaderClick("positive")}
           >
-            New Tests
+            Total Cases
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2"
             onClick={() => handleTableHeaderClick("positiveIncrease")}
           >
-            Cases
+            New Cases
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2"
-            onClick={() => handleTableHeaderClick("negativeIncrease")}
+            onClick={() => handleTableHeaderClick("death")}
           >
-            Negative PCR Test
-          </th>
-          <th
-            className="sticky top-0 bg-secondary-main px-2"
-            onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
-          >
-            Currently hopitalized
+            Total Deaths
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2"
             onClick={() => handleTableHeaderClick("deathIncrease")}
           >
-            Deaths
+            New Deaths
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2"
             onClick={() => handleTableHeaderClick("totalTestResults")}
           >
-            Total Test Results
+            Total Tests
+          </th>
+          <th
+            className="sticky top-0 bg-secondary-main px-2"
+            onClick={() => handleTableHeaderClick("totalTestResultsIncrease")}
+          >
+            New Tests
+          </th>
+          <th
+            className="sticky top-0 bg-secondary-main px-2"
+            onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
+          >
+            Currently Hospitalized
           </th>
         </tr>
       </thead>
@@ -69,16 +75,25 @@ function StateTable({
                 <td className="text-left border-r-4 bg-secondary-main border-white px-1 sticky left-0">
                   {cases.date}
                 </td>
-                <td className="border-r-4 border-white px-1">0</td>
+                <td className="border-r-4 border-white px-1">
+                  {cases.positive}
+                </td>
                 <td className="border-r-4 border-white px-1">
                   {cases.positiveIncrease}
                 </td>
-                <td className="border-r-4 border-white px-1">0</td>
-                <td className="border-r-4 border-white px-1">0</td>
+                <td className="border-r-4 border-white px-1">{cases.death}</td>
                 <td className="border-r-4 border-white px-1">
                   {cases.deathIncrease}
                 </td>
-                <td className="border-r-4 border-white px-1">0</td>
+                <td className="border-r-4 border-white px-1">
+                  {cases.totalTestResults}
+                </td>
+                <td className="border-r-4 border-white px-1">
+                  {cases.totalTestResultsIncrease}
+                </td>
+                <td className="border-r-4 border-white px-1">
+                  {cases.hospitalizedCurrently}
+                </td>
               </tr>
             );
           })}
