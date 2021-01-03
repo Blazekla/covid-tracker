@@ -12,7 +12,6 @@ function USTable({
       if (sortedField.direction === "ascending") {
         return (
           <svg
-            // class="MuiSvgIcon-root jss210"
             focusable="false"
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -26,7 +25,6 @@ function USTable({
       } else if (sortedField.direction === "descending") {
         return (
           <svg
-            // class="MuiSvgIcon-root jss210"
             focusable="false"
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -113,23 +111,45 @@ function USTable({
                   {cases.date}
                 </td>
                 <td className="border-r-4 border-white px-1">
-                  {cases.positive}
+                  {cases.positive != null
+                    ? cases.positive.toLocaleString("en", { useGrouping: true })
+                    : 0}
                 </td>
                 <td className="border-r-4 border-white px-1">
-                  {cases.positiveIncrease}
+                  {cases.positiveIncrease != null
+                    ? cases.positiveIncrease.toLocaleString("en", {
+                        useGrouping: true,
+                      })
+                    : 0}
                 </td>
                 <td className="border-r-4 border-white px-1">{cases.death}</td>
                 <td className="border-r-4 border-white px-1">
-                  {cases.deathIncrease}
+                  {cases.deathIncrease != null
+                    ? cases.deathIncrease.toLocaleString("en", {
+                        useGrouping: true,
+                      })
+                    : 0}
                 </td>
                 <td className="border-r-4 border-white px-1">
-                  {cases.totalTestResults}
+                  {cases.totalTestResults != null
+                    ? cases.totalTestResults.toLocaleString("en", {
+                        useGrouping: true,
+                      })
+                    : 0}
                 </td>
                 <td className="border-r-4 border-white px-1">
-                  {cases.totalTestResultsIncrease}
+                  {cases.totalTestResultsIncrease != null
+                    ? cases.totalTestResultsIncrease.toLocaleString("en", {
+                        useGrouping: true,
+                      })
+                    : 0}
                 </td>
                 <td className="border-r-4 border-white px-1">
-                  {cases.hospitalizedCurrently}
+                  {cases.hospitalizedCurrently != null
+                    ? cases.hospitalizedCurrently.toLocaleString("en", {
+                        useGrouping: true,
+                      })
+                    : 0}
                 </td>
               </tr>
             );
