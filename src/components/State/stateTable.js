@@ -3,9 +3,46 @@ import React from "react";
 function StateTable({
   totalCases,
   sortedData,
+  sortedField,
   handleTableHeaderClick,
   skeleton,
 }) {
+  const checkSorting = (value) => {
+    if (sortedField && sortedField.key === value) {
+      if (sortedField.direction === "ascending") {
+        return (
+          <svg
+            // class="MuiSvgIcon-root jss210"
+            focusable="false"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="#fff"
+            width="20"
+            height="20"
+          >
+            <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
+          </svg>
+        );
+      } else if (sortedField.direction === "descending") {
+        return (
+          <svg
+            // class="MuiSvgIcon-root jss210"
+            focusable="false"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="#fff"
+            width="20"
+            height="20"
+          >
+            <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
+          </svg>
+        );
+      }
+    }
+
+    return null;
+  };
+
   return (
     <table
       className={`table-auto border-collapse overflow-x-auto block w-full ${
@@ -18,49 +55,49 @@ function StateTable({
             className="sticky top-0 left-0 z-10 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("rawDate")}
           >
-            Date
+            Date{checkSorting("rawDate")}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positive")}
           >
-            Total Cases
+            Total Cases{checkSorting("positive")}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positiveIncrease")}
           >
-            New Cases
+            New Cases{checkSorting("positiveIncrease")}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("death")}
           >
-            Total Deaths
+            Total Deaths{checkSorting("death")}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("deathIncrease")}
           >
-            New Deaths
+            New Deaths{checkSorting("deathIncrease")}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResults")}
           >
-            Total Tests
+            Total Tests{checkSorting("totalTestResults")}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResultsIncrease")}
           >
-            New Tests
+            New Tests{checkSorting("totalTestResultsIncrease")}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
           >
-            Currently Hospitalized
+            Currently Hospitalized{checkSorting("hospitalizedCurrently")}
           </th>
         </tr>
       </thead>

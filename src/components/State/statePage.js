@@ -54,7 +54,6 @@ function State() {
     }
     setSortedField({ key, direction });
   };
-
   let sortedData = useMemo(() => {
     if (totalCases && sortedField !== null) {
       const data = [...totalCases];
@@ -127,6 +126,7 @@ function State() {
         <StateTable
           totalCases={totalCases}
           sortedData={sortedData}
+          sortedField={sortedField}
           handleTableHeaderClick={handleTableHeaderClick}
           skeleton={skeleton}
         />
