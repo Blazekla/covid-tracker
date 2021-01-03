@@ -15,49 +15,49 @@ function StateTable({
       <thead className="text-white">
         <tr>
           <th
-            className="sticky top-0 left-0 z-10 bg-secondary-main px-2"
+            className="sticky top-0 left-0 z-10 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("rawDate")}
           >
             Date
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2"
+            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positive")}
           >
             Total Cases
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2"
+            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positiveIncrease")}
           >
             New Cases
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2"
+            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("death")}
           >
             Total Deaths
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2"
+            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("deathIncrease")}
           >
             New Deaths
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2"
+            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResults")}
           >
             Total Tests
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2"
+            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResultsIncrease")}
           >
             New Tests
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2"
+            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
           >
             Currently Hospitalized
