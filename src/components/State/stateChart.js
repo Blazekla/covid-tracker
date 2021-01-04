@@ -60,6 +60,15 @@ function StateChart({
   return (
     <>
       <div className="bg-secondary-main m-4 rounded" style={{ width: "400px" }}>
+        <div className="flex justify-between py-2 items-center text-white">
+          <div className="mx-4">{displayMessage()}</div>
+          <button
+            onClick={() => setToggle(!toggle)}
+            className="mx-4  border-2 border-secondary-dark rounded-md p-1"
+          >
+            Expand Chart
+          </button>
+        </div>
         {totalCases && !loading ? (
           <SmallComposedChart
             totalCases={totalCases}
@@ -87,15 +96,6 @@ function StateChart({
             </div>
           </div>
         )}
-        <div className="flex justify-between py-2 items-center text-white">
-          <div className="mx-4">{displayMessage()}</div>
-          <button
-            onClick={() => setToggle(!toggle)}
-            className="mx-4  border-2 border-secondary-dark rounded-md p-1"
-          >
-            Expand Chart
-          </button>
-        </div>
       </div>
       {toggle ? (
         <ChartModal
