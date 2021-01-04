@@ -186,6 +186,9 @@ function USTable({
               <td>
                 <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
               </td>
+              <td>
+                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
+              </td>
             </tr>
           ))}
         </tbody>
