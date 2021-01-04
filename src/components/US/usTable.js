@@ -122,7 +122,13 @@ function USTable({
                       })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white px-1">{cases.death}</td>
+                <td className="border-r-4 border-white px-1">
+                  {cases.death != null
+                    ? cases.death.toLocaleString("en", {
+                        useGrouping: true,
+                      })
+                    : 0}
+                </td>
                 <td className="border-r-4 border-white px-1">
                   {cases.deathIncrease != null
                     ? cases.deathIncrease.toLocaleString("en", {
