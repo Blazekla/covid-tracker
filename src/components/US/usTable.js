@@ -107,50 +107,50 @@ function USTable({
                 key={cases.date}
                 className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
               >
-                <td className="text-left border-r-4 bg-secondary-main border-white px-1 sticky left-0">
+                <td className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0">
                   {cases.date}
                 </td>
-                <td className="border-r-4 border-white px-1">
+                <td className="border-r-4 border-white p-2">
                   {cases.positive != null
                     ? cases.positive.toLocaleString("en", { useGrouping: true })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white px-1">
+                <td className="border-r-4 border-white p-2">
                   {cases.positiveIncrease != null
                     ? cases.positiveIncrease.toLocaleString("en", {
                         useGrouping: true,
                       })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white px-1">
+                <td className="border-r-4 border-white p-2">
                   {cases.death != null
                     ? cases.death.toLocaleString("en", {
                         useGrouping: true,
                       })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white px-1">
+                <td className="border-r-4 border-white p-2">
                   {cases.deathIncrease != null
                     ? cases.deathIncrease.toLocaleString("en", {
                         useGrouping: true,
                       })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white px-1">
+                <td className="border-r-4 border-white p-2">
                   {cases.totalTestResults != null
                     ? cases.totalTestResults.toLocaleString("en", {
                         useGrouping: true,
                       })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white px-1">
+                <td className="border-r-4 border-white p-2">
                   {cases.totalTestResultsIncrease != null
                     ? cases.totalTestResultsIncrease.toLocaleString("en", {
                         useGrouping: true,
                       })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white px-1">
+                <td className="border-r-4 border-white p-2">
                   {cases.hospitalizedCurrently != null
                     ? cases.hospitalizedCurrently.toLocaleString("en", {
                         useGrouping: true,
