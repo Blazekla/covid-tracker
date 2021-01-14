@@ -3,6 +3,8 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Layout from "./components/Layout";
 import Intro from "./components/intro";
 import "./assets/css/tailwind.css";
+
+import World from "./components/World";
 import US from "./components/US/usPage";
 import State from "./components/State/statePage";
 
@@ -10,6 +12,14 @@ function App() {
   return (
     <Layout>
       <div className="flex justify-center py-8">
+        <NavLink
+          to="/world"
+          className="p-4 rounded-full border-solid border-2 border-primary-light text-white"
+          activeClassName="underline bg-primary-light"
+          aria-label="See US Numbers"
+        >
+          World Data
+        </NavLink>
         <NavLink
           to="/us"
           className="p-4 rounded-full border-solid border-2 border-primary-light text-white"
@@ -29,6 +39,9 @@ function App() {
       </div>
       <div className="py-4">
         <Switch>
+          <Route path="/world">
+            <World />
+          </Route>
           <Route path="/us">
             <US />
           </Route>
