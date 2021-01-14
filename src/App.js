@@ -11,10 +11,10 @@ import State from "./components/State/statePage";
 function App() {
   return (
     <Layout>
-      <div className="flex justify-center py-8">
+      <div className="flex flex-wrap justify-center py-8 mx-2 sm:mx-4">
         <NavLink
           to="/world"
-          className="p-4 rounded-full border-solid border-2 border-primary-light text-white"
+          className="p-4 rounded-full border-solid border-2 border-primary-light text-white m-4"
           activeClassName="underline bg-primary-light"
           aria-label="See US Numbers"
         >
@@ -22,7 +22,7 @@ function App() {
         </NavLink>
         <NavLink
           to="/us"
-          className="p-4 rounded-full border-solid border-2 border-primary-light text-white"
+          className="p-4 rounded-full border-solid border-2 border-primary-light text-white m-4"
           activeClassName="underline bg-primary-light"
           aria-label="See US Numbers"
         >
@@ -30,7 +30,7 @@ function App() {
         </NavLink>
         <NavLink
           to="/state"
-          className="p-4 rounded-full border-solid border-2 border-primary-light text-white"
+          className="p-4 rounded-full border-solid border-2 border-primary-light text-white m-4"
           activeClassName="underline bg-primary-light"
           aria-label="See State's Numbers"
         >
