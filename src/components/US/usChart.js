@@ -21,7 +21,7 @@ function USChart({ timeframe }) {
 
         setSkeleton(false);
         data.data.forEach((item) => {
-          item.date = DateTime.fromISO(item.date).toFormat("LLL d");
+          item.date = DateTime.fromISO(item.date).toFormat("LLL d yyyy");
         });
         setTotalCases(data.data.reverse());
       } catch (error) {
