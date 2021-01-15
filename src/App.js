@@ -4,26 +4,17 @@ import Layout from "./components/Layout";
 import Intro from "./components/intro";
 import "./assets/css/tailwind.css";
 
-import World from "./components/World";
+// import World from "./components/World";
 import CTP from "./CovidTrackingProject";
+import Worldometer from "./Worldometer";
 
 function App() {
   return (
     <Layout>
-      <div className="flex flex-wrap justify-center py-8 mx-2 sm:mx-4">
-        <NavLink
-          to="/world"
-          className="p-4 rounded-full border-solid border-2 border-primary-light text-white m-4"
-          activeClassName="underline bg-primary-light"
-          aria-label="See US Numbers"
-        >
-          World Data
-        </NavLink>
-      </div>
       <div className="py-4">
         <Switch>
-          <Route path="/world">
-            <World />
+          <Route path="/worldometer">
+            <Worldometer />
           </Route>
           <Route path="/covidtrackingproject">
             <CTP />
