@@ -29,20 +29,18 @@ function WorldPage() {
   if (totalCases) {
     console.log("data retrieved: ", totalCases);
   }
-  console.log("howdy");
   return (
-    <div className="text-white px-4">
-      <div className="text-white">Page for the Worldometer data</div>
-      {skeletonLoader && <div>Loading</div>}
-      {totalCases && (
-        <WorldTable
-          totalCases={totalCases}
-          sortedData={totalCases}
-          // sortedField={sortedField}
-          // handleTableHeaderClick={handleTableHeaderClick}
-          skeleton={skeletonLoader}
-        />
-      )}
+    <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
+      {/* {skeletonLoader && <div>Loading</div>} */}
+      {/* {totalCases && ( */}
+      <WorldTable
+        totalCases={totalCases}
+        sortedData={totalCases}
+        // sortedField={sortedField}
+        // handleTableHeaderClick={handleTableHeaderClick}
+        skeleton={skeletonLoader}
+      />
+      {/* )} */}
     </div>
   );
 }
