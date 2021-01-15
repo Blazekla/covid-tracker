@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WorldTable from "./worldTable";
-// import { DateTime } from "luxon";
+import { DateTime } from "luxon";
 
 function WorldPage() {
   const [totalCases, setTotalCases] = useState(null);
@@ -16,7 +16,10 @@ function WorldPage() {
           `https://disease.sh/v3/covid-19/countries`
         );
         setSkeletonLoader(false);
-        setTotalCases(data);
+        data.data.forEach((item) => {
+          item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
+        });
+        setTotalCases(data.data);
       } catch (err) {
         console.error(err.message);
       }
@@ -28,7 +31,7 @@ function WorldPage() {
   }
   console.log("howdy");
   return (
-    <div className="text-white">
+    <div className="text-white px-4">
       <div className="text-white">Page for the Worldometer data</div>
       {skeletonLoader && <div>Loading</div>}
       {totalCases && <WorldTable />}
