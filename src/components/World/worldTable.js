@@ -1,13 +1,12 @@
 import React from "react";
 
-// {
-//   totalCases,
-//   sortedData,
-//   sortedField,
-//   handleTableHeaderClick,
-//   skeleton,
-// }
-function WorldTable({ totalCases, sortedData, skeleton }) {
+function WorldTable({
+  totalCases,
+  sortedData,
+  skeleton,
+  sortedField,
+  handleTableHeaderClick,
+}) {
   // const
   //  checkSorting = (value) => {
   //   if (sortedField && sortedField.key === value) {
@@ -53,70 +52,70 @@ function WorldTable({ totalCases, sortedData, skeleton }) {
         <tr>
           <th
             className="sticky top-0 left-0 z-10 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("rawDate")}
+            onClick={() => handleTableHeaderClick("country")}
           >
             Country
             {/* {checkSorting("rawDate")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("positive")}
+            onClick={() => handleTableHeaderClick("cases")}
           >
             Total Cases
             {/* {checkSorting("positive")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("positiveIncrease")}
+            onClick={() => handleTableHeaderClick("todayCases")}
           >
             New Cases
             {/* {checkSorting("positiveIncrease")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("death")}
+            onClick={() => handleTableHeaderClick("deaths")}
           >
             Total Deaths
             {/* {checkSorting("death")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("deathIncrease")}
+            onClick={() => handleTableHeaderClick("todayDeaths")}
           >
             New Deaths
             {/* {checkSorting("deathIncrease")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("totalTestResults")}
+            onClick={() => handleTableHeaderClick("tests")}
           >
             Total Tests
             {/* {checkSorting("totalTestResults")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("totalTestResultsIncrease")}
+            onClick={() => handleTableHeaderClick("active")}
           >
             Active Cases
             {/* {checkSorting("totalTestResultsIncrease")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
+            onClick={() => handleTableHeaderClick("critical")}
           >
             Serious, Critical
             {/* {checkSorting("hospitalizedCurrently")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
+            onClick={() => handleTableHeaderClick("recovered")}
           >
             Total Recovered
             {/* {checkSorting("hospitalizedCurrently")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
+            onClick={() => handleTableHeaderClick("todayRecovered")}
           >
             Today Recovered
             {/* {checkSorting("hospitalizedCurrently")} */}
