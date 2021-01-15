@@ -4,7 +4,6 @@ import Layout from "./components/Layout";
 import Intro from "./components/intro";
 import "./assets/css/tailwind.css";
 
-// import World from "./components/World";
 import CTP from "./CovidTrackingProject";
 import Worldometer from "./Worldometer";
 import NotFoundPage from "./404";

@@ -31,13 +31,9 @@ function WorldPage() {
   }
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
-      {/* {skeletonLoader && <div>Loading</div>} */}
-      {/* {totalCases && ( */}
       <WorldTable
         totalCases={totalCases}
         sortedData={totalCases}
-        // sortedField={sortedField}
-        // handleTableHeaderClick={handleTableHeaderClick}
         skeleton={skeletonLoader}
       />
       {/* )} */}
