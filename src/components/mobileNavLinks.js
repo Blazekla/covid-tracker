@@ -24,10 +24,10 @@ function MobileNavLinks({ toggle }) {
   }, [toggle]);
   return (
     <>
-      <div className="absolute z-20 left-0 top-0 w-screen h-screen flex items-center flex-col bg-primary-light justify-between py-32">
+      <div className="absolute z-20 left-0 top-0 w-screen h-screen flex items-center flex-col bg-primary-light justify-center py-32">
         <NavLink
           to="/covidtrackingproject"
-          className="px-4"
+          className="mx-4 my-8"
           activeClassName="border-b-2 border-secondary-main"
           onClick={toggle}
         >
@@ -35,7 +35,7 @@ function MobileNavLinks({ toggle }) {
         </NavLink>
         <NavLink
           to="/worldometer"
-          className="px-4"
+          className="mx-4 my-8"
           activeClassName="border-b-2 border-secondary-main"
           onClick={toggle}
         >
