@@ -34,7 +34,15 @@ function WorldPage() {
     <div className="text-white px-4">
       <div className="text-white">Page for the Worldometer data</div>
       {skeletonLoader && <div>Loading</div>}
-      {totalCases && <WorldTable />}
+      {totalCases && (
+        <WorldTable
+          totalCases={totalCases}
+          sortedData={totalCases}
+          // sortedField={sortedField}
+          // handleTableHeaderClick={handleTableHeaderClick}
+          skeleton={skeletonLoader}
+        />
+      )}
     </div>
   );
 }
