@@ -2,7 +2,7 @@ import React from "react";
 
 function Intro() {
   return (
-    <div className="container mx-auto px-2 sm:px-4">
+    <div className="container mx-auto px-2 sm:px-4 text-center mt-16">
       <div className="text-white">
         This app currently consumes data from both{" "}
         <span>
