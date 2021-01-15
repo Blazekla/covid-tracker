@@ -10,6 +10,9 @@ function Layout({ children }) {
         <NavLink to="/">
           <h1 className="text-4xl text-white">Covid Tracker</h1>
         </NavLink>
+        <NavLink to="/covidtrackingproject">
+          <h1 className="text-4xl text-white">Covid Tracking Project API</h1>
+        </NavLink>
       </Header>
       <main className="min-h-screen">{children}</main>
       <Footer>
