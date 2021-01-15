@@ -10,9 +10,22 @@ function Layout({ children }) {
         <NavLink to="/">
           <h1 className="text-4xl text-white">Covid Tracker</h1>
         </NavLink>
-        <NavLink to="/covidtrackingproject">
-          <h1 className="text-4xl text-white">Covid Tracking Project API</h1>
-        </NavLink>
+        <div className="flex justify-between">
+          <NavLink
+            to="/covidtrackingproject"
+            className="px-4"
+            activeClassName="border-b-2 border-secondary-main"
+          >
+            <p className="text-white">Covid Tracking Project API</p>
+          </NavLink>
+          <NavLink
+            to="/worldometer"
+            className="px-4"
+            activeClassName="border-b-2 border-secondary-main"
+          >
+            <p className="text-white">Worldometer</p>
+          </NavLink>
+        </div>
       </Header>
       <main className="min-h-screen">{children}</main>
       <Footer>
