@@ -55,13 +55,6 @@ function WorldTable({ totalCases, sortedData, skeleton }) {
             className="sticky top-0 left-0 z-10 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("rawDate")}
           >
-            Date
-            {/* {checkSorting("rawDate")} */}
-          </th>
-          <th
-            className="sticky top-0 left-0 z-10 bg-secondary-main px-2 cursor-pointer"
-            // onClick={() => handleTableHeaderClick("rawDate")}
-          >
             Country
             {/* {checkSorting("rawDate")} */}
           </th>
@@ -138,9 +131,6 @@ function WorldTable({ totalCases, sortedData, skeleton }) {
                 key={cases.date + id}
                 className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
               >
-                <td className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0">
-                  {cases.date}
-                </td>
                 <td className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0">
                   {cases.country}
                 </td>
