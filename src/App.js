@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Intro from "./components/intro";
 import "./assets/css/tailwind.css";
@@ -7,6 +7,7 @@ import "./assets/css/tailwind.css";
 // import World from "./components/World";
 import CTP from "./CovidTrackingProject";
 import Worldometer from "./Worldometer";
+import NotFoundPage from "./404";
 
 function App() {
   return (
@@ -19,8 +20,11 @@ function App() {
           <Route path="/covidtrackingproject">
             <CTP />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Intro />
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
           </Route>
         </Switch>
       </div>
