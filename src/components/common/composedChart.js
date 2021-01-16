@@ -166,7 +166,7 @@ function composedChart({
             }
             name={displayMessage()}
             barSize={20}
-            className="fill-current text-primary-light"
+            fill="#377564"
           />
         )}
       </ComposedChart>
