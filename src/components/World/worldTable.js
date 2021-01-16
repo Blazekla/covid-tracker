@@ -129,7 +129,10 @@ function WorldTable({
                 key={cases.date + id}
                 className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
               >
-                <td className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0">
+                <td
+                  className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0"
+                  style={{ maxWidth: "120px" }}
+                >
                   {cases.country}
                 </td>
                 <td className="border-r-4 border-white p-2">
