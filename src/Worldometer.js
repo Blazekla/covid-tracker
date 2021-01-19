@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Route, useRouteMatch } from "react-router-dom";
-import World from "./components/World";
+import World from "./components/Worldometer";
 
 function Worldometer() {
   const { path, url } = useRouteMatch();
