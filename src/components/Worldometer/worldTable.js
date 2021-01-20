@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 
 function WorldTable({
   totalCases,
@@ -7,6 +8,7 @@ function WorldTable({
   sortedField,
   handleTableHeaderClick,
 }) {
+  const { path, url } = useRouteMatch();
   const checkSorting = (value) => {
     if (sortedField && sortedField.key === value) {
       if (sortedField.direction === "ascending") {
@@ -133,7 +135,15 @@ function WorldTable({
                   className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0"
                   style={{ maxWidth: "120px" }}
                 >
-                  {cases.country}
+                  <Link
+                    to={{
+                      pathname: `${url}/${cases.country}`,
+                      state: { test: cases.country },
+                    }}
+                    aria-label={`See ${cases.country} numbers`}
+                  >
+                    {cases.country}
+                  </Link>
                 </td>
                 <td className="border-r-4 border-white p-2">
                   {cases.cases != null

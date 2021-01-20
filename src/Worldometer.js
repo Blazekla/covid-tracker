@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Route, useRouteMatch } from "react-router-dom";
 import World from "./components/Worldometer";
+import Country from "./components/Worldometer/country";
 
 function Worldometer() {
   const { path, url } = useRouteMatch();
@@ -16,7 +17,12 @@ function Worldometer() {
           World Data
         </NavLink>
       </div>
-      <Route path={`${path}/world`}>
+      <Route
+        path={`${path}/world/:country`}
+        render={(props) => <Country {...props} />}
+      />
+
+      <Route exact path={`${path}/world`}>
         <World />
       </Route>
     </>

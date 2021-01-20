@@ -2,12 +2,14 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
 // import WorldTable from "./worldTable";
+import { useLocation, useParams } from "react-router-dom";
 
-function CountryPage({ state, test, ...props }) {
+function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const [skeletonLoader, setSkeletonLoader] = useState(true);
-
+  const location = useLocation();
+  const params = useParams();
   //   useEffect(() => {
   //     async function fetchWorldOMeter() {
   //       try {
@@ -75,13 +77,15 @@ function CountryPage({ state, test, ...props }) {
   //     }
   //   }, [sortedField, totalCases]);
 
-  // ****** //
-  console.log("test: ", test);
-  console.log("state: ", state);
+  // // ****** //
+  // console.log("test: ", test);
+  // console.log("state: ", state);
   console.log("props: ", props);
+  console.log("locationstate : ", location);
+  console.log("params state: ", params);
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
-      <div className="flex mb-8">
+      {/* <div className="flex mb-8">
         <button
           className={`px-2 rounded-full ${
             dates === "" ? "bg-primary-light" : null
@@ -106,8 +110,8 @@ function CountryPage({ state, test, ...props }) {
         >
           2 Days Ago
         </button>
-      </div>
-      <div>New Page ya'll</div>
+      </div> */}
+      <div>{params.country}</div>
       {/* <WorldTable
         totalCases={totalCases}
         sortedData={sortedData}
