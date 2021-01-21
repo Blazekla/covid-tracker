@@ -43,17 +43,21 @@ function Worldometer(props) {
             </div>
           )}
         />
-        <Route exact path={`${path}/world/usa`}>
-          <div className="text-white">USA Page!</div>
-        </Route>
+        <Route
+          exact
+          path={`${path}/world/usa`}
+          render={(props) => {
+            return <Country usa {...props} />;
+          }}
+        />
+        {/* <Country country="USA" />
+        </Route> */}
         <Route
           exact
           path={`${path}/world/:country/`}
-          render={(props) => (
-            <div className="text-white">
-              API data for {props.match.params.country}
-            </div>
-          )}
+          render={(props) => {
+            return <Country {...props} />;
+          }}
         />
         <Route exact path={`${path}/world`}>
           <World />

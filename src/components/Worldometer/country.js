@@ -2,33 +2,35 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
 // import WorldTable from "./worldTable";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const [skeletonLoader, setSkeletonLoader] = useState(true);
-  const location = useLocation();
   const params = useParams();
-  //   useEffect(() => {
-  //     async function fetchWorldOMeter() {
-  //       try {
-  //         setSkeletonLoader(true);
-  //         setTotalCases(null);
-  //         const data = await axios.get(
-  //           `https://disease.sh/v3/covid-19/countries${dates}`
-  //         );
-  //         setSkeletonLoader(false);
-  //         data.data.forEach((item) => {
-  //           item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
-  //         });
-  //         setTotalCases(data.data);
-  //       } catch (err) {
-  //         console.error(err.message);
-  //       }
-  //     }
-  //     fetchWorldOMeter();
-  //   }, [dates]);
+  useEffect(() => {
+    async function fetchWorldOMeter() {
+      try {
+        setSkeletonLoader(true);
+        setTotalCases(null);
+        const data = await axios.get(
+          `https://disease.sh/v3/covid-19/countries/${
+            props.usa ? "usa" : params.country
+          }${dates}`
+        );
+        setSkeletonLoader(false);
+        // data.data.forEach((item) => {
+        //   item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
+        // });
+        setTotalCases(data.data);
+        console.log("inside useEffect: ", data.data);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
+    fetchWorldOMeter();
+  }, [dates, params.country, props.usa]);
 
   //   // ****** //
   //   const [sortedField, setSortedField] = useState(null);
@@ -81,11 +83,13 @@ function CountryPage(props) {
   // console.log("test: ", test);
   // console.log("state: ", state);
   console.log("props: ", props);
-  console.log("locationstate : ", location);
   console.log("params state: ", params);
+  if (totalCases) {
+    console.log("data retrieved: ", totalCases);
+  }
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
-      {/* <div className="flex mb-8">
+      <div className="flex mb-8">
         <button
           className={`px-2 rounded-full ${
             dates === "" ? "bg-primary-light" : null
@@ -110,8 +114,13 @@ function CountryPage(props) {
         >
           2 Days Ago
         </button>
-      </div> */}
-      <div>{params.country}</div>
+      </div>
+      {totalCases &&
+        (props.usa ? (
+          <div className="text-white">USA! USA! USA! USA!</div>
+        ) : (
+          <Country name={params.country} data={totalCases} />
+        ))}
       {/* <WorldTable
         totalCases={totalCases}
         sortedData={sortedData}
@@ -124,4 +133,19 @@ function CountryPage(props) {
   );
 }
 
+const Country = ({ name, data }) => (
+  <>
+    <div>
+      <p>{name} was passed</p>
+      <div>
+        <p>Cases: {data.cases}</p>
+        <p>Deaths: {data.deaths}</p>
+        <p>Critical: {data.critical}</p>
+        <p>todayCases: {data.todayCases}</p>
+        <p>Recovered: {data.recovered}</p>
+        <p>Population: {data.population}</p>
+      </div>
+    </div>
+  </>
+);
 export default CountryPage;
