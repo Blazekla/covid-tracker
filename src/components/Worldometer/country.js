@@ -2,23 +2,26 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
 // import WorldTable from "./worldTable";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const [skeletonLoader, setSkeletonLoader] = useState(true);
   const params = useParams();
+  const history = useHistory();
   useEffect(() => {
     async function fetchWorldOMeter() {
       try {
         setSkeletonLoader(true);
         setTotalCases(null);
+        console.log("before axios");
         const data = await axios.get(
           `https://disease.sh/v3/covid-19/countries/${
             props.usa ? "usa" : params.country
           }${dates}`
         );
+        console.log("after axios");
         setSkeletonLoader(false);
         // data.data.forEach((item) => {
         //   item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
@@ -26,7 +29,9 @@ function CountryPage(props) {
         setTotalCases(data.data);
         console.log("inside useEffect: ", data.data);
       } catch (err) {
-        console.error(err.message);
+        console.log("error occurred: ", err.response);
+        console.error("hihi: ", err.message);
+        history.push("/404");
       }
     }
     fetchWorldOMeter();
@@ -115,12 +120,15 @@ function CountryPage(props) {
           2 Days Ago
         </button>
       </div>
-      {totalCases &&
-        (props.usa ? (
+      {totalCases ? (
+        props.usa ? (
           <div className="text-white">USA! USA! USA! USA!</div>
         ) : (
-          <Country name={params.country} data={totalCases} />
-        ))}
+          <CountryStats name={params.country} data={totalCases} />
+        )
+      ) : (
+        <div className="text-white">Fetching Data.....</div>
+      )}
       {/* <WorldTable
         totalCases={totalCases}
         sortedData={sortedData}
@@ -133,10 +141,10 @@ function CountryPage(props) {
   );
 }
 
-const Country = ({ name, data }) => (
+const CountryStats = ({ name, data }) => (
   <>
     <div>
-      <p>{name} was passed</p>
+      <h2 className="text-xl">{data.country} Data</h2>
       <div>
         <p>Cases: {data.cases}</p>
         <p>Deaths: {data.deaths}</p>

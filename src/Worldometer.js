@@ -9,9 +9,8 @@ import {
 import World from "./components/Worldometer";
 import Country from "./components/Worldometer/country";
 
-function Worldometer(props) {
+function Worldometer() {
   const { path, url } = useRouteMatch();
-  console.log("worldometer props: ", props);
   return (
     <>
       <div className="flex flex-wrap justify-center py-8 mx-2 sm:mx-4">
@@ -50,8 +49,6 @@ function Worldometer(props) {
             return <Country usa {...props} />;
           }}
         />
-        {/* <Country country="USA" />
-        </Route> */}
         <Route
           exact
           path={`${path}/world/:country/`}
