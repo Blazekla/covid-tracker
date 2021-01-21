@@ -19,15 +19,12 @@ function CountryPage(props) {
     async function fetchWorldOMeter() {
       try {
         setTotalCases(null);
-        const apiEnpoint = props.usa
-          ? `https://disease.sh/v3/covid-19/states?sort=cases`
-          : `https://disease.sh/v3/covid-19/countries/${params.country}${dates}`;
+        const apiEnpoint = `https://disease.sh/v3/covid-19/countries/${params.country}${dates}`;
         const data = await axios.get(apiEnpoint);
         setTotalCases(data.data);
         console.log("inside useEffect: ", data.data);
       } catch (err) {
-        console.log("error occurred: ", err.response);
-        console.error("hihi: ", err.message);
+        console.error(err.message);
         setError(err.response.data.message);
         // history.push("/404");
       }
