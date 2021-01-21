@@ -136,10 +136,7 @@ function WorldTable({
                   style={{ maxWidth: "120px" }}
                 >
                   <Link
-                    to={{
-                      pathname: `${url}/${cases.country}`,
-                      state: { test: cases.country },
-                    }}
+                    to={`${url}/${cases.country}`}
                     aria-label={`See ${cases.country} numbers`}
                   >
                     {cases.country}
