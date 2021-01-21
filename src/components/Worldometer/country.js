@@ -8,6 +8,7 @@ function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const [skeletonLoader, setSkeletonLoader] = useState(true);
+  const [error, setError] = useState(null);
   const params = useParams();
   const history = useHistory();
   useEffect(() => {
@@ -15,13 +16,11 @@ function CountryPage(props) {
       try {
         setSkeletonLoader(true);
         setTotalCases(null);
-        console.log("before axios");
         const data = await axios.get(
           `https://disease.sh/v3/covid-19/countries/${
             props.usa ? "usa" : params.country
           }${dates}`
         );
-        console.log("after axios");
         setSkeletonLoader(false);
         // data.data.forEach((item) => {
         //   item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
@@ -31,7 +30,8 @@ function CountryPage(props) {
       } catch (err) {
         console.log("error occurred: ", err.response);
         console.error("hihi: ", err.message);
-        history.push("/404");
+        setError(err.response.data.message);
+        // history.push("/404");
       }
     }
     fetchWorldOMeter();
@@ -126,8 +126,12 @@ function CountryPage(props) {
         ) : (
           <CountryStats name={params.country} data={totalCases} />
         )
+      ) : error ? (
+        <div>{error}</div>
       ) : (
-        <div className="text-white">Fetching Data.....</div>
+        <>
+          <div className="text-white">Fetching Data.....</div>
+        </>
       )}
       {/* <WorldTable
         totalCases={totalCases}
