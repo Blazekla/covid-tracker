@@ -4,39 +4,25 @@ import React, {
   //  useMemo
 } from "react";
 import axios from "axios";
-// import { DateTime } from "luxon";
-// import WorldTable from "./worldTable";
 import {
   useParams,
   //  useHistory
 } from "react-router-dom";
-// import USTable from "./usTable";
 
 function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
-  // const [skeletonLoader, setSkeletonLoader] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
   // const history = useHistory();
   useEffect(() => {
     async function fetchWorldOMeter() {
       try {
-        // setSkeletonLoader(true);
         setTotalCases(null);
         const apiEnpoint = props.usa
           ? `https://disease.sh/v3/covid-19/states?sort=cases`
           : `https://disease.sh/v3/covid-19/countries/${params.country}${dates}`;
         const data = await axios.get(apiEnpoint);
-        // const data = await axios.get(
-        //   `https://disease.sh/v3/covid-19/countries/${
-        //     props.usa ? "usa" : params.country
-        //   }${dates}`
-        // );
-        // setSkeletonLoader(false);
-        // data.data.forEach((item) => {
-        //   item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
-        // });
         setTotalCases(data.data);
         console.log("inside useEffect: ", data.data);
       } catch (err) {
@@ -49,56 +35,6 @@ function CountryPage(props) {
     fetchWorldOMeter();
   }, [dates, params.country, props.usa]);
 
-  //   // ****** //
-  //   const [sortedField, setSortedField] = useState(null);
-  //   const handleTableHeaderClick = (name) => {
-  //     requestSort(name);
-  //   };
-
-  //   const requestSort = (key) => {
-  //     let direction = "ascending";
-  //     if (
-  //       sortedField &&
-  //       sortedField.key === key &&
-  //       sortedField.direction === "ascending"
-  //     ) {
-  //       direction = "descending";
-  //     }
-  //     setSortedField({ key, direction });
-  //   };
-  //   let sortedData = useMemo(() => {
-  //     if (totalCases && sortedField !== null) {
-  //       const data = [...totalCases];
-  //       data.sort((a, b) => {
-  //         if (a[sortedField.key] < b[sortedField.key]) {
-  //           return sortedField.direction === "ascending" ? -1 : 1;
-  //         }
-  //         if (a[sortedField.key] > b[sortedField.key]) {
-  //           return sortedField.direction === "ascending" ? 1 : -1;
-  //         }
-  //         return 0;
-  //       });
-  //       return data;
-  //     } else if (totalCases) {
-  //       const data = [...totalCases];
-  //       data.sort((a, b) => {
-  //         if (a["cases"] < b["cases"]) {
-  //           return 1;
-  //         }
-  //         if (a["cases"] > b["cases"]) {
-  //           return -1;
-  //         }
-  //         return 0;
-  //       });
-  //       return data;
-  //     } else {
-  //       return null;
-  //     }
-  //   }, [sortedField, totalCases]);
-
-  // // ****** //
-  // console.log("test: ", test);
-  // console.log("state: ", state);
   console.log("props: ", props);
   console.log("params state: ", params);
   if (totalCases) {
@@ -133,19 +69,7 @@ function CountryPage(props) {
         </button>
       </div>
       {totalCases ? (
-        props.usa ? (
-          <>
-            <div className="text-white">USA! USA! USA! USA!</div>
-            {/* <USTable
-              totalCases={totalCases}
-              sortedData={totalCases}
-              sortedField=""
-              // handleTableHeaderClick={}
-            /> */}
-          </>
-        ) : (
-          <CountryStats name={params.country} data={totalCases} />
-        )
+        <CountryStats name={params.country} data={totalCases} />
       ) : error ? (
         <div>{error}</div>
       ) : (
@@ -153,15 +77,6 @@ function CountryPage(props) {
           <div className="text-white">Fetching Data.....</div>
         </>
       )}
-
-      {/* <WorldTable
-        totalCases={totalCases}
-        sortedData={sortedData}
-        skeleton={skeletonLoader}
-        sortedField={sortedField}
-        handleTableHeaderClick={handleTableHeaderClick}
-      /> */}
-      {/* )} */}
     </div>
   );
 }
