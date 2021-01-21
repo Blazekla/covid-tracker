@@ -4,9 +4,9 @@ import { Link, useRouteMatch } from "react-router-dom";
 function WorldTable({
   totalCases,
   sortedData,
-  skeleton,
+  //   skeleton,
   sortedField,
-  handleTableHeaderClick,
+  //   handleTableHeaderClick,
 }) {
   const { path, url } = useRouteMatch();
   const checkSorting = (value) => {
@@ -46,7 +46,7 @@ function WorldTable({
   return (
     <table
       className={`table-auto border-collapse overflow-x-auto block w-full ${
-        totalCases && !skeleton ? "calculate-100" : null
+        totalCases ? "calculate-100" : null
       } overflow-y-auto`}
     >
       <thead className="text-white">
@@ -111,7 +111,7 @@ function WorldTable({
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("critical")}
           >
-            Cased Per One Million
+            Cases Per One Million
             {checkSorting("casesPerOneMillion")}
           </th>
           <th
@@ -137,7 +137,7 @@ function WorldTable({
           </th>
         </tr>
       </thead>
-      {sortedData && !skeleton ? (
+      {sortedData ? (
         <tbody className="text-white">
           {sortedData.map((cases, id) => {
             return (
@@ -150,8 +150,8 @@ function WorldTable({
                   style={{ maxWidth: "120px" }}
                 >
                   <Link
-                    to={`${url}/${cases.country}`}
-                    aria-label={`See ${cases.country} numbers`}
+                    to={`${url}/${cases.state}`}
+                    aria-label={`See ${cases.state} numbers`}
                   >
                     {cases.state}
                   </Link>

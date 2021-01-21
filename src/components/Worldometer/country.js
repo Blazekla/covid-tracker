@@ -1,27 +1,39 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  //  useMemo
+} from "react";
 import axios from "axios";
-import { DateTime } from "luxon";
+// import { DateTime } from "luxon";
 // import WorldTable from "./worldTable";
-import { useParams, useHistory } from "react-router-dom";
+import {
+  useParams,
+  //  useHistory
+} from "react-router-dom";
+import USTable from "./usTable";
 
 function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
-  const [skeletonLoader, setSkeletonLoader] = useState(true);
+  // const [skeletonLoader, setSkeletonLoader] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
-  const history = useHistory();
+  // const history = useHistory();
   useEffect(() => {
     async function fetchWorldOMeter() {
       try {
-        setSkeletonLoader(true);
+        // setSkeletonLoader(true);
         setTotalCases(null);
-        const data = await axios.get(
-          `https://disease.sh/v3/covid-19/countries/${
-            props.usa ? "usa" : params.country
-          }${dates}`
-        );
-        setSkeletonLoader(false);
+        const apiEnpoint = props.usa
+          ? `https://disease.sh/v3/covid-19/states?sort=cases`
+          : `https://disease.sh/v3/covid-19/countries/${params.country}${dates}`;
+        const data = await axios.get(apiEnpoint);
+        // const data = await axios.get(
+        //   `https://disease.sh/v3/covid-19/countries/${
+        //     props.usa ? "usa" : params.country
+        //   }${dates}`
+        // );
+        // setSkeletonLoader(false);
         // data.data.forEach((item) => {
         //   item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
         // });
@@ -122,7 +134,15 @@ function CountryPage(props) {
       </div>
       {totalCases ? (
         props.usa ? (
-          <div className="text-white">USA! USA! USA! USA!</div>
+          <>
+            <div className="text-white">USA! USA! USA! USA!</div>
+            <USTable
+              totalCases={totalCases}
+              sortedData={totalCases}
+              sortedField=""
+              // handleTableHeaderClick={}
+            />
+          </>
         ) : (
           <CountryStats name={params.country} data={totalCases} />
         )
@@ -133,6 +153,7 @@ function CountryPage(props) {
           <div className="text-white">Fetching Data.....</div>
         </>
       )}
+
       {/* <WorldTable
         totalCases={totalCases}
         sortedData={sortedData}
