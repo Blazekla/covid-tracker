@@ -1,47 +1,77 @@
-import React from "react";
+import React, {
+  useState,
+  useEffect,
+  //  useMemo
+} from "react";
+import axios from "axios";
 import { Link, useRouteMatch } from "react-router-dom";
 
-function WorldTable({
-  totalCases,
-  sortedData,
-  //   skeleton,
-  sortedField,
-  //   handleTableHeaderClick,
-}) {
-  const { path, url } = useRouteMatch();
-  const checkSorting = (value) => {
-    if (sortedField && sortedField.key === value) {
-      if (sortedField.direction === "ascending") {
-        return (
-          <svg
-            focusable="false"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="#fff"
-            width="20"
-            height="20"
-          >
-            <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-          </svg>
-        );
-      } else if (sortedField.direction === "descending") {
-        return (
-          <svg
-            focusable="false"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="#fff"
-            width="20"
-            height="20"
-          >
-            <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
-          </svg>
-        );
+function WorldTable() {
+  const [totalCases, setTotalCases] = useState(null);
+  const [dates, setDates] = useState("");
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    async function fetchWorldOMeter() {
+      try {
+        // setSkeletonLoader(true);
+        setTotalCases(null);
+        const apiEnpoint = `https://disease.sh/v3/covid-19/states?sort=cases`;
+        const data = await axios.get(apiEnpoint);
+        // const data = await axios.get(
+        //   `https://disease.sh/v3/covid-19/countries/${
+        //     props.usa ? "usa" : params.country
+        //   }${dates}`
+        // );
+        // setSkeletonLoader(false);
+        // data.data.forEach((item) => {
+        //   item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
+        // });
+        setTotalCases(data.data);
+        console.log("inside useEffect: ", data.data);
+      } catch (err) {
+        console.log("error occurred: ", err.response);
+        console.error("hihi: ", err.message);
+        setError(err.response.data.message);
+        // history.push("/404");
       }
     }
+    fetchWorldOMeter();
+  }, [dates]);
 
-    return null;
-  };
+  const { path, url } = useRouteMatch();
+  // const checkSorting = (value) => {
+  //     if (sortedField && sortedField.key === value) {
+  //       if (sortedField.direction === "ascending") {
+  //         return (
+  //           <svg
+  //             focusable="false"
+  //             viewBox="0 0 24 24"
+  //             aria-hidden="true"
+  //             fill="#fff"
+  //             width="20"
+  //             height="20"
+  //           >
+  //             <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
+  //           </svg>
+  //         );
+  //       } else if (sortedField.direction === "descending") {
+  //         return (
+  //           <svg
+  //             focusable="false"
+  //             viewBox="0 0 24 24"
+  //             aria-hidden="true"
+  //             fill="#fff"
+  //             width="20"
+  //             height="20"
+  //           >
+  //             <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
+  //           </svg>
+  //         );
+  //       }
+  //     }
+
+  //     return null;
+  //   };
 
   return (
     <table
@@ -56,90 +86,90 @@ function WorldTable({
             // onClick={() => handleTableHeaderClick("country")}
           >
             State
-            {checkSorting("state")}
+            {/* {checkSorting("state")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("cases")}
           >
             Total Cases
-            {checkSorting("cases")}
+            {/* {checkSorting("cases")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("todayCases")}
           >
             New Cases
-            {checkSorting("todayCases")}
+            {/* {checkSorting("todayCases")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("deaths")}
           >
             Total Deaths
-            {checkSorting("deaths")}
+            {/* {checkSorting("deaths")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("todayDeaths")}
           >
             New Deaths
-            {checkSorting("todayDeaths")}
+            {/* {checkSorting("todayDeaths")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("tests")}
           >
             Total Tests
-            {checkSorting("tests")}
+            {/* {checkSorting("tests")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("active")}
           >
             Active Cases
-            {checkSorting("active")}
+            {/* {checkSorting("active")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("recovered")}
           >
             Total Recovered
-            {checkSorting("recovered")}
+            {/* {checkSorting("recovered")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("critical")}
           >
             Cases Per One Million
-            {checkSorting("casesPerOneMillion")}
+            {/* {checkSorting("casesPerOneMillion")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("todayRecovered")}
           >
             Deaths Per One Million
-            {checkSorting("deathsPerOneMillion")}
+            {/* {checkSorting("deathsPerOneMillion")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("todayRecovered")}
           >
             Tests Per One Million
-            {checkSorting("testsPerOneMillion")}
+            {/* {checkSorting("testsPerOneMillion")} */}
           </th>
           <th
             className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
             // onClick={() => handleTableHeaderClick("todayRecovered")}
           >
             Population
-            {checkSorting("population")}
+            {/* {checkSorting("population")} */}
           </th>
         </tr>
       </thead>
-      {sortedData ? (
+      {totalCases ? (
         <tbody className="text-white">
-          {sortedData.map((cases, id) => {
+          {totalCases.map((cases, id) => {
             return (
               <tr
                 key={cases.state + id}

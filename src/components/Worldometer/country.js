@@ -10,7 +10,7 @@ import {
   useParams,
   //  useHistory
 } from "react-router-dom";
-import USTable from "./usTable";
+// import USTable from "./usTable";
 
 function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
@@ -136,12 +136,12 @@ function CountryPage(props) {
         props.usa ? (
           <>
             <div className="text-white">USA! USA! USA! USA!</div>
-            <USTable
+            {/* <USTable
               totalCases={totalCases}
               sortedData={totalCases}
               sortedField=""
               // handleTableHeaderClick={}
-            />
+            /> */}
           </>
         ) : (
           <CountryStats name={params.country} data={totalCases} />

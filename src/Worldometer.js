@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import World from "./components/Worldometer";
 import Country from "./components/Worldometer/country";
+import USTable from "./components/Worldometer/usTable";
 
 function Worldometer() {
   const { path, url } = useRouteMatch();
@@ -46,7 +47,7 @@ function Worldometer() {
           exact
           path={`${path}/world/usa`}
           render={(props) => {
-            return <Country usa {...props} />;
+            return <USTable usa {...props} />;
           }}
         />
         <Route
