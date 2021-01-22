@@ -1,20 +1,13 @@
-import React, {
-  useState,
-  useEffect,
-  //  useMemo
-} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  useParams,
-  //  useHistory
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const [error, setError] = useState(null);
   const params = useParams();
-  // const history = useHistory();
+
   useEffect(() => {
     async function fetchWorldOMeter() {
       try {
@@ -22,21 +15,14 @@ function CountryPage(props) {
         const apiEnpoint = `https://disease.sh/v3/covid-19/countries/${params.country}${dates}`;
         const data = await axios.get(apiEnpoint);
         setTotalCases(data.data);
-        console.log("inside useEffect: ", data.data);
       } catch (err) {
         console.error(err.message);
         setError(err.response.data.message);
-        // history.push("/404");
       }
     }
     fetchWorldOMeter();
   }, [dates, params.country, props.usa]);
 
-  console.log("props: ", props);
-  console.log("params state: ", params);
-  if (totalCases) {
-    console.log("data retrieved: ", totalCases);
-  }
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
       <div className="flex mb-8">
@@ -66,19 +52,19 @@ function CountryPage(props) {
         </button>
       </div>
       {totalCases ? (
-        <CountryStats name={params.country} data={totalCases} />
+        <CountryStats data={totalCases} />
       ) : error ? (
         <div>{error}</div>
       ) : (
         <>
-          <div className="text-white">Fetching Data.....</div>
+          <div className="text-white">Fetching {params.country} Data.....</div>
         </>
       )}
     </div>
   );
 }
 
-const CountryStats = ({ name, data }) => (
+const CountryStats = ({ data }) => (
   <>
     <div>
       <h2 className="text-xl">{data.country} Data</h2>
