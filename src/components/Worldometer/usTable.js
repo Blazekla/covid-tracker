@@ -9,36 +9,23 @@ import { Link, useRouteMatch } from "react-router-dom";
 function WorldTable() {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
-  const [error, setError] = useState(null);
+
   useEffect(() => {
     async function fetchWorldOMeter() {
       try {
-        // setSkeletonLoader(true);
         setTotalCases(null);
         const apiEnpoint = `https://disease.sh/v3/covid-19/states?sort=cases${dates}`;
         const data = await axios.get(apiEnpoint);
-        // const data = await axios.get(
-        //   `https://disease.sh/v3/covid-19/countries/${
-        //     props.usa ? "usa" : params.country
-        //   }${dates}`
-        // );
-        // setSkeletonLoader(false);
-        // data.data.forEach((item) => {
-        //   item.date = DateTime.fromMillis(item.updated).toFormat("LLL dd yyyy");
-        // });
         setTotalCases(data.data);
-        console.log("inside useEffect: ", data.data);
       } catch (err) {
         console.log("error occurred: ", err.response);
-        console.error("hihi: ", err.message);
-        setError(err.response.data.message);
-        // history.push("/404");
+        console.error(err.message);
       }
     }
     fetchWorldOMeter();
   }, [dates]);
 
-  const { path, url } = useRouteMatch();
+  const { url } = useRouteMatch();
   // const checkSorting = (value) => {
   //     if (sortedField && sortedField.key === value) {
   //       if (sortedField.direction === "ascending") {
