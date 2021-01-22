@@ -6,7 +6,7 @@ import React, {
 import axios from "axios";
 import { Link, useRouteMatch } from "react-router-dom";
 
-function WorldTable() {
+function USTable() {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
 
@@ -320,4 +320,4 @@ function WorldTable() {
   );
 }
 
-export default WorldTable;
+export default USTable;
