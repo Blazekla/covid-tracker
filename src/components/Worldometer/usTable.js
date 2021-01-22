@@ -15,7 +15,7 @@ function WorldTable() {
       try {
         // setSkeletonLoader(true);
         setTotalCases(null);
-        const apiEnpoint = `https://disease.sh/v3/covid-19/states?sort=cases`;
+        const apiEnpoint = `https://disease.sh/v3/covid-19/states?sort=cases${dates}`;
         const data = await axios.get(apiEnpoint);
         // const data = await axios.get(
         //   `https://disease.sh/v3/covid-19/countries/${
@@ -75,6 +75,24 @@ function WorldTable() {
 
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
+      <div className="flex mb-8">
+        <button
+          className={`px-2 rounded-full ${
+            dates === "" ? "bg-primary-light" : null
+          }`}
+          onClick={() => setDates("")}
+        >
+          Now
+        </button>
+        <button
+          className={`px-2 rounded-full ${
+            dates === "&yesterday=true" ? "bg-primary-light" : null
+          }`}
+          onClick={() => setDates("&yesterday=true")}
+        >
+          Yesterday
+        </button>
+      </div>
       <table
         className={`table-auto border-collapse overflow-x-auto block w-full ${
           totalCases ? "calculate-100" : null
