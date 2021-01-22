@@ -9,6 +9,7 @@ import {
 import World from "./components/Worldometer";
 import Country from "./components/Worldometer/country";
 import USTable from "./components/Worldometer/usTable";
+import State from "./components/Worldometer/state";
 
 function Worldometer() {
   const { path, url } = useRouteMatch();
@@ -37,17 +38,13 @@ function Worldometer() {
         <Route
           exact
           path={`${path}/world/usa/:state`}
-          render={(props) => (
-            <div className="text-white">
-              api data for {props.match.params.state} state
-            </div>
-          )}
+          render={(props) => <State {...props} />}
         />
         <Route
           exact
           path={`${path}/world/usa`}
           render={(props) => {
-            return <USTable usa {...props} />;
+            return <USTable {...props} />;
           }}
         />
         <Route
