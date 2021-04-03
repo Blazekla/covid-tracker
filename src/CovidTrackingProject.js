@@ -8,6 +8,18 @@ function CovidTrackingProject() {
   return (
     <>
       <div className="flex flex-wrap justify-center py-8 mx-2 sm:mx-4">
+        <div className="text-white my-12">
+          As of March 27th, the Covid Tracking Project is no longer collecting
+          new data. You can learn more from their{" "}
+          <a
+            href="https://covidtracking.com/analysis-updates/giving-thanks-and-looking-ahead-our-data-collection-work-is-done"
+            aria-label="Go to the Covid Tracking Project website"
+            className="italic underline"
+          >
+            website
+          </a>
+          .
+        </div>
         <NavLink
           to={`${url}/us`}
           className="p-4 rounded-full border-solid border-2 border-primary-light text-white m-4"
