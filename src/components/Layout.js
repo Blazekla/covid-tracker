@@ -72,8 +72,8 @@ function Layout({ children }) {
       </Header>
       <main className="min-h-screen">{children}</main>
       <Footer>
-        <div className="flex justify-between max-w-full bg-black items-center">
-          <p className="text-white flex-no-shrink">
+        <div className="flex justify-center max-w-full bg-black items-center">
+          <p className="text-white">
             Created by{" "}
             <a
               href="https://luiscristo.com"
@@ -81,9 +81,6 @@ function Layout({ children }) {
             >
               Luis C
             </a>
-          </p>
-          <p className="text-white text-right flex-grow-0">
-            More updates incoming
           </p>
         </div>
       </Footer>

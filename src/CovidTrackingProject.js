@@ -7,6 +7,18 @@ function CovidTrackingProject() {
   const { path, url } = useRouteMatch();
   return (
     <>
+      <div className="p-8 text-center text-white my-12">
+        As of March 27th, the Covid Tracking Project is no longer collecting new
+        data. You can learn more from their{" "}
+        <a
+          href="https://covidtracking.com/analysis-updates/giving-thanks-and-looking-ahead-our-data-collection-work-is-done"
+          aria-label="Go to the Covid Tracking Project website"
+          className="italic underline"
+        >
+          website
+        </a>
+        .
+      </div>
       <div className="flex flex-wrap justify-center py-8 mx-2 sm:mx-4">
         <NavLink
           to={`${url}/us`}
