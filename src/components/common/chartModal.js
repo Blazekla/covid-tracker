@@ -29,13 +29,15 @@ function ChartModal({
     };
   }, [handleToggle]);
 
+  const innerHeightValue = window.innerHeight * 0.5;
+
   return (
     <div className="h-screen w-screen left-0 top-0 fixed z-30 flex flex-col justify-center ">
       <div
         className="bg-black bg-opacity-60 z-40 left-0 top-0 right-0 bottom-0 absolute"
         onClick={handleToggle}
       ></div>
-      <div className="flex flex-col items-center my-12 bg-secondary-dark z-50 px-2 py-8 sm:p-8">
+      <div className="flex flex-col items-center mx-4 sm:mx-8 my-12 bg-gray-900 z-50 px-2 py-8 sm:p-8">
         <div className="flex flex-wrap justify-between w-full mb-8 p-2">
           <div className="text-white  flex flex-wrap justify-center">
             <div className="p-1">
@@ -66,7 +68,7 @@ function ChartModal({
             location={selectedState}
             lineToggle={lineChart}
             barToggle={barChart}
-            heightInput={400}
+            heightInput={innerHeightValue}
             minified={true}
             display={display ? display : null}
           />

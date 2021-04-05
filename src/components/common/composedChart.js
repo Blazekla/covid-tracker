@@ -5,7 +5,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Brush,
   ResponsiveContainer,
   Bar,
   Legend,
@@ -58,7 +57,7 @@ function composedChart({
           y={0}
           dy={16}
           textAnchor="end"
-          className="fill-current text-white"
+          className="fill-current text-white text-xs"
           transform="rotate(-35)"
         >
           {payload.value}
@@ -107,7 +106,7 @@ function composedChart({
         margin={{
           top: 10,
           right: 10,
-          left: 0,
+          left: -10,
           bottom: 10,
         }}
         data={totalCases}
@@ -133,9 +132,6 @@ function composedChart({
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
-        {minified ? (
-          <Brush dataKey="date" height={40} travellerWidth={20} />
-        ) : null}
         {minified ? (
           <Legend
             formatter={(value, entry, index) => {

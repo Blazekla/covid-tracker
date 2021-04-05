@@ -4,7 +4,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Brush,
   ResponsiveContainer,
   Bar,
   Legend,
@@ -58,7 +57,7 @@ function smallComposedChart({
         margin={{
           top: 10,
           right: 10,
-          left: 0,
+          left: -10,
           bottom: 10,
         }}
         data={totalCases}
@@ -77,7 +76,6 @@ function smallComposedChart({
         {(lineToggle || barToggle) && (
           <Tooltip isAnimationActive={false} content={<CustomTooltip />} />
         )}
-        {minified ? <Brush dataKey="date" height={40} /> : null}
         {minified ? <Legend /> : null}
 
         {barToggle && (

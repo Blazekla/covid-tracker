@@ -2,6 +2,56 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+const StateStats = ({ data }) => (
+  <>
+    <div className="w-min-250">
+      <h2 className="text-xl">{data.state} Data</h2>
+      <div className="mt-4">
+        <div className="flex justify-between">
+          <p>Total Cases:</p>
+          <p>{data.cases}</p>
+        </div>
+        <div className="flex justify-between">
+          <div>Cases Today:</div>
+          <div>{data.todayCases}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Total Deaths:</div>
+          <div>{data.deaths}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Deaths Today:</div>
+          <div>{data.todayDeaths}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Active:</div>
+          <div>{data.active}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Cases Per One Million:</div>
+          <div>{data.casesPerOneMillion}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Deaths Per One Million:</div>
+          <div>{data.deathsPerOneMillion}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Tests:</div>
+          <div>{data.tests}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Tests Per One Million:</div>
+          <div>{data.testsPerOneMillion}</div>
+        </div>
+        <div className="flex justify-between">
+          <div>Population:</div>
+          <div>{data.population}</div>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
 function StatePage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
@@ -56,23 +106,4 @@ function StatePage(props) {
   );
 }
 
-const StateStats = ({ data }) => (
-  <>
-    <div>
-      <h2 className="text-xl">{data.state} Data</h2>
-      <div>
-        <p>Total Cases: {data.cases}</p>
-        <p>Cases Today: {data.todayCases}</p>
-        <p>Total Deaths: {data.deaths}</p>
-        <p>Deaths Today: {data.todayDeaths}</p>
-        <p>Active: {data.active}</p>
-        <p>Cases Per One Million: {data.casesPerOneMillion}</p>
-        <p>Deaths Per One Million: {data.deathsPerOneMillion}</p>
-        <p>Tests: {data.tests}</p>
-        <p>Tests Per One Million: {data.testsPerOneMillion}</p>
-        <p>Population: {data.population}</p>
-      </div>
-    </div>
-  </>
-);
 export default StatePage;
