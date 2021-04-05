@@ -2,6 +2,40 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+const CountryStats = ({ data }) => (
+  <>
+    <div className="w-min-250">
+      <h2 className="text-xl">{data.country} Data</h2>
+      <div className="mt-4">
+        <div className="flex justify-between">
+          <p>Cases:</p>
+          <p>{data.cases}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Deaths:</p>
+          <p>{data.deaths}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Critical:</p>
+          <p>{data.critical}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Cases Today:</p>
+          <p>{data.todayCases}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Recovered:</p>
+          <p>{data.recovered}</p>
+        </div>
+        <div className="flex justify-between">
+          <p>Population:</p>
+          <p>{data.population}</p>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
 function CountryPage(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
@@ -64,19 +98,4 @@ function CountryPage(props) {
   );
 }
 
-const CountryStats = ({ data }) => (
-  <>
-    <div>
-      <h2 className="text-xl">{data.country} Data</h2>
-      <div>
-        <p>Cases: {data.cases}</p>
-        <p>Deaths: {data.deaths}</p>
-        <p>Critical: {data.critical}</p>
-        <p>todayCases: {data.todayCases}</p>
-        <p>Recovered: {data.recovered}</p>
-        <p>Population: {data.population}</p>
-      </div>
-    </div>
-  </>
-);
 export default CountryPage;
