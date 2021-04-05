@@ -29,6 +29,9 @@ function ChartModal({
     };
   }, [handleToggle]);
 
+  console.log("height: ", window.innerHeight);
+  const innerHeightValue = window.innerHeight * 0.45;
+
   return (
     <div className="h-screen w-screen left-0 top-0 fixed z-30 flex flex-col justify-center ">
       <div
@@ -66,7 +69,7 @@ function ChartModal({
             location={selectedState}
             lineToggle={lineChart}
             barToggle={barChart}
-            heightInput={400}
+            heightInput={innerHeightValue}
             minified={true}
             display={display ? display : null}
           />
