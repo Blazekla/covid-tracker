@@ -9,3 +9,9 @@
     @apply overflow-hidden;
   }
 }
+
+@layer utilities {
+  .w-min-250 {
+    min-width: 250px;
+  }
+}
