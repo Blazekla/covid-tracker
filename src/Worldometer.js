@@ -15,7 +15,7 @@ function Worldometer() {
   const { path, url } = useRouteMatch();
   return (
     <>
-      <div className="flex flex-wrap justify-center py-8 mx-2 sm:mx-4">
+      <div className="flex flex-wrap justify-center mt-12 pb-8 mx-2 sm:mx-4">
         <NavLink
           to={`${url}/world`}
           className="p-4 rounded-full border-solid border-2 border-primary-light text-white m-4"

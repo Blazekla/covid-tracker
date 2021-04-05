@@ -7,7 +7,7 @@ function CovidTrackingProject() {
   const { path, url } = useRouteMatch();
   return (
     <>
-      <div className="p-8 text-center text-white my-12">
+      <div className="px-8 mt-16 text-center text-white my-12">
         As of March 27th, the Covid Tracking Project is no longer collecting new
         data. You can learn more from their{" "}
         <a
