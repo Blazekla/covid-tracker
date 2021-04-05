@@ -104,7 +104,7 @@ function StateTable({
           {sortedData.map((cases) => {
             return (
               <tr
-                key={cases.date}
+                key={cases.date + cases.positiveIncrease}
                 className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
               >
                 <td className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0">

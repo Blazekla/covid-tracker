@@ -22,7 +22,7 @@ function State() {
         setSkeleton(false);
         data.data.forEach((item) => {
           item.rawDate = item.date;
-          item.date = DateTime.fromISO(item.date).toFormat("LLL d yyyy");
+          item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
         setTotalCases(data.data.reverse());
       } catch (error) {
