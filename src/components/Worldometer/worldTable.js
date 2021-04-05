@@ -147,7 +147,7 @@ function WorldTable({
                     ? cases.cases.toLocaleString("en", { useGrouping: true })
                     : 0}
                 </td>
-                <td className="border-r-4 border-white p-2">
+                <td className="border-r-4 border-white p-2 bg-secondary-main bg-opacity-40">
                   {cases.todayCases != null
                     ? cases.todayCases.toLocaleString("en", {
                         useGrouping: true,
