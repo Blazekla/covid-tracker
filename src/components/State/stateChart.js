@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
-// import ComposedChart from "../common/composedChart";
 import ChartModal from "../common/chartModal";
 import SmallComposedChart from "../common/smallComposedChart";
 
