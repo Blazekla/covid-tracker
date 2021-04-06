@@ -50,49 +50,49 @@ function StateTable({
       <thead className="text-white">
         <tr>
           <th
-            className="sticky top-0 left-0 z-10 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 left-0 z-10 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("rawDate")}
           >
             Date{checkSorting("rawDate")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positive")}
           >
             Total Cases{checkSorting("positive")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positiveIncrease")}
           >
             New Cases{checkSorting("positiveIncrease")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("death")}
           >
             Total Deaths{checkSorting("death")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("deathIncrease")}
           >
             New Deaths{checkSorting("deathIncrease")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResults")}
           >
             Total Tests{checkSorting("totalTestResults")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResultsIncrease")}
           >
             New Tests{checkSorting("totalTestResultsIncrease")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
           >
             Currently Hospitalized{checkSorting("hospitalizedCurrently")}
@@ -105,9 +105,9 @@ function StateTable({
             return (
               <tr
                 key={cases.date + cases.positiveIncrease}
-                className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
+                className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 bg-gray-900"
               >
-                <td className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0">
+                <td className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0">
                   {cases.date}
                 </td>
                 <td className="border-r-4 border-white p-2">
