@@ -129,7 +129,7 @@ function WorldTable({
             return (
               <tr
                 key={cases.date + id}
-                className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
+                className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 bg-gray-900"
               >
                 <td
                   className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0"
