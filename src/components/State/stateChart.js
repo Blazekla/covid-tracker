@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import axios from "axios";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
-// import ComposedChart from "../common/composedChart";
 import ChartModal from "../common/chartModal";
 import SmallComposedChart from "../common/smallComposedChart";
 
@@ -59,12 +57,12 @@ function StateChart({
 
   return (
     <>
-      <div className="bg-secondary-main m-4 rounded" style={{ width: "400px" }}>
+      <div className="bg-gray-900 m-4 rounded" style={{ width: "400px" }}>
         <div className="flex justify-between py-2 items-center text-white">
           <div className="mx-4">{displayMessage()}</div>
           <button
             onClick={() => setToggle(!toggle)}
-            className="mx-4  border-2 border-secondary-dark rounded-md p-1"
+            className="mx-4 border-2 rounded-md p-1"
           >
             Expand Chart
           </button>

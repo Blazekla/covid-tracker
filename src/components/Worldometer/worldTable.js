@@ -52,70 +52,70 @@ function WorldTable({
       <thead className="text-white">
         <tr>
           <th
-            className="sticky top-0 left-0 z-10 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 left-0 z-10 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("country")}
           >
             Country
             {checkSorting("country")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("cases")}
           >
             Total Cases
             {checkSorting("cases")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("todayCases")}
           >
             New Cases
             {checkSorting("todayCases")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("deaths")}
           >
             Total Deaths
             {checkSorting("deaths")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("todayDeaths")}
           >
             New Deaths
             {checkSorting("todayDeaths")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("tests")}
           >
             Total Tests
             {checkSorting("tests")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("active")}
           >
             Active Cases
             {checkSorting("active")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("critical")}
           >
             Serious, Critical
             {checkSorting("critical")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("recovered")}
           >
             Total Recovered
             {checkSorting("recovered")}
           </th>
           <th
-            className="sticky top-0 bg-secondary-main px-2 cursor-pointer"
+            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("todayRecovered")}
           >
             Today Recovered
@@ -129,10 +129,10 @@ function WorldTable({
             return (
               <tr
                 key={cases.date + id}
-                className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 "
+                className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 bg-gray-900"
               >
                 <td
-                  className="text-left border-r-4 bg-secondary-main border-white p-2 sticky left-0"
+                  className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0"
                   style={{ maxWidth: "120px" }}
                 >
                   <Link

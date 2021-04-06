@@ -13,10 +13,7 @@ function App() {
     <Layout>
       <div className="py-4">
         <Switch>
-          <Route
-            path="/worldometer"
-            // render={(props) => <Worldometer {...props} />}
-          >
+          <Route path="/worldometer">
             <Worldometer />
           </Route>
           <Route path="/covidtrackingproject">
@@ -25,9 +22,9 @@ function App() {
           <Route exact path="/">
             <Intro />
           </Route>
-          <Route path="*" render={(props) => <NotFoundPage {...props} />} />
-          {/* <NotFoundPage />
-          </Route> */}
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
         </Switch>
       </div>
     </Layout>
