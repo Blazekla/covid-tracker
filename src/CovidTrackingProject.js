@@ -1,5 +1,11 @@
 import React from "react";
-import { Route, NavLink, useRouteMatch } from "react-router-dom";
+import {
+  Route,
+  NavLink,
+  Switch,
+  useRouteMatch,
+  Redirect,
+} from "react-router-dom";
 import US from "./components/US/usPage";
 import State from "./components/State/statePage";
 
@@ -37,12 +43,17 @@ function CovidTrackingProject() {
           State Data
         </NavLink>
       </div>
-      <Route path={`${path}/us`}>
-        <US />
-      </Route>
-      <Route path={`${path}/state`}>
-        <State />
-      </Route>
+      <Switch>
+        <Route exact path={`${path}/us`}>
+          <US />
+        </Route>
+        <Route exact path={`${path}/state`}>
+          <State />
+        </Route>
+        <Route path={`${path}/*`}>
+          <Redirect to="/404" />
+        </Route>
+      </Switch>
     </>
   );
 }
