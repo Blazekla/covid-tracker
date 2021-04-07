@@ -5,11 +5,15 @@ import React, {
 } from "react";
 import axios from "axios";
 import { Link, useRouteMatch } from "react-router-dom";
+import checkSorting from "../../utils/checkSort";
+import useSortHook from "../../utils/sortHook";
 
 function USTable() {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
-
+  const { handleTableHeaderClick, sortedData, sortedField } = useSortHook(
+    totalCases
+  );
   useEffect(() => {
     async function fetchWorldOMeter() {
       try {
@@ -26,39 +30,6 @@ function USTable() {
   }, [dates]);
 
   const { url } = useRouteMatch();
-  // const checkSorting = (value) => {
-  //     if (sortedField && sortedField.key === value) {
-  //       if (sortedField.direction === "ascending") {
-  //         return (
-  //           <svg
-  //             focusable="false"
-  //             viewBox="0 0 24 24"
-  //             aria-hidden="true"
-  //             fill="#fff"
-  //             width="20"
-  //             height="20"
-  //           >
-  //             <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-  //           </svg>
-  //         );
-  //       } else if (sortedField.direction === "descending") {
-  //         return (
-  //           <svg
-  //             focusable="false"
-  //             viewBox="0 0 24 24"
-  //             aria-hidden="true"
-  //             fill="#fff"
-  //             width="20"
-  //             height="20"
-  //           >
-  //             <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
-  //           </svg>
-  //         );
-  //       }
-  //     }
-
-  //     return null;
-  //   };
 
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
@@ -89,93 +60,93 @@ function USTable() {
           <tr>
             <th
               className="sticky top-0 left-0 z-10 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("country")}
+              onClick={() => handleTableHeaderClick("state")}
             >
               State
-              {/* {checkSorting("state")} */}
+              {checkSorting(sortedField, "state")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("cases")}
+              onClick={() => handleTableHeaderClick("cases")}
             >
               Total Cases
-              {/* {checkSorting("cases")} */}
+              {checkSorting(sortedField, "cases")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("todayCases")}
+              onClick={() => handleTableHeaderClick("todayCases")}
             >
               New Cases
-              {/* {checkSorting("todayCases")} */}
+              {checkSorting(sortedField, "todayCases")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("deaths")}
+              onClick={() => handleTableHeaderClick("deaths")}
             >
               Total Deaths
-              {/* {checkSorting("deaths")} */}
+              {checkSorting(sortedField, "deaths")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("todayDeaths")}
+              onClick={() => handleTableHeaderClick("todayDeaths")}
             >
               New Deaths
-              {/* {checkSorting("todayDeaths")} */}
+              {checkSorting(sortedField, "todayDeaths")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("tests")}
+              onClick={() => handleTableHeaderClick("tests")}
             >
               Total Tests
-              {/* {checkSorting("tests")} */}
+              {checkSorting(sortedField, "tests")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("active")}
+              onClick={() => handleTableHeaderClick("active")}
             >
               Active Cases
-              {/* {checkSorting("active")} */}
+              {checkSorting(sortedField, "active")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("recovered")}
+              onClick={() => handleTableHeaderClick("recovered")}
             >
               Total Recovered
-              {/* {checkSorting("recovered")} */}
+              {checkSorting(sortedField, "recovered")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("critical")}
+              onClick={() => handleTableHeaderClick("casesPerOneMillion")}
             >
               Cases Per One Million
-              {/* {checkSorting("casesPerOneMillion")} */}
+              {checkSorting(sortedField, "casesPerOneMillion")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("todayRecovered")}
+              onClick={() => handleTableHeaderClick("deathsPerOneMillion")}
             >
               Deaths Per One Million
-              {/* {checkSorting("deathsPerOneMillion")} */}
+              {checkSorting(sortedField, "deathsPerOneMillion")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("todayRecovered")}
+              onClick={() => handleTableHeaderClick("testsPerOneMillion")}
             >
               Tests Per One Million
-              {/* {checkSorting("testsPerOneMillion")} */}
+              {checkSorting(sortedField, "testsPerOneMillion")}
             </th>
             <th
               className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              // onClick={() => handleTableHeaderClick("todayRecovered")}
+              onClick={() => handleTableHeaderClick("population")}
             >
               Population
-              {/* {checkSorting("population")} */}
+              {checkSorting(sortedField, "population")}
             </th>
           </tr>
         </thead>
-        {totalCases ? (
+        {sortedData ? (
           <tbody className="text-white">
-            {totalCases.map((cases, id) => {
+            {sortedData.map((cases, id) => {
               return (
                 <tr
                   key={cases.state + id}
