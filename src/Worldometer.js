@@ -35,25 +35,15 @@ function Worldometer() {
         </NavLink>
       </div>
       <Switch>
-        <Route
-          exact
-          path={`${path}/world/usa/:state`}
-          render={(props) => <State {...props} />}
-        />
-        <Route
-          exact
-          path={`${path}/world/usa`}
-          render={(props) => {
-            return <USTable {...props} />;
-          }}
-        />
-        <Route
-          exact
-          path={`${path}/world/:country/`}
-          render={(props) => {
-            return <Country {...props} />;
-          }}
-        />
+        <Route exact path={`${path}/world/usa/:state`}>
+          <State />
+        </Route>
+        <Route exact path={`${path}/world/usa`}>
+          <USTable />
+        </Route>
+        <Route exact path={`${path}/world/:country/`}>
+          <Country />
+        </Route>
         <Route exact path={`${path}/world`}>
           <World />
         </Route>

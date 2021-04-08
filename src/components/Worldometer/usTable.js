@@ -8,7 +8,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import checkSorting from "../../utils/checkSort";
 import useSortHook from "../../utils/sortHook";
 
-function USTable() {
+function USTable(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const { handleTableHeaderClick, sortedData, sortedField } = useSortHook(
