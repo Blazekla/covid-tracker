@@ -1,15 +1,20 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StateComposedChart from "./stateChart";
 import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
 import StateTable from "./stateTable";
+import useSortHook from "../../utils/sortHook";
 
 function State() {
   const [totalCases, setTotalCases] = useState(null);
+  const [chartData, setChartData] = useState(null);
   const [selectedState, setSelectedState] = useState("TX");
   const [skeleton, setSkeleton] = useState(true);
-
+  const { handleTableHeaderClick, sortedData, sortedField } = useSortHook(
+    totalCases,
+    false
+  );
   useEffect(() => {
     async function fetchTotals() {
       try {
@@ -24,7 +29,9 @@ function State() {
           item.rawDate = item.date;
           item.date = DateTime.fromISO(item.date).toFormat("LLL d");
         });
-        setTotalCases(data.data.reverse());
+
+        setTotalCases(data.data);
+        setChartData(data.data.reverse());
       } catch (error) {
         console.log("error fetching api data: ", error);
       }
@@ -36,46 +43,6 @@ function State() {
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
   };
-
-  // ****** //
-  const [sortedField, setSortedField] = useState(null);
-  const handleTableHeaderClick = (name) => {
-    requestSort(name);
-  };
-
-  const requestSort = (key) => {
-    let direction = "ascending";
-    if (
-      sortedField &&
-      sortedField.key === key &&
-      sortedField.direction === "ascending"
-    ) {
-      direction = "descending";
-    }
-    setSortedField({ key, direction });
-  };
-  let sortedData = useMemo(() => {
-    if (totalCases && sortedField !== null) {
-      const data = [...totalCases];
-      data.sort((a, b) => {
-        if (a[sortedField.key] < b[sortedField.key]) {
-          return sortedField.direction === "ascending" ? -1 : 1;
-        }
-        if (a[sortedField.key] > b[sortedField.key]) {
-          return sortedField.direction === "ascending" ? 1 : -1;
-        }
-        return 0;
-      });
-      return data;
-    } else if (totalCases) {
-      const data = [...totalCases];
-      return data.reverse();
-    } else {
-      return null;
-    }
-  }, [sortedField, totalCases]);
-
-  // ****** //
 
   const chartsDisplayed = [
     "positiveIncrease",
@@ -112,7 +79,7 @@ function State() {
             return (
               <StateComposedChart
                 key={chart}
-                totalCases={totalCases}
+                totalCases={chartData}
                 selectedState={selectedState}
                 handleStateChange={handleStateChange}
                 display={chart}
