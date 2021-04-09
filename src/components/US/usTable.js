@@ -1,6 +1,7 @@
 import React from "react";
 import checkSorting from "../../utils/checkSort";
 import TableSkeleton from "../tableSkeleton";
+
 function USTable({
   sortedData,
   sortedField,

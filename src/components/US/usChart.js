@@ -5,10 +5,10 @@ import ComposedChart from "../common/composedChart";
 import USTable from "./usTable";
 import useSortHook from "../../utils/sortHook";
 import ChartSkeleton from "../chartSkeleton";
+
 function USChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
   const [chartData, setChartData] = useState(null);
-
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
   const [skeleton, setSkeleton] = useState(true);
