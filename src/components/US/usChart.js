@@ -3,12 +3,19 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import ComposedChart from "../common/composedChart";
 import USTable from "./usTable";
+import useSortHook from "../../utils/sortHook";
 
 function USChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
+  const [chartData, setChartData] = useState(null);
+
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
   const [skeleton, setSkeleton] = useState(true);
+  const { handleTableHeaderClick, sortedData, sortedField } = useSortHook(
+    totalCases,
+    false
+  );
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
@@ -23,7 +30,8 @@ function USChart({ timeframe }) {
         data.data.forEach((item) => {
           item.date = DateTime.fromISO(item.date).toFormat("LLL d yyyy");
         });
-        setTotalCases(data.data.reverse());
+        setTotalCases(data.data);
+        setChartData(data.data.reverse());
       } catch (error) {
         console.log("error fetching api data: ", error);
       }
@@ -39,46 +47,6 @@ function USChart({ timeframe }) {
   const handleLineChartChange = (e) => {
     setLineChart(!lineChart);
   };
-
-  // ****** //
-  const [sortedField, setSortedField] = useState(null);
-  const handleTableHeaderClick = (name) => {
-    requestSort(name);
-  };
-
-  const requestSort = (key) => {
-    let direction = "ascending";
-    if (
-      sortedField &&
-      sortedField.key === key &&
-      sortedField.direction === "ascending"
-    ) {
-      direction = "descending";
-    }
-    setSortedField({ key, direction });
-  };
-  let sortedData = useMemo(() => {
-    if (totalCases && sortedField !== null) {
-      const data = [...totalCases];
-      data.sort((a, b) => {
-        if (a[sortedField.key] < b[sortedField.key]) {
-          return sortedField.direction === "ascending" ? -1 : 1;
-        }
-        if (a[sortedField.key] > b[sortedField.key]) {
-          return sortedField.direction === "ascending" ? 1 : -1;
-        }
-        return 0;
-      });
-      return data;
-    } else if (totalCases) {
-      const data = [...totalCases];
-      return data.reverse();
-    } else {
-      return null;
-    }
-  }, [sortedField, totalCases]);
-
-  // ****** //
 
   return (
     <>
@@ -116,9 +84,9 @@ function USChart({ timeframe }) {
         </div>
 
         <div className="container mx-auto px-2 sm:px-4 mb-16">
-          {totalCases ? (
+          {chartData ? (
             <ComposedChart
-              totalCases={totalCases}
+              totalCases={chartData}
               today={today}
               selectedType={selectedType}
               location="US"

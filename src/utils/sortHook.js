@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 
-function UseSortHook(totalCases) {
+function UseSortHook(totalCases, sort = true) {
   const [sortedField, setSortedField] = useState(null);
 
   const handleTableHeaderClick = (name) => {
@@ -33,20 +33,22 @@ function UseSortHook(totalCases) {
       return data;
     } else if (totalCases) {
       const data = [...totalCases];
-      data.sort((a, b) => {
-        if (a["cases"] < b["cases"]) {
-          return 1;
-        }
-        if (a["cases"] > b["cases"]) {
-          return -1;
-        }
-        return 0;
-      });
+      if (sort) {
+        data.sort((a, b) => {
+          if (a["cases"] < b["cases"]) {
+            return 1;
+          }
+          if (a["cases"] > b["cases"]) {
+            return -1;
+          }
+          return 0;
+        });
+      }
       return data;
     } else {
       return null;
     }
-  }, [sortedField, totalCases]);
+  }, [sortedField, totalCases, sort]);
 
   return { handleTableHeaderClick, sortedData, sortedField };
 }
