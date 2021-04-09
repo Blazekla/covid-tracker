@@ -4,7 +4,7 @@ import { DateTime } from "luxon";
 import ComposedChart from "../common/composedChart";
 import USTable from "./usTable";
 import useSortHook from "../../utils/sortHook";
-
+import ChartSkeleton from "../chartSkeleton";
 function USChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
   const [chartData, setChartData] = useState(null);
@@ -95,24 +95,7 @@ function USChart({ timeframe }) {
               minified={true}
             />
           ) : (
-            <div className="p-4  w-full mx-auto" style={{ height: "400px" }}>
-              <div className="animate-pulse h-full bg-blue-100 w-full">
-                <div className="flex rounded w-full h-full justify-between px-8 mx-auto items-end space-x-1">
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-1/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-3/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-2/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-2/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-                </div>
-              </div>
-            </div>
+            <ChartSkeleton columns={24} />
           )}
         </div>
       </div>
