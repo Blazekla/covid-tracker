@@ -1,6 +1,6 @@
 import React from "react";
 import checkSorting from "../../utils/checkSort";
-
+import TableSkeleton from "../tableSkeleton";
 function USTable({
   sortedData,
   sortedField,
@@ -130,34 +130,7 @@ function USTable({
         </tbody>
       ) : (
         <tbody>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
-            <tr key={item}>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-            </tr>
-          ))}
+          <TableSkeleton rows={12} columns={8} />
         </tbody>
       )}
     </table>
