@@ -1,14 +1,21 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DateTime } from "luxon";
 import ComposedChart from "../common/composedChart";
 import USTable from "./usTable";
+import useSortHook from "../../utils/sortHook";
+import ChartSkeleton from "../chartSkeleton";
 
 function USChart({ timeframe }) {
   const [totalCases, setTotalCases] = useState(null);
+  const [chartData, setChartData] = useState(null);
   const [selectedType, setSelectedType] = useState("newCases");
   const [lineChart, setLineChart] = useState(false);
   const [skeleton, setSkeleton] = useState(true);
+  const { handleTableHeaderClick, sortedData, sortedField } = useSortHook(
+    totalCases,
+    false
+  );
 
   const today = DateTime.local().minus({ day: 1 }).toFormat("LLL d");
   useEffect(() => {
@@ -21,9 +28,11 @@ function USChart({ timeframe }) {
 
         setSkeleton(false);
         data.data.forEach((item) => {
+          item.rawDate = item.date;
           item.date = DateTime.fromISO(item.date).toFormat("LLL d yyyy");
         });
-        setTotalCases(data.data.reverse());
+        setTotalCases(data.data);
+        setChartData(data.data.reverse());
       } catch (error) {
         console.log("error fetching api data: ", error);
       }
@@ -39,46 +48,6 @@ function USChart({ timeframe }) {
   const handleLineChartChange = (e) => {
     setLineChart(!lineChart);
   };
-
-  // ****** //
-  const [sortedField, setSortedField] = useState(null);
-  const handleTableHeaderClick = (name) => {
-    requestSort(name);
-  };
-
-  const requestSort = (key) => {
-    let direction = "ascending";
-    if (
-      sortedField &&
-      sortedField.key === key &&
-      sortedField.direction === "ascending"
-    ) {
-      direction = "descending";
-    }
-    setSortedField({ key, direction });
-  };
-  let sortedData = useMemo(() => {
-    if (totalCases && sortedField !== null) {
-      const data = [...totalCases];
-      data.sort((a, b) => {
-        if (a[sortedField.key] < b[sortedField.key]) {
-          return sortedField.direction === "ascending" ? -1 : 1;
-        }
-        if (a[sortedField.key] > b[sortedField.key]) {
-          return sortedField.direction === "ascending" ? 1 : -1;
-        }
-        return 0;
-      });
-      return data;
-    } else if (totalCases) {
-      const data = [...totalCases];
-      return data.reverse();
-    } else {
-      return null;
-    }
-  }, [sortedField, totalCases]);
-
-  // ****** //
 
   return (
     <>
@@ -116,9 +85,9 @@ function USChart({ timeframe }) {
         </div>
 
         <div className="container mx-auto px-2 sm:px-4 mb-16">
-          {totalCases ? (
+          {chartData ? (
             <ComposedChart
-              totalCases={totalCases}
+              totalCases={chartData}
               today={today}
               selectedType={selectedType}
               location="US"
@@ -127,30 +96,12 @@ function USChart({ timeframe }) {
               minified={true}
             />
           ) : (
-            <div className="p-4  w-full mx-auto" style={{ height: "400px" }}>
-              <div className="animate-pulse h-full bg-blue-100 w-full">
-                <div className="flex rounded w-full h-full justify-between px-8 mx-auto items-end space-x-1">
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-1/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-3/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-2/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-2/6"></div>
-                  <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-                </div>
-              </div>
-            </div>
+            <ChartSkeleton columns={48} height={400} />
           )}
         </div>
       </div>
       <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
         <USTable
-          totalCases={totalCases}
           sortedData={sortedData}
           sortedField={sortedField}
           handleTableHeaderClick={handleTableHeaderClick}

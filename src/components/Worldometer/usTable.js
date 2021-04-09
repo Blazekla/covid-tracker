@@ -1,14 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  //  useMemo
-} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useRouteMatch } from "react-router-dom";
 import checkSorting from "../../utils/checkSort";
 import useSortHook from "../../utils/sortHook";
+import TableSkeleton from "../tableSkeleton";
 
-function USTable() {
+function USTable(props) {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const { handleTableHeaderClick, sortedData, sortedField } = useSortHook(
@@ -244,46 +241,7 @@ function USTable() {
           </tbody>
         ) : (
           <tbody>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
-              <tr key={item}>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-                <td>
-                  <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-                </td>
-              </tr>
-            ))}
+            <TableSkeleton rows={12} columns={12} />
           </tbody>
         )}
       </table>

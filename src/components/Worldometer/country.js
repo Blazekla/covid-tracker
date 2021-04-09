@@ -36,7 +36,7 @@ const CountryStats = ({ data }) => (
   </>
 );
 
-function CountryPage(props) {
+function CountryPage() {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const [error, setError] = useState(null);
@@ -55,8 +55,7 @@ function CountryPage(props) {
       }
     }
     fetchWorldOMeter();
-  }, [dates, params.country, props.usa]);
-
+  }, [dates, params.country]);
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
       <div className="flex mb-8">

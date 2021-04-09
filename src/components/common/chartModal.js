@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ComposedChart from "./composedChart";
+
 function ChartModal({
   totalCases,
   selectedState,

@@ -1,5 +1,6 @@
 import React from "react";
-
+import TableSkeleton from "../tableSkeleton";
+import checkSorting from "../../utils/checkSort";
 function StateTable({
   totalCases,
   sortedData,
@@ -7,40 +8,6 @@ function StateTable({
   handleTableHeaderClick,
   skeleton,
 }) {
-  const checkSorting = (value) => {
-    if (sortedField && sortedField.key === value) {
-      if (sortedField.direction === "ascending") {
-        return (
-          <svg
-            focusable="false"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="#fff"
-            width="20"
-            height="20"
-          >
-            <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
-          </svg>
-        );
-      } else if (sortedField.direction === "descending") {
-        return (
-          <svg
-            focusable="false"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="#fff"
-            width="20"
-            height="20"
-          >
-            <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path>
-          </svg>
-        );
-      }
-    }
-
-    return null;
-  };
-
   return (
     <table
       className={`table-auto border-collapse overflow-x-auto block w-full ${
@@ -53,49 +20,50 @@ function StateTable({
             className="sticky top-0 left-0 z-10 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("rawDate")}
           >
-            Date{checkSorting("rawDate")}
+            Date{checkSorting(sortedField, "rawDate")}
           </th>
           <th
             className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positive")}
           >
-            Total Cases{checkSorting("positive")}
+            Total Cases{checkSorting(sortedField, "positive")}
           </th>
           <th
             className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("positiveIncrease")}
           >
-            New Cases{checkSorting("positiveIncrease")}
+            New Cases{checkSorting(sortedField, "positiveIncrease")}
           </th>
           <th
             className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("death")}
           >
-            Total Deaths{checkSorting("death")}
+            Total Deaths{checkSorting(sortedField, "death")}
           </th>
           <th
             className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("deathIncrease")}
           >
-            New Deaths{checkSorting("deathIncrease")}
+            New Deaths{checkSorting(sortedField, "deathIncrease")}
           </th>
           <th
             className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResults")}
           >
-            Total Tests{checkSorting("totalTestResults")}
+            Total Tests{checkSorting(sortedField, "totalTestResults")}
           </th>
           <th
             className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("totalTestResultsIncrease")}
           >
-            New Tests{checkSorting("totalTestResultsIncrease")}
+            New Tests{checkSorting(sortedField, "totalTestResultsIncrease")}
           </th>
           <th
             className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
             onClick={() => handleTableHeaderClick("hospitalizedCurrently")}
           >
-            Currently Hospitalized{checkSorting("hospitalizedCurrently")}
+            Currently Hospitalized
+            {checkSorting(sortedField, "hospitalizedCurrently")}
           </th>
         </tr>
       </thead>
@@ -163,34 +131,7 @@ function StateTable({
         </tbody>
       ) : (
         <tbody>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
-            <tr key={item}>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-              <td>
-                <div className="animate-pulse h-6 bg-primary-light bg-opacity-50 w-full"></div>
-              </td>
-            </tr>
-          ))}
+          <TableSkeleton rows={12} columns={8} />
         </tbody>
       )}
     </table>

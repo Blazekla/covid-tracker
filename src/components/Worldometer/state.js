@@ -52,7 +52,7 @@ const StateStats = ({ data }) => (
   </>
 );
 
-function StatePage(props) {
+function StatePage() {
   const [totalCases, setTotalCases] = useState(null);
   const [dates, setDates] = useState("");
   const [error, setError] = useState(null);
