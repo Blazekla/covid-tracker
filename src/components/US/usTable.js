@@ -2,7 +2,6 @@ import React from "react";
 import checkSorting from "../../utils/checkSort";
 
 function USTable({
-  totalCases,
   sortedData,
   sortedField,
   handleTableHeaderClick,
@@ -11,7 +10,7 @@ function USTable({
   return (
     <table
       className={`table-auto border-collapse overflow-x-auto block w-full ${
-        totalCases && !skeleton ? "calculate-100" : null
+        sortedData && !skeleton ? "calculate-100" : null
       } overflow-y-auto`}
     >
       <thead className="text-white">

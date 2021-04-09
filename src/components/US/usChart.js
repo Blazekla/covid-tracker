@@ -28,6 +28,7 @@ function USChart({ timeframe }) {
 
         setSkeleton(false);
         data.data.forEach((item) => {
+          item.rawDate = item.date;
           item.date = DateTime.fromISO(item.date).toFormat("LLL d yyyy");
         });
         setTotalCases(data.data);
@@ -101,7 +102,6 @@ function USChart({ timeframe }) {
       </div>
       <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
         <USTable
-          totalCases={totalCases}
           sortedData={sortedData}
           sortedField={sortedField}
           handleTableHeaderClick={handleTableHeaderClick}
