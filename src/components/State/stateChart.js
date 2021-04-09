@@ -3,6 +3,7 @@ import { DateTime } from "luxon";
 import { stateLabelValues } from "../../data/stateLabel";
 import ChartModal from "../common/chartModal";
 import SmallComposedChart from "../common/smallComposedChart";
+import ChartSkeleton from "../chartSkeleton";
 
 function StateChart({
   totalCases,
@@ -79,20 +80,7 @@ function StateChart({
             display={display}
           />
         ) : (
-          <div className="p-4  w-full mx-auto" style={{ height: "200px" }}>
-            <div className="animate-pulse h-full bg-blue-100 w-full">
-              <div className="flex  rounded w-full h-full justify-between max-w-xs mx-auto items-end">
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-1/6"></div>
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-3/6"></div>
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-4/6"></div>
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-2/6"></div>
-                <div className="bg-primary-light bg-opacity-40 w-1/12 h-5/6"></div>
-              </div>
-            </div>
-          </div>
+          <ChartSkeleton columns={24} height={200} />
         )}
       </div>
       {toggle ? (

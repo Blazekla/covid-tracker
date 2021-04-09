@@ -95,7 +95,7 @@ function USChart({ timeframe }) {
               minified={true}
             />
           ) : (
-            <ChartSkeleton columns={24} />
+            <ChartSkeleton columns={48} height={400} />
           )}
         </div>
       </div>
