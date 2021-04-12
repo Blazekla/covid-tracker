@@ -1,7 +1,9 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 import checkSorting from "../../utils/checkSort";
 import TableSkeleton from "../tableSkeleton";
+import TableHead from "../common/tableHead";
+import TableData from "../common/tableData";
 
 function WorldTable({
   totalCases,
@@ -12,6 +14,18 @@ function WorldTable({
 }) {
   const { url } = useRouteMatch();
 
+  const columnData = [
+    { Title: "Country", dataTitle: "country", link: url },
+    { Title: "Total Cases", dataTitle: "cases" },
+    { Title: "New Cases", dataTitle: "todayCases" },
+    { Title: "Total Deaths", dataTitle: "deaths" },
+    { Title: "New Deaths", dataTitle: "todayDeaths" },
+    { Title: "Total Tests", dataTitle: "tests" },
+    { Title: "Active Cases", dataTitle: "active" },
+    { Title: "Serious, Critical", dataTitle: "critical" },
+    { Title: "Total Recovered", dataTitle: "recovered" },
+    { Title: "Today Recovered", dataTitle: "todayRecovered" },
+  ];
   return (
     <table
       className={`table-auto border-collapse overflow-x-auto block w-full ${
@@ -20,158 +34,27 @@ function WorldTable({
     >
       <thead className="text-white">
         <tr>
-          <th
-            className="sticky top-0 left-0 z-10 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("country")}
-          >
-            Country
-            {checkSorting(sortedField, "country")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("cases")}
-          >
-            Total Cases
-            {checkSorting(sortedField, "cases")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("todayCases")}
-          >
-            New Cases
-            {checkSorting(sortedField, "todayCases")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("deaths")}
-          >
-            Total Deaths
-            {checkSorting(sortedField, "deaths")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("todayDeaths")}
-          >
-            New Deaths
-            {checkSorting(sortedField, "todayDeaths")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("tests")}
-          >
-            Total Tests
-            {checkSorting(sortedField, "tests")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("active")}
-          >
-            Active Cases
-            {checkSorting(sortedField, "active")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("critical")}
-          >
-            Serious, Critical
-            {checkSorting(sortedField, "critical")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("recovered")}
-          >
-            Total Recovered
-            {checkSorting(sortedField, "recovered")}
-          </th>
-          <th
-            className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-            onClick={() => handleTableHeaderClick("todayRecovered")}
-          >
-            Today Recovered
-            {checkSorting(sortedField, "todayRecovered")}
-          </th>
+          <TableHead
+            handleTableHeaderClick={handleTableHeaderClick}
+            checkSorting={checkSorting}
+            sortedField={sortedField}
+            objectData={columnData}
+          />
         </tr>
       </thead>
       {sortedData && !skeleton ? (
         <tbody className="text-white">
-          {sortedData.map((cases, id) => {
+          {sortedData.map((set, id) => {
             return (
               <tr
-                key={cases.date + id}
+                key={set.date + id}
                 className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 bg-gray-900"
               >
-                <td
-                  className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0"
-                  style={{ maxWidth: "120px" }}
-                >
-                  <Link
-                    to={`${url}/${cases.country}`}
-                    aria-label={`See ${cases.country} numbers`}
-                  >
-                    {cases.country}
-                  </Link>
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.cases != null
-                    ? cases.cases.toLocaleString("en", { useGrouping: true })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2 bg-secondary-main bg-opacity-40">
-                  {cases.todayCases != null
-                    ? cases.todayCases.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.deaths != null
-                    ? cases.deaths.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.todayDeaths != null
-                    ? cases.todayDeaths.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.tests != null
-                    ? cases.tests.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.active != null
-                    ? cases.active.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.critical != null
-                    ? cases.critical.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.recovered != null
-                    ? cases.recovered.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
-                <td className="border-r-4 border-white p-2">
-                  {cases.todayRecovered != null
-                    ? cases.todayRecovered.toLocaleString("en", {
-                        useGrouping: true,
-                      })
-                    : 0}
-                </td>
+                <TableData
+                  objectData={columnData}
+                  data={set}
+                  highlightColumn={2}
+                />
               </tr>
             );
           })}
