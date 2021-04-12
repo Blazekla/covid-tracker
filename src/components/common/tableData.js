@@ -7,7 +7,7 @@ function tableData({ objectData, data }) {
         if (cell.dataTitle === "rawDate") {
           return (
             <td
-              className="text-left border-r-4 bg-blue-900 border-white p-2 sticky left-0"
+              className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0"
               key={cell.dataTitle}
             >
               {data.date}
@@ -16,7 +16,7 @@ function tableData({ objectData, data }) {
         }
         return (
           <td
-            className="border-r-4 bg-pink-400 border-white p-2"
+            className="border-r-4 bg-gray-900 border-white p-2"
             key={cell.dataTitle}
           >
             {data[cell.dataTitle] != null
