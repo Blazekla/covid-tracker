@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useRouteMatch } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 import checkSorting from "../../utils/checkSort";
 import useSortHook from "../../utils/sortHook";
 import TableSkeleton from "../tableSkeleton";
+import TableHead from "../common/tableHead";
+import TableData from "../common/tableData";
 
 function USTable(props) {
   const [totalCases, setTotalCases] = useState(null);
@@ -27,6 +29,21 @@ function USTable(props) {
   }, [dates]);
 
   const { url } = useRouteMatch();
+
+  const columnData = [
+    { Title: "State", dataTitle: "state", link: url },
+    { Title: "Total Cases", dataTitle: "cases" },
+    { Title: "New Cases", dataTitle: "todayCases" },
+    { Title: "Total Deaths", dataTitle: "deaths" },
+    { Title: "New Deaths", dataTitle: "todayDeaths" },
+    { Title: "Total Tests", dataTitle: "tests" },
+    { Title: "Active Cases", dataTitle: "active" },
+    { Title: "Total Recovered", dataTitle: "recovered" },
+    { Title: "Cases Per One Million", dataTitle: "casesPerOneMillion" },
+    { Title: "Deaths Per One Million", dataTitle: "deathsPerOneMillion" },
+    { Title: "Tests Per One Million", dataTitle: "testsPerOneMillion" },
+    { Title: "Population", dataTitle: "population" },
+  ];
 
   return (
     <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
@@ -55,186 +72,27 @@ function USTable(props) {
       >
         <thead className="text-white">
           <tr>
-            <th
-              className="sticky top-0 left-0 z-10 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("state")}
-            >
-              State
-              {checkSorting(sortedField, "state")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("cases")}
-            >
-              Total Cases
-              {checkSorting(sortedField, "cases")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("todayCases")}
-            >
-              New Cases
-              {checkSorting(sortedField, "todayCases")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("deaths")}
-            >
-              Total Deaths
-              {checkSorting(sortedField, "deaths")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("todayDeaths")}
-            >
-              New Deaths
-              {checkSorting(sortedField, "todayDeaths")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("tests")}
-            >
-              Total Tests
-              {checkSorting(sortedField, "tests")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("active")}
-            >
-              Active Cases
-              {checkSorting(sortedField, "active")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("recovered")}
-            >
-              Total Recovered
-              {checkSorting(sortedField, "recovered")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("casesPerOneMillion")}
-            >
-              Cases Per One Million
-              {checkSorting(sortedField, "casesPerOneMillion")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("deathsPerOneMillion")}
-            >
-              Deaths Per One Million
-              {checkSorting(sortedField, "deathsPerOneMillion")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("testsPerOneMillion")}
-            >
-              Tests Per One Million
-              {checkSorting(sortedField, "testsPerOneMillion")}
-            </th>
-            <th
-              className="sticky top-0 bg-gray-900 px-2 cursor-pointer"
-              onClick={() => handleTableHeaderClick("population")}
-            >
-              Population
-              {checkSorting(sortedField, "population")}
-            </th>
+            <TableHead
+              handleTableHeaderClick={handleTableHeaderClick}
+              checkSorting={checkSorting}
+              sortedField={sortedField}
+              objectData={columnData}
+            />
           </tr>
         </thead>
         {sortedData ? (
           <tbody className="text-white">
-            {sortedData.map((cases, id) => {
+            {sortedData.map((set, id) => {
               return (
                 <tr
-                  key={cases.state + id}
+                  key={set.state + id}
                   className="text-right border-4 border-white hover:bg-secondary-main hover:bg-opacity-40 bg-gray-900"
                 >
-                  <td
-                    className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0"
-                    style={{ maxWidth: "120px" }}
-                  >
-                    <Link
-                      to={`${url}/${cases.state}`}
-                      aria-label={`See ${cases.state} numbers`}
-                    >
-                      {cases.state}
-                    </Link>
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.cases != null
-                      ? cases.cases.toLocaleString("en", { useGrouping: true })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2 bg-secondary-main bg-opacity-40">
-                    {cases.todayCases != null
-                      ? cases.todayCases.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.deaths != null
-                      ? cases.deaths.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.todayDeaths != null
-                      ? cases.todayDeaths.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.tests != null
-                      ? cases.tests.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.active != null
-                      ? cases.active.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.recovered != null
-                      ? cases.recovered.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.casesPerOneMillion != null
-                      ? cases.casesPerOneMillion.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.deathsPerOneMillion != null
-                      ? cases.deathsPerOneMillion.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.testsPerOneMillion != null
-                      ? cases.testsPerOneMillion.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
-                  <td className="border-r-4 border-white p-2">
-                    {cases.population != null
-                      ? cases.population.toLocaleString("en", {
-                          useGrouping: true,
-                        })
-                      : 0}
-                  </td>
+                  <TableData
+                    objectData={columnData}
+                    data={set}
+                    highlightColumn={2}
+                  />
                 </tr>
               );
             })}
