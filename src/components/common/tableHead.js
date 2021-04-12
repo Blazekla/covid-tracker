@@ -8,16 +8,16 @@ function tableHead({
 }) {
   return (
     <>
-      {objectData.map((cell) => {
+      {objectData.map((cell, index) => {
         return (
           <th
             className={`sticky top-0 ${
-              cell.dataTitle === "rawDate" ? `left-0 z-10` : ""
+              index === 0 ? `left-0 z-10` : ""
             } bg-gray-900 p-2 cursor-pointer`}
             onClick={() => handleTableHeaderClick(cell.dataTitle)}
             key={cell.dataTitle}
           >
-            <div className="flex w-max items-center">
+            <div className="flex w-max items-center mx-auto">
               <h1>{cell.Title}</h1>
               {checkSorting(sortedField, cell.dataTitle)}
             </div>
