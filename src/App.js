@@ -11,7 +11,10 @@ import NotFoundPage from "./404";
 function App() {
   return (
     <Layout>
-      <div className="py-4">
+      <div
+        className="py-4"
+        style={{ maxWidth: "800px", marginRight: "auto", marginLeft: "auto" }}
+      >
         <Switch>
           <Route path="/worldometer">
             <Worldometer />

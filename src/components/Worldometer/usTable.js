@@ -46,7 +46,7 @@ function USTable(props) {
   ];
 
   return (
-    <div className="text-white px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
+    <div className="text-white px-4 flex flex-wrap flex-col items-center mx-auto mb-12">
       <div className="flex mb-8">
         <button
           className={`px-2 rounded-full ${

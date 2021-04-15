@@ -9,7 +9,7 @@ function tableData({ objectData, data, highlightColumn = null }) {
           if (cell.link) {
             return (
               <td
-                className="text-left border-r-4  border-white p-2 sticky left-0"
+                className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0"
                 key={cell.dataTitle}
               >
                 <Link
@@ -24,7 +24,7 @@ function tableData({ objectData, data, highlightColumn = null }) {
 
           return (
             <td
-              className="text-left border-r-4 border-white p-2 sticky left-0"
+              className="text-left border-r-4 bg-gray-900 border-white p-2 sticky left-0"
               key={cell.dataTitle}
             >
               {cell.dataTitle === "rawDate" ? data.date : data[cell.dataTitle]}

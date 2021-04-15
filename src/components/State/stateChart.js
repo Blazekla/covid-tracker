@@ -58,7 +58,7 @@ function StateChart({
 
   return (
     <>
-      <div className="bg-gray-900 m-4 rounded" style={{ width: "400px" }}>
+      <div className="bg-gray-900 m-4 rounded" style={{ width: "350px" }}>
         <div className="flex justify-between py-2 items-center text-white">
           <div className="mx-4">{displayMessage()}</div>
           <button

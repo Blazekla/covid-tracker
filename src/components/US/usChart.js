@@ -100,7 +100,7 @@ function USChart({ timeframe }) {
           )}
         </div>
       </div>
-      <div className="px-4 flex flex-wrap flex-col items-center max-w-max mx-auto mb-12">
+      <div className="px-4 flex flex-wrap flex-col items-center mx-auto mb-12">
         <USTable
           sortedData={sortedData}
           sortedField={sortedField}
