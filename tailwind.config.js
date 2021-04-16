@@ -32,6 +32,12 @@ module.exports = {
         ".calculate-100": {
           height: "calc( 100vh - 100px )",
         },
+        ".w-fit": {
+          width: "fit-content",
+        },
+        ".max-w-fit": {
+          "max-width": "fit-content",
+        },
       };
       addUtilities(newUtilities);
     }),

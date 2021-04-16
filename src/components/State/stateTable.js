@@ -23,7 +23,7 @@ function StateTable({
   ];
   return (
     <table
-      className={`table-auto border-collapse overflow-x-auto block w-full ${
+      className={`table-auto border-collapse overflow-x-auto block w-full max-w-fit ${
         totalCases && !skeleton ? "calculate-100" : null
       } overflow-y-auto`}
     >
